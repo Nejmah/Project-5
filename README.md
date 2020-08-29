@@ -1,0 +1,1 @@
+Déléguéo est un outil pour mener la campagne des délégués dans les classes en amont des élections. En créant une classe, les élèves peuvent déposer leur candidature qui sera alors accesible à tous les utilisateurs. Vous pourrez ainsi interagir avec le candidat en lui laissant des commentaires auxquels il pourra répondre.
