@@ -1,0 +1,7 @@
+body {
+    background-image: url('/img/chalkboard.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    /* font-family: 'MrChalkW00'; */
+    color: white;
+}
