@@ -29,7 +29,7 @@ class DelegueoController extends AbstractController
             // $manager->flush();
 
             // Accès au site après identification
-            return $this->render('delegueo/login.html.twig');
+            // return $this->render('delegueo/login.html.twig');
         }
 
         return $this->render('delegueo/home.html.twig', [
