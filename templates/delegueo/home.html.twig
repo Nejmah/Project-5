@@ -1,1 +1,21 @@
-<h1>Bienvenue dans Delegueo !</h1>
+{% extends 'base.html.twig' %}
+
+{% form_theme formLogin 'bootstrap_4_layout.html.twig' %}
+
+{% block body %}
+
+    <h1>Bienvenue dans Delegueo !</h1>
+
+    {{ form_start(formLogin) }}
+
+    {{ form_row(formLogin.username, {'label': 'Nom d\'utilisateur', 
+    'attr': {'placeholder': 'Nom d\'utilisateur'}}) }}
+
+    {{ form_row(formLogin.password, {'label': 'Mot de passe', 
+    'attr': {'placeholder': 'Entrez votre mot de passe'}}) }}
+
+    <button type="submit" class="btn btn-success">S'identifier</button>
+    
+    {{ form_end(formLogin) }}
+
+{% endblock %}
