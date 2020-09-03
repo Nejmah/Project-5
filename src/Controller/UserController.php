@@ -38,10 +38,42 @@ class UserController extends AbstractController
     }
 
     /**
+     * @Route("/login", name="login")
+     */
+    public function login()
+    {
+        return $this->render('user/login.html.twig');
+    }
+
+    /**
+     * @Route("/role", name="delegate_role")
+     */
+    public function roleDelegate()
+    {
+        return $this->render('user/delegate.html.twig');
+    }
+
+    /**
+     * @Route("/calendar", name="calendar")
+     */
+    public function calendar()
+    {
+        return $this->render('user/calendar.html.twig');
+    }
+
+    /**
      * @Route("/candidatures", name="candidatures")
      */
     public function index()
     {
         return $this->render('user/index.html.twig');
+    }
+
+    /**
+     * @Route("/create/candidature", name="create_candidature")
+     */
+    public function create()
+    {
+        return $this->render('user/create.html.twig');
     }
 }

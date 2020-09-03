@@ -1,0 +1,24 @@
+.bg-primary {
+    /* background-color: rgba(255, 255, 255, 0.5) !important;
+    background-color: rgb(43, 46, 49) !important;
+    background-color: rgb(60, 64, 68) !important; */
+    background-color: rgb(50, 52, 57) !important;
+}
+
+.navbar-brand,
+.nav-link {
+    font-size: 1.2em;
+}
+
+.navbar-brand {
+    margin-right: 0;
+    padding-right: 30px;
+}
+
+.navbar-expand-lg .navbar-nav .nav-link {
+    padding-right: 30px;
+}
+
+.navbar-expand-lg .navbar-nav .nav-link:hover {
+    font-weight: bold;
+}
