@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\User;
 use App\Form\UserType;
 
-class DelegueoController extends AbstractController
+class UserController extends AbstractController
 {
     /**
      * @Route("/", name="home")
@@ -32,7 +32,7 @@ class DelegueoController extends AbstractController
             // return $this->render('delegueo/login.html.twig');
         }
 
-        return $this->render('delegueo/home.html.twig', [
+        return $this->render('user/home.html.twig', [
             'formLogin' => $form->createView()
         ]);
     }
@@ -42,7 +42,7 @@ class DelegueoController extends AbstractController
      */
     public function index()
     {
-        return $this->render('delegueo/index.html.twig');
+        return $this->render('user/index.html.twig');
     }
 
 }
