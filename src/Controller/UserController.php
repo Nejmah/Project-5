@@ -7,7 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
 use App\Entity\User;
-use App\Form\UserType;
+use App\Form\LoginType;
 
 class UserController extends AbstractController
 {
@@ -18,7 +18,7 @@ class UserController extends AbstractController
     {
         $user = new User();
 
-        $form = $this->createForm(UserType::class, $user);
+        $form = $this->createForm(LoginType::class, $user);
 
         $form->handleRequest($request);
 

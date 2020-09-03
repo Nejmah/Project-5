@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="/css/form.css">
+{% endblock %}
+
+{% block body %}
+
+    <h1>Espace Administration</h1>
+
+    {{ form_start(formSchool) }}
+
+    {{ form_row(formSchool.name, {'label': 'Ajouter une école', 
+    'attr': {'placeholder': 'Nom de l\'école'}}) }}
+
+    {{ form_row(formSchool.address, {'label': 'Adresse de l\'école', 
+    'attr': {'placeholder': 'Adresse de l\'école'}}) }}
+
+    {{ form_row(formSchool.email, {'label': 'E-mail de l\'école', 
+    'attr': {'placeholder': 'E-mail de l\'école'}}) }}
+
+    <button type="submit" class="btn btn-success">Enregistrer</button>
+    
+    {{ form_end(formSchool) }}
+
+{% endblock %}

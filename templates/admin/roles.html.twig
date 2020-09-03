@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="/css/form.css">
+{% endblock %}
+
+{% block body %}
+
+    <h1>Espace Administration</h1>
+
+    {{ form_start(formRole) }}
+
+    {{ form_row(formRole.name, {'label': 'Ajouter un rôle', 
+    'attr': {'placeholder': 'Nom du rôle de l\'utilisateur'}}) }}
+
+    <button type="submit" class="btn btn-success">Ajouter</button>
+    
+    {{ form_end(formRole) }}
+
+{% endblock %}

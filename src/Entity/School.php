@@ -27,12 +27,12 @@ class School
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $adress;
+    private $address;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $website;
+    private $email;
 
     /**
      * @ORM\OneToMany(targetEntity=Classroom::class, mappedBy="school")
@@ -61,26 +61,26 @@ class School
         return $this;
     }
 
-    public function getAdress(): ?string
+    public function getAddress(): ?string
     {
-        return $this->adress;
+        return $this->address;
     }
 
-    public function setAdress(string $adress): self
+    public function setAddress(string $address): self
     {
-        $this->adress = $adress;
+        $this->address = $address;
 
         return $this;
     }
 
-    public function getWebsite(): ?string
+    public function getEmail(): ?string
     {
-        return $this->website;
+        return $this->email;
     }
 
-    public function setWebsite(string $website): self
+    public function setEmail(string $email): self
     {
-        $this->website = $website;
+        $this->email = $email;
 
         return $this;
     }
