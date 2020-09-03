@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profs{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="/css/admin.css">
+{% endblock %}
+
+{% block body %}
+
+    <h1>Salle des profs</h1>
+
+    <ul>
+        <li>
+            <a href="{{ path('add_students') }}">Ajouter des élèves</a>
+        </li>
+    </ul>
+
+{% endblock %}
