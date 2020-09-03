@@ -10,16 +10,20 @@
 
     <h1>Bienvenue dans Delegueo !</h1>
 
-    {{ form_start(formLogin) }}
+    <div class="login-form">
+        {{ form_start(formLogin) }}
 
-    {{ form_row(formLogin.username, {'label': 'Nom d\'utilisateur', 
-    'attr': {'placeholder': 'Nom d\'utilisateur'}}) }}
+        {{ form_row(formLogin.username, {'label': 'Nom d\'utilisateur', 
+        'attr': {'placeholder': 'Nom d\'utilisateur'}}) }}
 
-    {{ form_row(formLogin.password, {'label': 'Mot de passe', 
-    'attr': {'placeholder': 'Entrez votre mot de passe'}}) }}
+        {{ form_row(formLogin.password, {'label': 'Mot de passe', 
+        'attr': {'placeholder': 'Entrez votre mot de passe'}}) }}
 
-    <button type="submit" class="btn btn-success">S'identifier</button>
-    
-    {{ form_end(formLogin) }}
+        <div class="login-button">
+            <button type="submit" class="btn btn-success">S'identifier</button>
+        </div>
+
+        {{ form_end(formLogin) }}
+    </div>
 
 {% endblock %}
