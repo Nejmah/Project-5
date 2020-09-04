@@ -2,9 +2,10 @@
 
 namespace App\Controller;
 
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
+use Doctrine\ORM\EntityManagerInterface;
 
 use App\Entity\Role;
 use App\Entity\School;
@@ -24,7 +25,7 @@ class AdminController extends AbstractController
     /**
      * @Route("/new/role", name="add_roles")
      */
-    public function createRole(Request $request)
+    public function createRole(Request $request, EntityManagerInterface $manager)
     {
         $role = new Role();
 
@@ -33,7 +34,6 @@ class AdminController extends AbstractController
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()) {
-            $manager = $this->getDoctrine()->getManager();
             $manager->persist($role);
             $manager->flush();
 
@@ -57,7 +57,7 @@ class AdminController extends AbstractController
     /**
      * @Route("/new/school", name="add_schools")
      */
-    public function createSchool(Request $request)
+    public function createSchool(Request $request, EntityManagerInterface $manager)
     {
         $school = new School();
 
@@ -66,7 +66,6 @@ class AdminController extends AbstractController
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()) {
-            $manager = $this->getDoctrine()->getManager();
             $manager->persist($school);
             $manager->flush();
 
