@@ -21,11 +21,14 @@ class UserFixtures extends Fixture
     {
         $faker = \Faker\Factory::create('fr_FR');
 
-        // Créer 52 utilisateurs
+        // Création de 52 utilisateurs
         for($i = 1; $i <= 52; $i++) {
             $user = new User();
             $user->setUsername($faker->name);
-            $user->setPassword($this->passwordEncoder->encodePassword($user,'the_new_password'));
+            $user->setPassword($this->passwordEncoder->encodePassword(
+                $user,
+                'the_new_password'
+            ));
             
             $manager->persist($user);
         }

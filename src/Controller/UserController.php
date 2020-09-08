@@ -12,49 +12,23 @@ use App\Form\LoginType;
 class UserController extends AbstractController
 {
     /**
-     * @Route("/", name="home")
+     * @Route("/home", name="app_home")
      */
-    public function home(Request $request)
+    public function home()
     {
-        $user = new User();
-
-        $form = $this->createForm(LoginType::class, $user);
-
-        $form->handleRequest($request);
-
-        if($form->isSubmitted() && $form->isValid()) {
-
-            // $manager = $this->getDoctrine()->getManager();
-            // $manager->persist($user);
-            // $manager->flush();
-
-            // Accès au site après identification
-            // return $this->render('delegueo/login.html.twig');
-        }
-
-        return $this->render('user/home.html.twig', [
-            'formLogin' => $form->createView()
-        ]);
+        return $this->render('user/home.html.twig');
     }
 
     /**
-     * @Route("/login", name="login")
+     * @Route("/about", name="app_about")
      */
-    public function login()
+    public function about()
     {
-        return $this->render('user/login.html.twig');
+        return $this->render('user/about.html.twig');
     }
 
     /**
-     * @Route("/role", name="delegate_role")
-     */
-    public function roleDelegate()
-    {
-        return $this->render('user/delegate.html.twig');
-    }
-
-    /**
-     * @Route("/calendar", name="calendar")
+     * @Route("/calendar", name="app_calendar")
      */
     public function calendar()
     {
@@ -62,7 +36,7 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/candidatures", name="candidatures")
+     * @Route("/candidatures", name="app_candidatures")
      */
     public function index()
     {
@@ -70,7 +44,7 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/create/candidature", name="create_candidature")
+     * @Route("/create/candidature", name="app_create_candidature")
      */
     public function create()
     {

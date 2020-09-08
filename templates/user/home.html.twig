@@ -1,29 +1,14 @@
-{% extends 'base.html.twig' %}
-
-{% form_theme formLogin 'bootstrap_4_layout.html.twig' %}
-
-{% block stylesheets %}
-    <link rel="stylesheet" href="/css/home.css">
-{% endblock %}
+{% extends '/user/baseUser.html.twig' %}
 
 {% block body %}
 
-    <h1>Bienvenue dans Déléguéo !</h1>
-
-    <div class="login-form">
-        {{ form_start(formLogin) }}
-
-        {{ form_row(formLogin.username, {'label': 'Nom d\'utilisateur', 
-        'attr': {'placeholder': 'Nom d\'utilisateur'}}) }}
-
-        {{ form_row(formLogin.password, {'label': 'Mot de passe', 
-        'attr': {'placeholder': 'Entrez votre mot de passe'}}) }}
-
-        <div class="login-button">
-            <button type="submit" class="btn btn-success">S'identifier</button>
-        </div>
-
-        {{ form_end(formLogin) }}
+<div class="home-page">
+    <h1>Déléguéo, quésaco ?</h1>
+    <div class="presentation">
+        <p>C'est parti ! La campagne électorale est lancée !</p>
+        <p>Tu peux suivre le programme de chaque candidat et lui laisser des commentaires.</p>
+        <p>Si toi aussi, tu veux devenir délégué, dépose ta candidature !</p>
     </div>
+</div>
 
 {% endblock %}

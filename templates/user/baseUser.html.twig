@@ -1,8 +1,12 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="/css/user.css">
+{% endblock %}
+
 {% block navigation %}
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <a class="navbar-brand" href="{{ path('login') }}">Déléguéo</a>
+        <a class="navbar-brand" href="{{ path('app_home') }}">Déléguéo</a>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -11,16 +15,16 @@
         <div class="collapse navbar-collapse" id="navbarColor01">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ path('delegate_role') }}">Rôle du délégué</a>
+                    <a class="nav-link" href="{{ path('app_about') }}">Rôle du délégué</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ path('calendar') }}">Calendrier des élections</a>
+                    <a class="nav-link" href="{{ path('app_calendar') }}">Calendrier des élections</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ path('candidatures') }}">Candidatures</a>
+                    <a class="nav-link" href="{{ path('app_candidatures') }}">Candidatures</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ path('create_candidature') }}">Déposer une candidature</a>
+                    <a class="nav-link" href="{{ path('app_create_candidature') }}">Déposer une candidature</a>
                 </li>
             </ul>
         </div>

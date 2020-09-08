@@ -1,7 +1,27 @@
 h1 {
-    color: rgb(255, 253, 148);
+    text-align: center;
 }
 
-.presentation {
-    font-size: 1.5em;
+.login-form {
+    width: 50%;
+    margin: auto;
+    margin-top: 30px;
+}
+
+label {
+    /* font-size: 1.5em; */
+}
+
+#inputUsername,
+#inputPassword {
+    font-size: 0.9em;
+}
+
+.login-button {
+    text-align: center;
+}
+
+.btn-success {
+    /* font-size: 1em; */
+    margin-top: 30px
 }

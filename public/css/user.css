@@ -1,0 +1,61 @@
+/* Login-page */
+
+
+/* Navbar */
+
+.bg-primary {
+    background-color: rgb(50, 52, 57) !important;
+}
+
+.navbar-brand,
+.nav-link {
+    font-size: 1.2em;
+}
+
+.navbar-brand {
+    margin-right: 0;
+    padding-left: 10px;
+    padding-right: 30px;
+}
+
+.navbar-expand-lg .navbar-nav .nav-link {
+    padding-right: 30px;
+}
+
+.navbar-expand-lg .navbar-nav .nav-link:hover {
+    font-weight: bold;
+}
+
+/* Home-page */
+
+.home-page h1 {
+    color: rgb(255, 253, 148);
+}
+
+.home-page .presentation {
+    font-size: 1.5em;
+}
+
+/* About-page */
+
+.about-page h1 {
+    color: rgb(105, 214, 243);
+}
+
+/* Calendar-page */
+
+.calendar-page h1 {
+    color: rgb(235, 177, 122);
+}
+
+/* Index-page */
+
+.index-page h1 {
+    color: rgb(176, 140, 240);
+}
+
+/* Create-page */
+
+.create-page h1 {
+    color: rgb(237, 182, 197);
+}
