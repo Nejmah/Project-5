@@ -10,9 +10,9 @@ class TeacherController extends AbstractController
     /**
      * @Route("/teacher", name="teacher")
      */
-    public function index()
+    public function dashboard()
     {
-        return $this->render('teacher/index.html.twig');
+        return $this->render('teacher/dashboard.html.twig');
     }
 
     /**

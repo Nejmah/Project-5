@@ -1,7 +1,5 @@
 {% extends 'base.html.twig' %}
 
-{# {% form_theme formLogin 'bootstrap_4_layout.html.twig' %} #}
-
 {% block stylesheets %}
     <link rel="stylesheet" href="/css/login.css">
 {% endblock %}
@@ -19,7 +17,7 @@
 
         {% if app.user %}
             <div class="mb-3">
-                Vous êtes connecté en tant que {{ app.user.username }}, 
+                {{ app.user.username }}, vous êtes connecté(e) !
                 <a href="{{ path('app_logout') }}">Déconnexion</a>
             </div>
         {% endif %}
