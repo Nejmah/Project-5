@@ -12,7 +12,7 @@ use App\Form\LoginType;
 class UserController extends AbstractController
 {
     /**
-     * @Route("/home", name="app_home")
+     * @Route("/", name="app_home")
      */
     public function home()
     {

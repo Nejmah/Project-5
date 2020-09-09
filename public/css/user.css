@@ -26,6 +26,11 @@
     font-weight: bold;
 }
 
+.logout-button {
+    position: absolute;
+    right: 20px;
+}
+
 /* Home-page */
 
 .home-page h1 {

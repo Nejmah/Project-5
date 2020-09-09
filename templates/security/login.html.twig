@@ -10,9 +10,9 @@
 
     <form class="login-form" method="post">
         {% if error %}
-            <div class="alert alert-danger">Le mot de passe est erroné.</div>
-            {# <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 
-            'security') }}</div> #}
+            {# <div class="alert alert-danger">Le mot de passe est erroné.</div> #}
+            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 
+            'security') }}</div>
         {% endif %}
 
         {% if app.user %}
@@ -22,7 +22,7 @@
             </div>
         {% endif %}
 
-        <h1 class="h3 mb-3 font-weight-normal">Veuillez vous connecter :</h1>
+        <h3 class="h3 mb-3 font-weight-normal text-center">Veuillez vous connecter :</h3>
         
         <label for="inputUsername">Nom d'utilisateur</label>
         <input type="text" value="{{ last_username }}" name="username" id="inputUsername" 
