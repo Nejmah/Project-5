@@ -9,3 +9,28 @@ a {
 li {
     list-style-type: none;
 }
+
+h1 {
+    text-align: center;
+}
+
+h3 {
+    margin-top: 30px;
+}
+
+/* School-form */
+
+#school_name,
+#school_address,
+#school_email {
+    font-size: 0.9em;
+}
+
+.submit-button {
+    text-align: center;
+}
+
+.btn-success {
+    font-size: 0.9em;
+    margin-top: 15px
+}

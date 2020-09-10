@@ -3,26 +3,29 @@
 {% block title %}Admin{% endblock %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" href="/css/form.css">
+    <link rel="stylesheet" href="/css/admin.css">
 {% endblock %}
 
 {% block body %}
 
-    <h1>Espace Administration</h1>
+    <h1>Ajouter une école</h1>
 
     {{ form_start(formSchool) }}
 
-    {{ form_row(formSchool.name, {'label': 'Ajouter une école', 
+    <h3 class="h3 mb-3 font-weight-normal text-center">Veuillez remplir les champs :</h3>
+
+    {{ form_row(formSchool.name, {'label': 'Nom :', 
     'attr': {'placeholder': 'Nom de l\'école'}}) }}
 
-    {{ form_row(formSchool.address, {'label': 'Adresse de l\'école', 
+    {{ form_row(formSchool.address, {'label': 'Adresse :', 
     'attr': {'placeholder': 'Adresse de l\'école'}}) }}
 
-    {{ form_row(formSchool.email, {'label': 'E-mail de l\'école', 
+    {{ form_row(formSchool.email, {'label': 'E-mail :', 
     'attr': {'placeholder': 'E-mail de l\'école'}}) }}
 
-    <button type="submit" class="btn btn-success">Enregistrer</button>
-    
+    <div class="submit-button">
+        <button type="submit" class="btn btn-success">Enregistrer</button>
+    </div>
     {{ form_end(formSchool) }}
 
 {% endblock %}
