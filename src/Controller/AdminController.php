@@ -7,9 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManagerInterface;
 
-use App\Entity\Role;
 use App\Entity\School;
-use App\Form\RoleType;
 use App\Form\SchoolType;
 
 class AdminController extends AbstractController
@@ -19,39 +17,13 @@ class AdminController extends AbstractController
      */
     public function dashboard()
     {
-        return $this->render('admin/dashboard.html.twig');
-    }
+        $repo = $this->getDoctrine()->getRepository(School::class);
 
-    /**
-     * @Route("/new/role", name="add_roles")
-     */
-    public function createRole(Request $request, EntityManagerInterface $manager)
-    {
-        $role = new Role();
+        $schools = $repo->findAll();
 
-        $form = $this->createForm(RoleType::class, $role);
-
-        $form->handleRequest($request);
-
-        if($form->isSubmitted() && $form->isValid()) {
-            $manager->persist($role);
-            $manager->flush();
-
-            // Redirection vers l'espace administration
-            return $this->redirectToRoute('admin');
-        }
-
-        return $this->render('admin/roles.html.twig', [
-            'formRole' => $form->createView()
+        return $this->render('admin/dashboard.html.twig', [
+            'schools' => $schools
         ]);
-    }
-
-    /**
-     * @Route("/new/user", name="add_users")
-     */
-    public function createUser()
-    {
-        return $this->render('admin/users.html.twig');
     }
 
     /**
@@ -76,6 +48,14 @@ class AdminController extends AbstractController
         return $this->render('admin/schools.html.twig', [
             'formSchool' => $form->createView()
         ]);
+    }
+
+    /**
+     * @Route("/new/user", name="add_users")
+     */
+    public function createUser()
+    {
+        return $this->render('admin/users.html.twig');
     }
 
     /**

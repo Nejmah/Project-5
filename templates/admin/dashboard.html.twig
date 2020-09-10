@@ -8,18 +8,35 @@
 
 {% block body %}
 
-    <h1>Espace Administration</h1>
+    <div class="admin-dashboard">
+        <h1>Espace Administration</h1>
 
-<ul>
-    <li>
-        <a href="{{ path('add_users') }}">Ajouter un utilisateur</a>
-    </li>
-    <li>
-        <a href="{{ path('add_schools') }}">Ajouter une école</a>
-    </li>
-    <li>
-        <a href="{{ path('add_classrooms') }}">Ajouter une classe</a>
-    </li>
-</ul>
+    <div class="add-school-button">
+        <button class="btn btn-lg btn-success">
+            <a href="{{ path('add_schools') }}">Ajouter une école</a>
+        </button>
+    </div>
+
+        {% for school in schools %}
+            <div class="school-table">
+                <p>École {{ school.name }}</p>
+                <button class="btn btn-lg btn-success">
+                    <a href="">Ajouter une classe</a>
+                </button>
+            </div>
+        {% endfor %}
+    </div>
+
+    {# <ul>
+        <li>
+            <a href="{{ path('add_users') }}">Ajouter un utilisateur</a>
+        </li>
+        <li>
+            <a href="{{ path('add_schools') }}">Ajouter une école</a>
+        </li>
+        <li>
+            <a href="{{ path('add_classrooms') }}">Ajouter une classe</a>
+        </li>
+    </ul> #}
 
 {% endblock %}

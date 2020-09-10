@@ -8,24 +8,27 @@
 
 {% block body %}
 
+<div class="add-school-page">
     <h1>Ajouter une école</h1>
 
     {{ form_start(formSchool) }}
 
-    <h3 class="h3 mb-3 font-weight-normal text-center">Veuillez remplir les champs :</h3>
+        <h3 class="h3 mb-3 font-weight-normal text-center">Veuillez remplir les champs :</h3>
 
-    {{ form_row(formSchool.name, {'label': 'Nom :', 
-    'attr': {'placeholder': 'Nom de l\'école'}}) }}
+        {{ form_row(formSchool.name, {'label': 'Nom :', 
+        'attr': {'placeholder': 'Nom de l\'école'}}) }}
 
-    {{ form_row(formSchool.address, {'label': 'Adresse :', 
-    'attr': {'placeholder': 'Adresse de l\'école'}}) }}
+        {{ form_row(formSchool.address, {'label': 'Adresse :', 
+        'attr': {'placeholder': 'Adresse de l\'école'}}) }}
 
-    {{ form_row(formSchool.email, {'label': 'E-mail :', 
-    'attr': {'placeholder': 'E-mail de l\'école'}}) }}
+        {{ form_row(formSchool.email, {'label': 'E-mail :', 
+        'attr': {'placeholder': 'E-mail de l\'école'}}) }}
 
-    <div class="submit-button">
-        <button type="submit" class="btn btn-success">Enregistrer</button>
-    </div>
+        <div class="submit-button">
+            <button type="submit" class="btn btn-success">Enregistrer</button>
+        </div>
+
     {{ form_end(formSchool) }}
+</div>
 
 {% endblock %}

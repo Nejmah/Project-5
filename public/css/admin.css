@@ -18,6 +18,57 @@ h3 {
     margin-top: 30px;
 }
 
+/* Dashboard */
+
+.admin-dashboard h1 {
+    margin-bottom: 40px;
+}
+
+.add-school-button {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.add-school-button a {
+    color: white;
+}
+
+.school-table {
+    display: flex;
+    background-color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.school-table:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.school-table p,
+.school-table a {
+    font-size: 1.2em;
+}
+
+.school-table p {
+    padding: 15px;
+    margin-bottom: 0;
+}
+
+.school-table a {
+    color: white;
+}
+
+.school-table a:hover {
+    font-weight: bold;
+}
+
+.school-table .btn-success {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    padding: 5px 15px 5px 15px;
+}
+
 /* School-form */
 
 #school_name,
@@ -30,7 +81,7 @@ h3 {
     text-align: center;
 }
 
-.btn-success {
+.add-school-page .btn-success {
     font-size: 0.9em;
     margin-top: 15px
 }
