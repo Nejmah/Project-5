@@ -55,11 +55,7 @@ h3 {
 }
 
 .school-table a {
-    color: white;
-}
-
-.school-table a:hover {
-    font-weight: bold;
+    color: rgb(50, 52, 57);
 }
 
 .school-table .btn-success {
@@ -67,6 +63,15 @@ h3 {
     right: 20px;
     top: 15px;
     padding: 5px 15px 5px 15px;
+    background-color: rgb(255, 253, 148);
+    border: rgb(255, 253, 148);
+    /* Animation */
+    transition: transform .2s;
+}
+
+.school-table .btn-success:hover {
+    background-color: rgb(253, 253, 79);
+    transform: scale(1.1);
 }
 
 /* School-form */
