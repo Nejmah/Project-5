@@ -34,6 +34,12 @@ class User implements UserInterface
      */
     private $password;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Classroom::class, inversedBy="users")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $classroom;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -105,5 +111,17 @@ class User implements UserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public function getClassroom(): ?Classroom
+    {
+        return $this->classroom;
+    }
+
+    public function setClassroom(?Classroom $classroom): self
+    {
+        $this->classroom = $classroom;
+
+        return $this;
     }
 }
