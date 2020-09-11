@@ -8,7 +8,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManagerInterface;
 
 use App\Entity\School;
+use App\Entity\User;
 use App\Form\SchoolType;
+use App\Form\UserType;
 
 class AdminController extends AbstractController
 {
@@ -27,7 +29,7 @@ class AdminController extends AbstractController
     }
 
     /**
-     * @Route("/new/school", name="add_schools")
+     * @Route("/admin/new/school", name="add_school")
      */
     public function createSchool(Request $request, EntityManagerInterface $manager)
     {
@@ -42,7 +44,7 @@ class AdminController extends AbstractController
             $manager->flush();
 
             // Redirection vers l'espace administration
-            return $this->redirectToRoute('admin');
+            return $this->redirectToRoute('app_admin');
         }
 
         return $this->render('admin/schools.html.twig', [
@@ -51,15 +53,48 @@ class AdminController extends AbstractController
     }
 
     /**
-     * @Route("/new/user", name="add_users")
+     * @Route("/admin/delete/school/{id}", name="delete_school")
      */
-    public function createUser()
+    public function deleteSchool($id, EntityManagerInterface $manager)
     {
-        return $this->render('admin/users.html.twig');
+        $repo = $this->getDoctrine()->getRepository(School::class);
+
+        $school = $repo->find($id);
+
+        $manager->remove($school);
+        $manager->flush();
+
+        return $this->redirectToRoute('app_admin');
     }
 
     /**
-     * @Route("/new/classroom", name="add_classrooms")
+     * @Route("/admin/new/user", name="add_user")
+     */
+    public function createUser(Request $request, EntityManagerInterface $manager)
+    {
+        $user = new User();
+
+        $user->setRoles(['ROLE_TEACHER']);
+
+        $form = $this->createForm(UserType::class, $user);
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()) {
+            $manager->persist($user);
+            $manager->flush();
+
+            // Redirection vers l'espace administration
+            return $this->redirectToRoute('app_admin');
+        }
+
+        return $this->render('admin/users.html.twig', [
+            'formUser' => $form->createView()
+        ]);
+    }
+
+    /**
+     * @Route("/admin/new/classroom", name="add_classroom")
      */
     public function createClassroom()
     {

@@ -3,18 +3,29 @@
 {% block title %}Admin{% endblock %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="/css/admin.css">
 {% endblock %}
 
 {% block body %}
 
-    <h1>Espace Administration</h1>
+<div class="add-user-page">
+    <h1>Ajouter un professeur</h1>
 
-    <h2>To do : Ajouter un utilisateur</h2>
-    <p>Créer un formulaire avec les champs :</p>
-    <ul>
-        <li>nom</li>
-        <li>rôle (liste déroulante)</li>
-    </ul>
-    
+    {{ form_start(formUser) }}
+
+        <h3 class="h3 mb-3 font-weight-normal text-center">Veuillez remplir les champs :</h3>
+
+        {{ form_row(formUser.username, {'label': 'Prénom et nom :', 
+        'attr': {'placeholder': 'Ex : Albert Einstein'}}) }}
+
+        {{ form_row(formUser.password, {'label': 'Mot de passe :', 
+        'attr': {'placeholder': 'Entrez un mot de passe'}}) }}
+
+        <div class="submit-button">
+            <button type="submit" class="btn btn-success">Enregistrer</button>
+        </div>
+
+    {{ form_end(formUser) }}
+</div>
+
 {% endblock %}
