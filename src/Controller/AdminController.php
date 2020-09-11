@@ -2,15 +2,16 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
+use App\Entity\School;
+use App\Form\UserType;
+use App\Form\SchoolType;
+
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
-use Doctrine\ORM\EntityManagerInterface;
-
-use App\Entity\School;
-use App\Entity\User;
-use App\Form\SchoolType;
-use App\Form\UserType;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class AdminController extends AbstractController
 {
@@ -21,7 +22,7 @@ class AdminController extends AbstractController
     {
         $repo = $this->getDoctrine()->getRepository(School::class);
 
-        $schools = $repo->findAll();
+        $schools = $repo->findBy([], ['id' => 'DESC']);
 
         return $this->render('admin/dashboard.html.twig', [
             'schools' => $schools
@@ -70,7 +71,7 @@ class AdminController extends AbstractController
     /**
      * @Route("/admin/new/user", name="add_user")
      */
-    public function createUser(Request $request, EntityManagerInterface $manager)
+    public function createUser(Request $request, EntityManagerInterface $manager, UserPasswordEncoderInterface $passwordEncoder)
     {
         $user = new User();
 
@@ -81,6 +82,9 @@ class AdminController extends AbstractController
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()) {
+            $password = $form->get('password')->getData();
+            $user->setPassword($passwordEncoder->encodePassword($user, $password));
+
             $manager->persist($user);
             $manager->flush();
 

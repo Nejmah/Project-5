@@ -31,7 +31,7 @@ class UserFixtures extends Fixture
             elseif ($i == 2) {
                 $user->setRoles(array("ROLE_TEACHER"));
             }
-            
+             
             $user->setPassword($this->passwordEncoder->encodePassword(
                 $user,
                 'the_new_password'
