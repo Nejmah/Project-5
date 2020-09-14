@@ -34,6 +34,12 @@ class User implements UserInterface
      */
     private $password;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Classroom::class, inversedBy="users")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $classroom;
+
     public function getId(): ?int
     {
         return $this->id;
