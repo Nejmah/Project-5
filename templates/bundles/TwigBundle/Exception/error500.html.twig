@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Erreur 500{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="/css/error/500.css">
+{% endblock %}
+
+{% block body %}
+<div class="error-500">
+
+    <div class="button-500">
+        <button class="btn btn-warning">
+            <a href="{{ path('app_home') }}">Revenir sur le site</a>
+        </button>
+    </div>
+    <p class="error-500-message">Erreur interne du serveur</p>
+
+</div>
+{% endblock %}

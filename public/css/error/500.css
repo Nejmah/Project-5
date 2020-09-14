@@ -1,0 +1,38 @@
+body {
+    background-image: url('/img/computer.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.error-500-message {
+    color: rgb(151, 219, 239);
+    font-size: 2.5em;
+    font-weight: bold;
+}
+
+.error-500 {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.button-500 {
+    text-align: center;
+}
+
+.btn-warning {
+    border-radius: 30px;
+    padding: 5px 25px 5px 25px;
+}
+
+a,
+a:hover {
+    color: white;
+    font-size: 1.5em;
+}
+
+a:hover {
+    text-decoration: none;
+}
