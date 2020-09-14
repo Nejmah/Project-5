@@ -105,14 +105,14 @@ class Classroom
         return $this;
     }
 
-    public function getSchools(): ?School
+    public function getSchool(): ?School
     {
-        return $this->schools;
+        return $this->school;
     }
 
-    public function setSchools(?School $schools): self
+    public function setSchool(?School $school): self
     {
-        $this->schools = $schools;
+        $this->school = $school;
 
         return $this;
     }
