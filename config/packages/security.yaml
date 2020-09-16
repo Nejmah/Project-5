@@ -45,6 +45,6 @@ security:
         # require ROLE_TEACHER for /teacher*
         - { path: ^/teacher, roles: [ROLE_ADMIN, ROLE_TEACHER] }
         - { path: ^/login, roles:  }
-        - { path: ^/_error, roles:  }
+        # - { path: ^/_error, roles:  }
         # require ROLE_USER for all pages
-        - { path: ^/, roles: ROLE_USER }
+        # - { path: ^/, roles: ROLE_USER }

@@ -8,24 +8,24 @@
 
 {% block body %}
 
-<div class="add-user-page">
-    <h1>Ajouter un professeur</h1>
+    <div class="add-user-page">
+        <h1>Ajouter un professeur</h1>
 
-    {{ form_start(formUser) }}
+        {{ form_start(formUser) }}
 
-        <h3 class="h3 mb-3 font-weight-normal text-center">Veuillez remplir les champs :</h3>
+            <h3 class="h3 mb-3 font-weight-normal text-center">Veuillez remplir les champs :</h3>
 
-        {{ form_row(formUser.username, {'label': 'Prénom et nom :', 
-        'attr': {'placeholder': 'Ex : Albert Einstein'}}) }}
+            {{ form_row(formUser.username, {'label': 'Prénom et nom :', 
+            'attr': {'placeholder': 'Ex : Albert Einstein'}}) }}
 
-        {{ form_row(formUser.password, {'label': 'Mot de passe :', 
-        'attr': {'placeholder': 'Entrez un mot de passe'}}) }}
+            {{ form_row(formUser.password, {'label': 'Mot de passe :', 
+            'attr': {'placeholder': 'Entrez un mot de passe'}}) }}
 
-        <div class="submit-button">
-            <button type="submit" class="btn btn-success">Enregistrer</button>
-        </div>
+            <div class="submit-button">
+                <button type="submit" class="btn btn-success">Enregistrer</button>
+            </div>
 
-    {{ form_end(formUser) }}
-</div>
+        {{ form_end(formUser) }}
+    </div>
 
 {% endblock %}

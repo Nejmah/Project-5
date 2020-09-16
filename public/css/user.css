@@ -41,6 +41,12 @@
     font-size: 1.5em;
 }
 
+.home-page .image {
+    position: absolute;
+    right: 80px;
+    bottom: 40px;
+}
+
 /* About-page */
 
 .about-page h1 {

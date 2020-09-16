@@ -2,16 +2,18 @@
 
 namespace App\Controller;
 
-use App\Entity\User;
-use App\Entity\School;
-use App\Form\UserType;
-use App\Form\SchoolType;
-
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+
+use App\Entity\User;
+use App\Entity\School;
+use App\Entity\Classroom;
+use App\Form\UserType;
+use App\Form\SchoolType;
+use App\Form\ClassroomType;
 
 class AdminController extends AbstractController
 {
@@ -21,7 +23,6 @@ class AdminController extends AbstractController
     public function dashboard()
     {
         $repo = $this->getDoctrine()->getRepository(School::class);
-
         $schools = $repo->findBy([], ['id' => 'DESC']);
 
         return $this->render('admin/dashboard.html.twig', [
@@ -37,12 +38,16 @@ class AdminController extends AbstractController
         $school = new School();
 
         $form = $this->createForm(SchoolType::class, $school);
-
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()) {
             $manager->persist($school);
             $manager->flush();
+
+            $this->addFlash(
+                'school',
+                'L\'école ' . $school->getName() . ' a été ajoutée avec succès !'
+            );
 
             // Redirection vers l'espace administration
             return $this->redirectToRoute('app_admin');
@@ -59,7 +64,6 @@ class AdminController extends AbstractController
     public function deleteSchool($id, EntityManagerInterface $manager)
     {
         $repo = $this->getDoctrine()->getRepository(School::class);
-
         $school = $repo->find($id);
 
         $manager->remove($school);
@@ -69,16 +73,15 @@ class AdminController extends AbstractController
     }
 
     /**
-     * @Route("/admin/new/user", name="add_user")
+     * @Route("/admin/new/user/{school_id}", name="add_user")
      */
-    public function createUser(Request $request, EntityManagerInterface $manager, UserPasswordEncoderInterface $passwordEncoder)
+    public function createUser($school_id, Request $request, EntityManagerInterface $manager, UserPasswordEncoderInterface $passwordEncoder)
     {
         $user = new User();
 
         $user->setRoles(['ROLE_TEACHER']);
 
         $form = $this->createForm(UserType::class, $user);
-
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()) {
@@ -93,15 +96,41 @@ class AdminController extends AbstractController
         }
 
         return $this->render('admin/users.html.twig', [
-            'formUser' => $form->createView()
+            'formUser' => $form->createView(),
         ]);
     }
 
     /**
-     * @Route("/admin/new/classroom", name="add_classroom")
+     * @Route("/admin/new/classroom/{school_id}", name="add_classroom")
      */
-    public function createClassroom()
+    public function createClassroom($school_id, Request $request, EntityManagerInterface $manager)
     {
-        return $this->render('admin/classrooms.html.twig');
+        $classroom = new Classroom();
+
+        $form = $this->createForm(ClassroomType::class, $classroom);
+        $form->handleRequest($request);
+
+        $repo = $this->getDoctrine()->getRepository(School::class);
+        $school = $repo->find($school_id);
+
+        if($form->isSubmitted() && $form->isValid()) {
+            $classroom->setSchool($school);
+            $manager->persist($classroom);
+            $manager->flush();
+
+            $this->addFlash(
+                'classroom',
+                'La classe ' . $classroom->getName() . 
+                ' a été ajoutée dans l\'école ' . $school->getname() . '.'
+            );
+
+            // Redirection vers l'espace administration
+            return $this->redirectToRoute('app_admin');
+        }
+
+        return $this->render('admin/classrooms.html.twig', [
+            'formClassroom' => $form->createView(),
+            'school' => $school
+        ]);
     }
 }

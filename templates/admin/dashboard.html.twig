@@ -11,27 +11,48 @@
     <div class="admin-dashboard">
         <h1>Espace Administration</h1>
 
-        <div class="buttons">
+        <div class="school-button">
             <button class="btn btn-lg btn-success">
                 <a href="{{ path('add_school') }}">Ajouter une école</a>
             </button>
-            <button class="btn btn-lg btn-success">
-                <a href="{{ path('add_user') }}">Ajouter un professeur</a>
-            </button>
         </div>
+
+        {# read and display several types of flash messages #}
+        {% for label, messages in app.flashes(['school', 'classroom']) %}
+            {% for message in messages %}
+                <div class="flash-message flash-{{ label }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
 
         {% for school in schools %}
             <div class="school-table">
-                <p>École {{ school.name }}</p>
+                <div class="school-name">
+                    <p><a data-toggle="collapse" href="#school{{school.id}}" role="button" aria-expanded="false" aria-controls="collapseExample">
+                    École {{ school.name }}
+                </a></p>
+                </div>
                 <div class="school-buttons">
-                    <button class="btn btn-lg btn-success">
-                        <a href="">Ajouter une classe</a>
+                    <button class="btn btn-lg btn-secondary disabled add-classroom-button">
+                        <a href="{{ path('add_classroom', {'school_id': school.id}) }}">Ajouter une classe</a>
                     </button>
-                    <button class="btn btn-lg btn-secondary">
+                    <button class="btn btn-lg btn-success add-user-button">
+                        <a href="{{ path('add_user', {'school_id': school.id}) }}">Ajouter un prof</a>
+                    </button>
+                    <button class="btn btn-lg btn-secondary delete-school-button">
                         <a href="{{ path('delete_school', {'id': school.id}) }}">Supprimer l'école</a>
                     </button>
                 </div>
-
+            </div>
+            <div class="collapse" id="school{{school.id}}">
+                <div class="card card-body">
+                    {% for classroom in school.classrooms %}
+                        <ul>
+                            <li>Classe de {{ classroom.name }} de "Nom du prof"</li>
+                        </ul>
+                    {% endfor %}
+                </div>
             </div>
         {% endfor %}
     </div>
