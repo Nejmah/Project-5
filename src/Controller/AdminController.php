@@ -46,7 +46,7 @@ class AdminController extends AbstractController
             $manager->flush();
 
             $this->addFlash(
-                'school',
+                'add-school',
                 'L\'école ' . $school->getName() . ' a été ajoutée avec succès !'
             );
 
@@ -69,6 +69,11 @@ class AdminController extends AbstractController
 
         $manager->remove($school);
         $manager->flush();
+
+        $this->addFlash(
+            'delete-school',
+            'L\'école ' . $school->getName() . ' a été supprimée.'
+        );
 
         return $this->redirectToRoute('app_admin');
     }
@@ -95,7 +100,7 @@ class AdminController extends AbstractController
             $manager->flush();
 
             $this->addFlash(
-                'teacher',
+                'add-teacher',
                 $user->getUsername() . ' a bien été ajouté(e) dans l\'école ' . $school->getname() . '.'
             );
 
@@ -128,7 +133,7 @@ class AdminController extends AbstractController
             $manager->flush();
 
             $this->addFlash(
-                'classroom',
+                'add-classroom',
                 'La classe ' . $classroom->getName() . 
                 ' a été ajoutée dans l\'école ' . $school->getname() . '.'
             );

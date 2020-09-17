@@ -18,28 +18,46 @@
             </a>
         </div>
 
-        <p>Liste des élèves :</p>
-
-        <table>
-            <tr>
-                <th>N°</th>
-                <th>Élève</th>
-                <th>Action</th>
-            </tr>
-            {% for user in users %}
-            <tr>
-                <td>
-                    {{ user.id }}
-                </td>
-                <td>
-                    {{ user.username }}
-                </td>
-                <td>
-                    <a class="btn btn-success delete-user-button" href="">Supprimer</a>
-                </td>
-            </tr>
+        {# flashbags #}
+        {% for label, messages in app.flashes(['delete-user']) %}
+            {% for message in messages %}
+                <div class="flash-message flash-{{ label }}">
+                    {{ message }}
+                </div>
             {% endfor %}
-        </table>
+        {% endfor %}
+
+        {# <img src="/img/table.png" alt="table"></img> #}
+
+        <div class="row justify-content-center">
+            <table class="table table-hover col-md-10 col-lg-8">
+            <thead>
+                <tr class="table-secondary">
+                    <th class="text-center">N°</th>
+                    <th>Élève</th>
+                    <th class="text-center">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for user in users %}
+                <tr class="table-secondary">
+                    <td class="text-center">
+                        {{ loop.index }}
+                    </td>
+                    <td>
+                        {{ user.username }}
+                    </td>
+                    <td class="text-center">
+                        <a class="btn btn-success delete-user-button"
+                            href="{{ path('delete_user', {'id': user.id}) }}">
+                            Supprimer
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
 
 {% endblock %}

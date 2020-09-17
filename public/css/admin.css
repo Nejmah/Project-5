@@ -210,13 +210,14 @@ li {
 
 .teacher-page h1 {
     font-size: 3em;
-    color: #18bc9c;
+    /* color: #18bc9c; */
+    color: rgb(255, 253, 148);
     margin: 45px 0 20px 0;
 }
 
 .teacher-page h2 {
     color: white;
-    margin: 0 0 20px 0;
+    margin: 0 0 30px 0;
 }
 
 .teacher-page table {
@@ -224,9 +225,14 @@ li {
     /* Les bordures du tableau seront collées (plus joli) */
 }
 
+/* .teacher-page .table-secondary,
+.teacher-page .table-secondary>th,
+.teacher-page .table-secondary>td {
+    background-color: darkslategrey !important;
+} */
+
 .teacher-page td,
 .teacher-page th {
-    border: 1px solid white;
     padding: 10px;
 }
 
@@ -248,4 +254,11 @@ li {
 
 .teacher-page .add-user-button a {
     font-size: 1.2em;
+}
+
+.teacher-page img {
+    position: absolute;
+    right: 40px;
+    bottom: 40px;
+    width: 20%;
 }

@@ -19,7 +19,7 @@
         </div>
 
         {# flashbags #}
-        {% for label, messages in app.flashes(['school', 'classroom', 'teacher']) %}
+        {% for label, messages in app.flashes(['add-school', 'add-classroom', 'add-teacher', 'delete-school']) %}
             {% for message in messages %}
                 <div class="flash-message flash-{{ label }}">
                     {{ message }}

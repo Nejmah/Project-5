@@ -105,6 +105,21 @@ class Classroom
         return $this;
     }
 
+    // public function getStudents(): Collection
+    // {
+    //     return $this->users;
+    // }
+
+    // public function getTeacher(): User
+    // {
+    //     foreach ($this->users as $user) {
+    //         if ($user->isTeacher()) {
+    //             return $user;
+    //         }
+    //     }
+    //     return false;
+    // }
+
     public function getSchool(): ?School
     {
         return $this->school;

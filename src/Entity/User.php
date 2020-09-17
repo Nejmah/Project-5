@@ -124,4 +124,11 @@ class User implements UserInterface
 
         return $this;
     }
+
+    // public function isTeacher() {
+    //     if (in_array("ROLE_TEACHER", $this->roles)) {
+    //         return true;
+    //     }
+    //     return false;
+    // }
 }
