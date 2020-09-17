@@ -8,17 +8,38 @@
 
 {% block body %}
 
-    <h2>Bienvenue dans votre classe de </h2>
+    <div class="teacher-page">
+        <h1>Bienvenue dans votre classe de {{ classroom.name }}</h1>
+        <h2>Professeur : </h2>
+        <div class="add-user-button">
+            <a class="btn btn-success" 
+                href="{{ path('add_user') }}">
+                Ajouter un élève
+            </a>
+        </div>
 
-    <p>Voici la liste de vos élèves :</p>
+        <p>Liste des élèves :</p>
 
-    {% for user in users %}
-        <p>{{ user.username }}</p>
-    {% endfor %}
-    <ul>
-        <li>
-            <a href="{{ path('add_student') }}">Ajouter des élèves</a>
-        </li>
-    </ul>
+        <table>
+            <tr>
+                <th>N°</th>
+                <th>Élève</th>
+                <th>Action</th>
+            </tr>
+            {% for user in users %}
+            <tr>
+                <td>
+                    {{ user.id }}
+                </td>
+                <td>
+                    {{ user.username }}
+                </td>
+                <td>
+                    <a class="btn btn-success delete-user-button" href="">Supprimer</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
 
 {% endblock %}

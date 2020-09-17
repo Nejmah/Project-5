@@ -14,20 +14,22 @@ class TeacherController extends AbstractController
     public function dashboard()
     {
         $repo = $this->getDoctrine()->getRepository(User::class);
-        $user = $repo->findOneByUsername('Claudine Carlier');
-        $users = $user->getClassroom()->getUsers();
+
+        $classroom = $this->getUser()->getClassroom();
+
+        $users = $this->getUser()->getClassroom()->getUsers();
         foreach($users as $user) {
-            dump($user->getUsername());
+            $user->getUsername();
         }
-        die;
 
         return $this->render('teacher/dashboard.html.twig', [
+            'classroom' => $classroom,
             'users' => $users
         ]);
     }
 
     /**
-     * @Route("/new/student", name="add_student")
+     * @Route("/new/user", name="add_user")
      */
     public function createUser()
     {
