@@ -2,8 +2,9 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Entity\User;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class TeacherController extends AbstractController
 {
@@ -12,15 +13,25 @@ class TeacherController extends AbstractController
      */
     public function dashboard()
     {
-        return $this->render('teacher/dashboard.html.twig');
+        $repo = $this->getDoctrine()->getRepository(User::class);
+        $user = $repo->findOneByUsername('Claudine Carlier');
+        $users = $user->getClassroom()->getUsers();
+        foreach($users as $user) {
+            dump($user->getUsername());
+        }
+        die;
+
+        return $this->render('teacher/dashboard.html.twig', [
+            'users' => $users
+        ]);
     }
 
     /**
-     * @Route("/new/student", name="add_students")
+     * @Route("/new/student", name="add_student")
      */
-    public function createStudent()
+    public function createUser()
     {
-        return $this->render('teacher/students.html.twig');
+        return $this->render('teacher/addUser.html.twig');
     }
 
 }

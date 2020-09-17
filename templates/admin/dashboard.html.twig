@@ -11,13 +11,14 @@
     <div class="admin-dashboard">
         <h1>Espace Administration</h1>
 
-        <div class="school-button">
-            <button class="btn btn-lg btn-success">
-                <a href="{{ path('add_school') }}">Ajouter une école</a>
-            </button>
+        <div class="add-school-button">
+            <a class="btn btn-success" 
+                href="{{ path('add_school') }}">
+                Ajouter une école
+            </a>
         </div>
 
-        {# read and display several types of flash messages #}
+        {# flashbags #}
         {% for label, messages in app.flashes(['school', 'classroom', 'teacher']) %}
             {% for message in messages %}
                 <div class="flash-message flash-{{ label }}">
@@ -34,14 +35,19 @@
                 </a></p>
                 </div>
                 <div class="school-buttons">
-                    <button class="btn btn-lg btn-secondary disabled add-classroom-button">
-                        <a href="{{ path('add_classroom', {'school_id': school.id}) }}">Ajouter une classe</a>
-                    </button>
-                    <button class="btn btn-lg btn-success add-user-button">
-                        <a href="{{ path('add_teacher', {'schoolId': school.id}) }}">Ajouter un prof</a>
-                    </button>
-                    <button class="btn btn-lg btn-secondary delete-school-button">
-                        <a href="{{ path('delete_school', {'id': school.id}) }}">Supprimer l'école</a>
+                    <a class="btn btn-secondary add-classroom-button" 
+                        href="{{ path('add_classroom', {'school_id': school.id}) }}">
+                        Ajouter une classe
+                    </a>
+                    <a class="btn btn-lg btn-success add-user-button" 
+                        href="{{ path('add_teacher', {'schoolId': school.id}) }}">
+                        Ajouter un prof
+                    </a>
+                    <button type="button" class="btn btn-secondary delete-school-button" 
+                        data-toggle="modal" data-target="#schoolDeleteModal" 
+                        data-delete-url="{{ path('delete_school', {'id': school.id}) }}"
+                        data-delete-name="{{ school.name }}">
+                        Supprimer l'école
                     </button>
                 </div>
             </div>
@@ -54,7 +60,32 @@
                     {% endfor %}
                 </div>
             </div>
+
+
         {% endfor %}
     </div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="schoolDeleteModal" tabindex="-1" role="dialog" aria-labelledby="schoolDeleteModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Attention</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Souhaitez-vous supprimer l'école <span id="school-name"></span> ?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                {# <button type="button" class="btn btn-success">Confirmer</button> #}
+                <a class="btn btn-success" id="delete-confirm" href="">Confirmer</a>
+            </div>
+        </div>
+    </div>
+</div>
 
 {% endblock %}

@@ -8,11 +8,16 @@
 
 {% block body %}
 
-    <h1>Salle des profs</h1>
+    <h2>Bienvenue dans votre classe de </h2>
 
+    <p>Voici la liste de vos élèves :</p>
+
+    {% for user in users %}
+        <p>{{ user.username }}</p>
+    {% endfor %}
     <ul>
         <li>
-            <a href="{{ path('add_students') }}">Ajouter des élèves</a>
+            <a href="{{ path('add_student') }}">Ajouter des élèves</a>
         </li>
     </ul>
 
