@@ -190,6 +190,7 @@ li {
 #teacher_username,
 #teacher_classroom,
 #teacher_password,
+#user_username,
 #classroom_name,
 #classroom_year {
     font-size: 0.9em;
@@ -201,7 +202,8 @@ li {
 
 .add-school-page .btn-success,
 .add-teacher-page .btn-success,
-.add-classroom-page .btn-success {
+.add-classroom-page .btn-success,
+.add-user-page .btn-success {
     font-size: 0.9em;
     margin-top: 15px
 }

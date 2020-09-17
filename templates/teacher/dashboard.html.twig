@@ -13,13 +13,13 @@
         <h2>Professeur : </h2>
         <div class="add-user-button">
             <a class="btn btn-success" 
-                href="{{ path('add_user') }}">
+                href="{{ path('add_user', {'classroomId': classroom.id}) }}">
                 Ajouter un élève
             </a>
         </div>
 
         {# flashbags #}
-        {% for label, messages in app.flashes(['delete-user']) %}
+        {% for label, messages in app.flashes(['add-user', 'delete-user']) %}
             {% for message in messages %}
                 <div class="flash-message flash-{{ label }}">
                     {{ message }}
