@@ -39,7 +39,7 @@
                         href="{{ path('add_classroom', {'school_id': school.id}) }}">
                         Ajouter une classe
                     </a>
-                    <a class="btn btn-lg btn-success add-user-button" 
+                    <a class="btn btn-success add-user-button" 
                         href="{{ path('add_teacher', {'schoolId': school.id}) }}">
                         Ajouter un prof
                     </a>
@@ -53,6 +53,10 @@
             </div>
             <div class="collapse" id="school{{school.id}}">
                 <div class="card card-body">
+                    {% if school.classrooms is empty %}
+                            <p>Il n'y a pas de classes dans cette école.</p>
+                    {% endif %}
+
                     {% for classroom in school.classrooms %}
                         <ul>
                             <li>Classe de {{ classroom.name }} de "Nom du prof"</li>
@@ -60,8 +64,6 @@
                     {% endfor %}
                 </div>
             </div>
-
-
         {% endfor %}
     </div>
 

@@ -1,3 +1,17 @@
+h1 {
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+    color: #18bc9c;
+    margin: 45px 0 0 20px;
+}
+
+h3 {
+    margin-top: 30px;
+}
+
 a:hover {
     text-decoration: none;
 }
@@ -10,12 +24,14 @@ li {
     list-style-type: none;
 }
 
-h1 {
-    text-align: center;
+.title {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
 }
 
-h3 {
-    margin-top: 30px;
+.title img {
+    width: 8%;
 }
 
 /* Dashboard */
@@ -64,20 +80,13 @@ h3 {
     margin-bottom: 20px;
 }
 
-.card ul {
+.card ul,
+.card p {
     margin-bottom: 0;
 }
 
 .card li {
     list-style-type: initial;
-}
-
-.school-table .btn-success a {
-    color: rgb(50, 52, 57);
-}
-
-.school-table .btn-secondary a {
-    color: white;
 }
 
 .school-buttons {
@@ -107,7 +116,7 @@ h3 {
 }
 
 .school-buttons .add-user-button {
-    color: black;
+    color: rgb(50, 52, 57);
     background-color: rgb(255, 253, 148);
     border: rgb(255, 253, 148);
     /* Animation */
@@ -148,6 +157,31 @@ h3 {
     margin-bottom: 40px;
 }
 
+/* Modal */
+
+.modal {
+    color: black;
+}
+
+.delete-school-button {
+    font-size: 23px;
+}
+
+.modal-title {
+    color: rgb(87, 185, 158);
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.modal-footer .btn-secondary,
+.modal-footer .btn-success {
+    font-size: 0.9em;
+}
+
+.modal-footer .btn-secondary {
+    margin-right: 10px;
+}
+
 /* Forms */
 
 #school_name,
@@ -170,45 +204,4 @@ h3 {
 .add-classroom-page .btn-success {
     font-size: 0.9em;
     margin-top: 15px
-}
-
-/* Admin-pages */
-
-h2 {
-    text-align: center;
-    color: #18bc9c;
-    margin: 45px 0 0 20px;
-}
-
-.title {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 30px;
-}
-
-.title img {
-    width: 8%;
-}
-
-.modal {
-    color: black;
-}
-
-.delete-school-button {
-    font-size: 21px;
-}
-
-.modal-title {
-    color: rgb(87, 185, 158);
-    font-size: 30px;
-    font-weight: bold;
-}
-
-.modal-footer .btn-secondary,
-.modal-footer .btn-success {
-    font-size: 0.9em;
-}
-
-.modal-footer .btn-secondary {
-    margin-right: 10px;
 }
