@@ -2,18 +2,19 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
+use App\Entity\School;
+use App\Form\UserType;
+use App\Form\SchoolType;
+use App\Entity\Classroom;
+
+use App\Form\TeacherType;
+use App\Form\ClassroomType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-
-use App\Entity\User;
-use App\Entity\School;
-use App\Entity\Classroom;
-use App\Form\UserType;
-use App\Form\SchoolType;
-use App\Form\ClassroomType;
 
 class AdminController extends AbstractController
 {
@@ -53,7 +54,7 @@ class AdminController extends AbstractController
             return $this->redirectToRoute('app_admin');
         }
 
-        return $this->render('admin/schools.html.twig', [
+        return $this->render('admin/addSchool.html.twig', [
             'formSchool' => $form->createView()
         ]);
     }
@@ -73,16 +74,18 @@ class AdminController extends AbstractController
     }
 
     /**
-     * @Route("/admin/new/user/{school_id}", name="add_user")
+     * @Route("/admin/new/teacher/{schoolId}", name="add_teacher")
      */
-    public function createUser($school_id, Request $request, EntityManagerInterface $manager, UserPasswordEncoderInterface $passwordEncoder)
+    public function createTeacher($schoolId, Request $request, EntityManagerInterface $manager, UserPasswordEncoderInterface $passwordEncoder)
     {
         $user = new User();
-
         $user->setRoles(['ROLE_TEACHER']);
 
-        $form = $this->createForm(UserType::class, $user);
+        $form = $this->createForm(TeacherType::class, $user, ['schoolId' => $schoolId]);
         $form->handleRequest($request);
+
+        $repo = $this->getDoctrine()->getRepository(School::class);
+        $school = $repo->find($schoolId);
 
         if($form->isSubmitted() && $form->isValid()) {
             $password = $form->get('password')->getData();
@@ -91,12 +94,18 @@ class AdminController extends AbstractController
             $manager->persist($user);
             $manager->flush();
 
+            $this->addFlash(
+                'teacher',
+                $user->getUsername() . ' a bien été ajouté(e) dans l\'école ' . $school->getname() . '.'
+            );
+
             // Redirection vers l'espace administration
             return $this->redirectToRoute('app_admin');
         }
 
-        return $this->render('admin/users.html.twig', [
-            'formUser' => $form->createView(),
+        return $this->render('admin/addTeacher.html.twig', [
+            'formTeacher' => $form->createView(),
+            'school' => $school
         ]);
     }
 
@@ -128,7 +137,7 @@ class AdminController extends AbstractController
             return $this->redirectToRoute('app_admin');
         }
 
-        return $this->render('admin/classrooms.html.twig', [
+        return $this->render('admin/addClassroom.html.twig', [
             'formClassroom' => $form->createView(),
             'school' => $school
         ]);

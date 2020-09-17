@@ -11,7 +11,10 @@
     <div class="add-classroom-page">
         <h1>Ajouter une classe</h1>
 
-        <h2>École {{ school.name }}</h2>
+        <div class="title">
+            <img src="/img/school.png" alt="school"></img>
+            <h2>École {{ school.name }}</h2>
+        </div>
 
         {{ form_start(formClassroom) }}
 
@@ -19,9 +22,6 @@
 
             {{ form_row(formClassroom.year, {'label': 'Année scolaire :', 
             'attr': {'placeholder': 'Entrez l\'année en cours au mois de septembre'}}) }}
-
-            {# {{ form_row(formClassroom.teacher, {'label': 'Professeur :', 
-            'attr': {'placeholder': 'Ex : '}}) }} #}
 
             <div class="submit-button">
                 <button type="submit" class="btn btn-success">Enregistrer</button>

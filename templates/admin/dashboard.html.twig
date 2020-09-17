@@ -18,7 +18,7 @@
         </div>
 
         {# read and display several types of flash messages #}
-        {% for label, messages in app.flashes(['school', 'classroom']) %}
+        {% for label, messages in app.flashes(['school', 'classroom', 'teacher']) %}
             {% for message in messages %}
                 <div class="flash-message flash-{{ label }}">
                     {{ message }}
@@ -38,7 +38,7 @@
                         <a href="{{ path('add_classroom', {'school_id': school.id}) }}">Ajouter une classe</a>
                     </button>
                     <button class="btn btn-lg btn-success add-user-button">
-                        <a href="{{ path('add_user', {'school_id': school.id}) }}">Ajouter un prof</a>
+                        <a href="{{ path('add_teacher', {'schoolId': school.id}) }}">Ajouter un prof</a>
                     </button>
                     <button class="btn btn-lg btn-secondary delete-school-button">
                         <a href="{{ path('delete_school', {'id': school.id}) }}">Supprimer l'école</a>

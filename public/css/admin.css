@@ -138,8 +138,9 @@ h3 {
 #school_name,
 #school_address,
 #school_email,
-#user_username,
-#user_password,
+#teacher_username,
+#teacher_classroom,
+#teacher_password,
 #classroom_name,
 #classroom_year {
     font-size: 0.9em;
@@ -150,13 +151,26 @@ h3 {
 }
 
 .add-school-page .btn-success,
-.add-user-page .btn-success,
+.add-teacher-page .btn-success,
 .add-classroom-page .btn-success {
     font-size: 0.9em;
     margin-top: 15px
 }
 
+/* Admin-pages */
+
 h2 {
     text-align: center;
     color: #18bc9c;
+    margin: 45px 0 0 20px;
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.title img {
+    width: 8%;
 }
