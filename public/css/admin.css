@@ -36,6 +36,12 @@ li {
 
 /* Dashboard */
 
+.logout-button {
+    position: absolute;
+    right: 30px;
+    top: 50px;
+}
+
 .admin-dashboard h1 {
     margin-bottom: 40px;
 }
@@ -212,7 +218,6 @@ li {
 
 .teacher-page h1 {
     font-size: 3em;
-    /* color: #18bc9c; */
     color: rgb(255, 253, 148);
     margin: 45px 0 20px 0;
 }

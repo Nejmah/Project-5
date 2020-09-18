@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ma classe{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="/css/admin.css">
+{% endblock %}
+
+{% block navigation %}
+    <a class="logout-button" href="{{ path('app_logout') }}">
+        <img src="/img/logout.png" alt="logout"></img>
+    </a>
+{% endblock %}
