@@ -35,10 +35,25 @@
 
 .home-page h1 {
     color: rgb(255, 253, 148);
+    margin-bottom: 40px;
 }
 
-.home-page .presentation {
+.home-page .presentation,
+.about-page .presentation {
     font-size: 1.5em;
+}
+
+.about-page span {
+    font-weight: bold;
+    color: rgb(255, 253, 148);
+}
+
+.about-page h1,
+.about-page .role,
+.about-page .rights,
+.about-page .obligations,
+.about-page .forbidden {
+    margin-bottom: 40px;
 }
 
 .home-page .image,
