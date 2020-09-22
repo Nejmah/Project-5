@@ -35,10 +35,10 @@ class User implements UserInterface
     private $password;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Classroom::class, inversedBy="users")
+     * @ORM\ManyToOne(targetEntity=School::class, inversedBy="users")
      * @ORM\JoinColumn(nullable=true)
      */
-    private $classroom;
+    private $school;
 
     public function getId(): ?int
     {
@@ -118,17 +118,27 @@ class User implements UserInterface
         return $this->classroom;
     }
 
-    public function setClassroom(?Classroom $classroom): self
+    public function setClassroom(Classroom $classroom): self
     {
         $this->classroom = $classroom;
+
+        // set the owning side of the relation if necessary
+        if ($classroom->getTeacher() !== $this) {
+            $classroom->setTeacher($this);
+        }
 
         return $this;
     }
 
-    // public function isTeacher() {
-    //     if (in_array("ROLE_TEACHER", $this->roles)) {
-    //         return true;
-    //     }
-    //     return false;
-    // }
+    public function getSchool(): ?School
+    {
+        return $this->school;
+    }
+
+    public function setSchool(?School $school): self
+    {
+        $this->school = $school;
+
+        return $this;
+    }
 }

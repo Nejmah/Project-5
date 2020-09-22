@@ -29,13 +29,13 @@
                 </a></p>
                 </div>
                 <div class="school-buttons">
+                    <a class="btn btn-success add-teacher-button" 
+                        href="{{ path('add_teacher', {'schoolId': school.id}) }}">
+                        Ajouter un prof
+                    </a>
                     <a class="btn btn-secondary add-classroom-button" 
                         href="{{ path('add_classroom', {'school_id': school.id}) }}">
                         Ajouter une classe
-                    </a>
-                    <a class="btn btn-success add-user-button" 
-                        href="{{ path('add_teacher', {'schoolId': school.id}) }}">
-                        Ajouter un prof
                     </a>
                     <button type="button" class="btn btn-secondary delete-school-button" 
                         data-toggle="modal" data-target="#schoolDeleteModal" 

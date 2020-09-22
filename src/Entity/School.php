@@ -39,9 +39,15 @@ class School
      */
     private $classrooms;
 
+    /**
+     * @ORM\OneToMany(targetEntity=User::class, mappedBy="school", orphanRemoval=true)
+     */
+    private $users;
+
     public function __construct()
     {
         $this->classrooms = new ArrayCollection();
+        $this->users = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -110,6 +116,37 @@ class School
             // set the owning side to null (unless already changed)
             if ($classroom->getSchools() === $this) {
                 $classroom->setSchools(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|User[]
+     */
+    public function getUsers(): Collection
+    {
+        return $this->users;
+    }
+
+    public function addUser(User $user): self
+    {
+        if (!$this->users->contains($user)) {
+            $this->users[] = $user;
+            $user->setSchool($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUser(User $user): self
+    {
+        if ($this->users->contains($user)) {
+            $this->users->removeElement($user);
+            // set the owning side to null (unless already changed)
+            if ($user->getSchool() === $this) {
+                $user->setSchool(null);
             }
         }
 

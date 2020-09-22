@@ -63,21 +63,8 @@ class AppFixtures extends Fixture
 
             $manager->persist($school);
 
-            // Crée 2 classes
-            for($j = 0; $j < 2; $j++) {
-                $classroom = new Classroom();
-
-                if ($j == 0) {
-                    $classroom->setName('CM1');
-                }
-                elseif ($j == 1) {
-                    $classroom->setName('CM2');
-                }
-                $classroom->setYear(2020);
-                $classroom->setSchool($school);
-                        
-                $manager->persist($classroom);
-
+            //Crée entre 2 et 4 profs
+            for($j = 0; $j < mt_rand(2, 4); $j++) {
                 $user = new User();
 
                 $user->setRoles(array("ROLE_TEACHER"));
@@ -86,24 +73,53 @@ class AppFixtures extends Fixture
                     $user,
                     'prof'
                 ));
-                $user->setClassroom($classroom);
+                $user->setSchool($school);
 
                 $manager->persist($user);
-
-                // Crée entre 24 et 28 élèves
-                    for($k = 0; $k < mt_rand(24, 28); $k++) {
-                    $user = new User();
-                    $user->setUsername($faker->name);
-                    $user->setPassword($this->passwordEncoder->encodePassword(
-                        $user,
-                        'élève'
-                    ));
-                    $user->setClassroom($classroom);
-
-                    $manager->persist($user);
-                    }
-                }
             }
+        }
         $manager->flush();
     }
 }
+
+
+            // // Crée 2 classes
+            // for($j = 0; $j < 2; $j++) {
+            //     $classroom = new Classroom();
+
+            //     if ($j == 0) {
+            //         $classroom->setName('CM1');
+            //     }
+            //     elseif ($j == 1) {
+            //         $classroom->setName('CM2');
+            //     }
+            //     $classroom->setYear(2020);
+            //     $classroom->setSchool($school);
+                        
+            //     $manager->persist($classroom);
+
+            //     $user = new User();
+
+            //     $user->setRoles(array("ROLE_TEACHER"));
+            //     $user->setUsername($faker->name);
+            //     $user->setPassword($this->passwordEncoder->encodePassword(
+            //         $user,
+            //         'prof'
+            //     ));
+            //     $user->setClassroom($classroom);
+
+            //     $manager->persist($user);
+
+            //     // Crée 1 prof par classe
+            //         for($k = 0; $k < 1; $k++) {
+            //         $user = new User();
+            //         $user->setUsername($faker->name);
+            //         $user->setPassword($this->passwordEncoder->encodePassword(
+            //             $user,
+            //             'élève'
+            //         ));
+            //         $user->setClassroom($classroom);
+
+            //         $manager->persist($user);    
+            //         }
+            //     }

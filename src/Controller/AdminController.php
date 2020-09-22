@@ -95,6 +95,7 @@ class AdminController extends AbstractController
         if($form->isSubmitted() && $form->isValid()) {
             $password = $form->get('password')->getData();
             $user->setPassword($passwordEncoder->encodePassword($user, $password));
+            $user->setSchool($school);
 
             $manager->persist($user);
             $manager->flush();
@@ -115,17 +116,17 @@ class AdminController extends AbstractController
     }
 
     /**
-     * @Route("/admin/new/classroom/{school_id}", name="add_classroom")
+     * @Route("/admin/new/classroom/{schoolId}", name="add_classroom")
      */
-    public function createClassroom($school_id, Request $request, EntityManagerInterface $manager)
+    public function createClassroom($schoolId, Request $request, EntityManagerInterface $manager)
     {
         $classroom = new Classroom();
 
-        $form = $this->createForm(ClassroomType::class, $classroom);
+        $form = $this->createForm(ClassroomType::class, $classroom, ['schoolId' => $schoolId]);
         $form->handleRequest($request);
 
         $repo = $this->getDoctrine()->getRepository(School::class);
-        $school = $repo->find($school_id);
+        $school = $repo->find($schoolId);
 
         if($form->isSubmitted() && $form->isValid()) {
             $classroom->setSchool($school);

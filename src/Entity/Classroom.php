@@ -30,19 +30,20 @@ class Classroom
     private $year;
 
     /**
-     * @ORM\OneToMany(targetEntity=User::class, mappedBy="classroom")
-     */
-    private $users;
-
-    /**
      * @ORM\ManyToOne(targetEntity=School::class, inversedBy="classrooms")
      * @ORM\JoinColumn(nullable=false)
      */
     private $school;
 
+    /**
+     * @ORM\OneToOne(targetEntity=User::class, inversedBy="classroom", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $teacher;
+
     public function __construct()
     {
-        $this->users = new ArrayCollection();
+        // $this->users = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -74,52 +75,6 @@ class Classroom
         return $this;
     }
 
-    /**
-     * @return Collection|User[]
-     */
-    public function getUsers(): Collection
-    {
-        return $this->users;
-    }
-
-    public function addUser(User $user): self
-    {
-        if (!$this->users->contains($user)) {
-            $this->users[] = $user;
-            $user->setClassroom($this);
-        }
-
-        return $this;
-    }
-
-    public function removeUser(User $user): self
-    {
-        if ($this->users->contains($user)) {
-            $this->users->removeElement($user);
-            // set the owning side to null (unless already changed)
-            if ($user->getClassroom() === $this) {
-                $user->setClassroom(null);
-            }
-        }
-
-        return $this;
-    }
-
-    // public function getStudents(): Collection
-    // {
-    //     return $this->users;
-    // }
-
-    // public function getTeacher(): User
-    // {
-    //     foreach ($this->users as $user) {
-    //         if ($user->isTeacher()) {
-    //             return $user;
-    //         }
-    //     }
-    //     return false;
-    // }
-
     public function getSchool(): ?School
     {
         return $this->school;
@@ -128,6 +83,18 @@ class Classroom
     public function setSchool(?School $school): self
     {
         $this->school = $school;
+
+        return $this;
+    }
+
+    public function getTeacher(): ?User
+    {
+        return $this->teacher;
+    }
+
+    public function setTeacher(User $teacher): self
+    {
+        $this->teacher = $teacher;
 
         return $this;
     }

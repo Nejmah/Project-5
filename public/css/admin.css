@@ -110,18 +110,6 @@ li {
 }
 
 .school-buttons .add-classroom-button {
-    background-color: rgb(106, 108, 111) !important;
-    border: rgb(106, 108, 111) !important;
-    /* Animation */
-    transition: transform .2s;
-}
-
-.school-buttons .add-classroom-button:hover {
-    background-color: rgb(81, 83, 87) !important;
-    transform: scale(1.1);
-}
-
-.school-buttons .add-user-button {
     color: rgb(50, 52, 57);
     background-color: rgb(255, 253, 148);
     border: rgb(255, 253, 148);
@@ -129,8 +117,20 @@ li {
     transition: transform .2s;
 }
 
-.school-buttons .add-user-button:hover {
+.school-buttons .add-classroom-button:hover {
     background-color: rgb(253, 253, 79);
+    transform: scale(1.1);
+}
+
+.school-buttons .add-teacher-button {
+    background-color: rgb(106, 108, 111) !important;
+    border: rgb(106, 108, 111) !important;
+    /* Animation */
+    transition: transform .2s;
+}
+
+.school-buttons .add-teacher-button:hover {
+    background-color: rgb(81, 83, 87) !important;
     transform: scale(1.1);
 }
 
@@ -198,7 +198,8 @@ li {
 #teacher_password,
 #user_username,
 #classroom_name,
-#classroom_year {
+#classroom_year,
+#classroom_teacher {
     font-size: 0.9em;
 }
 
@@ -248,18 +249,18 @@ li {
     padding: 0 5px 0 5px;
 }
 
-.teacher-page .add-user-button {
+.teacher-page .add-teacher-button {
     text-align: center;
     margin-bottom: 40px;
 }
 
-.teacher-page .add-user-button .btn-success {
+.teacher-page .add-teacher-button .btn-success {
     color: rgb(50, 52, 57);
     background-color: rgb(255, 253, 148);
     border: rgb(255, 253, 148);
 }
 
-.teacher-page .add-user-button a {
+.teacher-page .add-teacher-button a {
     font-size: 1.2em;
 }
 
