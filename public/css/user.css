@@ -39,7 +39,8 @@
 }
 
 .home-page .presentation,
-.about-page .presentation {
+.about-page .presentation,
+.calendar-page .dates {
     font-size: 1.5em;
 }
 
@@ -71,8 +72,15 @@
 
 /* Calendar-page */
 
-.calendar-page h1 {
+.calendar-page h1,
+.calendar-page span {
     color: rgb(235, 177, 122);
+}
+
+.calendar-page img {
+    position: absolute;
+    right: 60px;
+    width: 20%;
 }
 
 /* Index-page */
