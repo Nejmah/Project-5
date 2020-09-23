@@ -15,7 +15,6 @@ class ClassroomType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        // $schoolId = $options['schoolId'];
         $builder
             ->add('name', ChoiceType::class, [
                 'choices' => [
@@ -45,9 +44,6 @@ class ClassroomType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Classroom::class,
-            // 'schoolId' => ""
         ]);
-
-        // $resolver->setAllowedTypes('schoolId', 'string');
     }
 }
