@@ -24,9 +24,11 @@
         {% for school in schools %}
             <div class="school-table">
                 <div class="school-name">
-                    <p><a data-toggle="collapse" href="#school{{school.id}}" role="button" aria-expanded="false" aria-controls="collapseExample">
-                    École {{ school.name }}
-                </a></p>
+                    <p>
+                        <a data-toggle="collapse" href="#school{{school.id}}" role="button" aria-expanded="false" aria-controls="collapseExample">
+                        École {{ school.name }}
+                        </a>
+                    </p>
                 </div>
                 <div class="school-buttons">
                     <a class="btn btn-success add-teacher-button" 
@@ -48,12 +50,12 @@
             <div class="collapse" id="school{{school.id}}">
                 <div class="card card-body">
                     {% if school.classrooms is empty %}
-                            <p>Il n'y a pas de classes dans cette école.</p>
+                        <p>Il n'y a pas de classes dans cette école.</p>
                     {% endif %}
 
-                    {% for classroom in school.classrooms %}
+                    {% for classroom in school.classroomsSorted %}
                         <ul>
-                            <li>Classe de {{ classroom.name }} de "Nom du prof"</li>
+                            <li>Classe de {{ classroom.name }} / {{ classroom.user.username}}</li>
                         </ul>
                     {% endfor %}
                 </div>

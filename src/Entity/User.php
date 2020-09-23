@@ -35,10 +35,9 @@ class User implements UserInterface
     private $password;
 
     /**
-     * @ORM\ManyToOne(targetEntity=School::class, inversedBy="users")
-     * @ORM\JoinColumn(nullable=true)
+     * @ORM\OneToOne(targetEntity=Classroom::class, inversedBy="user", cascade={"persist", "remove"})
      */
-    private $school;
+    private $classroom;
 
     public function getId(): ?int
     {
@@ -123,21 +122,9 @@ class User implements UserInterface
         $this->classroom = $classroom;
 
         // set the owning side of the relation if necessary
-        if ($classroom->getTeacher() !== $this) {
-            $classroom->setTeacher($this);
+        if ($classroom->getUser() !== $this) {
+            $classroom->setUser($this);
         }
-
-        return $this;
-    }
-
-    public function getSchool(): ?School
-    {
-        return $this->school;
-    }
-
-    public function setSchool(?School $school): self
-    {
-        $this->school = $school;
 
         return $this;
     }

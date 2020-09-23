@@ -15,7 +15,7 @@ class ClassroomType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $schoolId = $options['schoolId'];
+        // $schoolId = $options['schoolId'];
         $builder
             ->add('name', ChoiceType::class, [
                 'choices' => [
@@ -25,11 +25,12 @@ class ClassroomType extends AbstractType
                 ],
                 'placeholder' => 'Choisissez une classe'
             ])
-            ->add('teacher', EntityType::class, [
-                'query_builder' => static function (EntityRepository $er) use ($schoolId) {
-                    return $er->createQueryBuilder('teacher')
-                        ->where('teacher.school = :schoolId')
-                        ->setParameter('schoolId', $schoolId)
+            ->add('user', EntityType::class, [
+                'query_builder' => static function (EntityRepository $er) {
+                    return $er->createQueryBuilder('user')
+                        ->where('user.roles LIKE :role')
+                        ->andWhere('user.classroom IS NULL')
+                        ->setParameter('role', '%ROLE_TEACHER%')
                     ;
                 },
                 'class' => User::class,
@@ -44,9 +45,9 @@ class ClassroomType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Classroom::class,
-            'schoolId' => ""
+            // 'schoolId' => ""
         ]);
 
-        $resolver->setAllowedTypes('schoolId', 'string');
+        // $resolver->setAllowedTypes('schoolId', 'string');
     }
 }

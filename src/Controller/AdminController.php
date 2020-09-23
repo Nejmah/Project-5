@@ -86,7 +86,7 @@ class AdminController extends AbstractController
         $user = new User();
         $user->setRoles(['ROLE_TEACHER']);
 
-        $form = $this->createForm(TeacherType::class, $user, ['schoolId' => $schoolId]);
+        $form = $this->createForm(TeacherType::class, $user);
         $form->handleRequest($request);
 
         $repo = $this->getDoctrine()->getRepository(School::class);
@@ -95,7 +95,6 @@ class AdminController extends AbstractController
         if($form->isSubmitted() && $form->isValid()) {
             $password = $form->get('password')->getData();
             $user->setPassword($passwordEncoder->encodePassword($user, $password));
-            $user->setSchool($school);
 
             $manager->persist($user);
             $manager->flush();
@@ -122,7 +121,7 @@ class AdminController extends AbstractController
     {
         $classroom = new Classroom();
 
-        $form = $this->createForm(ClassroomType::class, $classroom, ['schoolId' => $schoolId]);
+        $form = $this->createForm(ClassroomType::class, $classroom);
         $form->handleRequest($request);
 
         $repo = $this->getDoctrine()->getRepository(School::class);

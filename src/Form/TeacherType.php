@@ -15,20 +15,8 @@ class TeacherType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $schoolId = $options['schoolId'];
         $builder
             ->add('username')
-            // ->add('classroom', EntityType::class, [
-            //     'query_builder' => static function (EntityRepository $er) use ($schoolId) {
-            //         return $er->createQueryBuilder('classroom')
-            //             ->where('classroom.school = :schoolId')
-            //             ->setParameter('schoolId', $schoolId)
-            //         ;
-            //     },
-            //     // 'label' => 'Classe',
-            //     'class' => Classroom::class,
-            //     'choice_label' => 'name'
-            // ])
             ->add('password', PasswordType::class)
         ;
     }
@@ -37,9 +25,6 @@ class TeacherType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => User::class,
-            'schoolId' => "1"
         ]);
-
-        $resolver->setAllowedTypes('schoolId', 'string');
     }
 }

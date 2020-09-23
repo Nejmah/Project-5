@@ -36,15 +36,9 @@ class Classroom
     private $school;
 
     /**
-     * @ORM\OneToOne(targetEntity=User::class, inversedBy="classroom", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\OneToOne(targetEntity=User::class, mappedBy="classroom", cascade={"persist", "remove"})
      */
-    private $teacher;
-
-    public function __construct()
-    {
-        // $this->users = new ArrayCollection();
-    }
+    private $user;
 
     public function getId(): ?int
     {
@@ -87,14 +81,20 @@ class Classroom
         return $this;
     }
 
-    public function getTeacher(): ?User
+    public function getUser(): ?User
     {
-        return $this->teacher;
+        return $this->user;
     }
 
-    public function setTeacher(User $teacher): self
+    public function setUser(?User $user): self
     {
-        $this->teacher = $teacher;
+        $this->user = $user;
+
+        // set (or unset) the owning side of the relation if necessary
+        $newClassroom = null === $user ? null : $this;
+        if ($user->getClassroom() !== $newClassroom) {
+            $user->setClassroom($newClassroom);
+        }
 
         return $this;
     }

@@ -63,20 +63,19 @@ class AppFixtures extends Fixture
 
             $manager->persist($school);
 
-            //Crée entre 2 et 4 profs
-            for($j = 0; $j < mt_rand(2, 4); $j++) {
-                $user = new User();
+            // //Crée entre 2 et 4 profs
+            // for($j = 0; $j < mt_rand(2, 4); $j++) {
+            //     $user = new User();
 
-                $user->setRoles(array("ROLE_TEACHER"));
-                $user->setUsername($faker->name);
-                $user->setPassword($this->passwordEncoder->encodePassword(
-                    $user,
-                    'prof'
-                ));
-                $user->setSchool($school);
+            //     $user->setRoles(array("ROLE_TEACHER"));
+            //     $user->setUsername($faker->name);
+            //     $user->setPassword($this->passwordEncoder->encodePassword(
+            //         $user,
+            //         'prof'
+            //     ));
 
-                $manager->persist($user);
-            }
+            //     $manager->persist($user);
+            // }
         }
         $manager->flush();
     }
