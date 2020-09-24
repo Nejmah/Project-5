@@ -58,7 +58,7 @@
 }
 
 .home-page .image,
-.create-page .image {
+.schools-page .image {
     position: absolute;
     right: 80px;
     bottom: 40px;
@@ -89,41 +89,42 @@
     color: rgb(176, 140, 240);
 }
 
-/* Create-page */
+/* Schools-page */
 
-.create-page h1 {
+.schools-page h1,
+.create-page {
     color: rgb(237, 182, 197);
     margin-bottom: 30px;
 }
 
-.create-page .instruction {
+.schools-page .instruction {
     font-size: 1.5em;
     margin-bottom: 30px;
 }
 
-.create-page p {
+.schools-page p {
     font-size: 1.5em;
 }
 
-.create-page .schools {
+.schools-page .schools {
     display: flex;
     justify-content: flex-start;
 }
 
-.create-page .school-img {
+.schools-page .school-img {
     width: 22%;
     margin: 35px 0 10px 0;
 }
 
-/* .create-page .classrooms {
+/* .schools-page .classrooms {
     margin: auto;
 } */
 
-.create-page a {
+.schools-page a {
     color: rgb(118, 107, 86);
 }
 
-.create-page a:hover {
+.schools-page a:hover {
     text-decoration: none;
     font-weight: bold;
     color: rgb(149, 57, 124);
