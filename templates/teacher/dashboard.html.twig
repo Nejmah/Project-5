@@ -2,10 +2,10 @@
 
 {% block body %}
 
-    <div class="teacher-page">
+    <div class="teacher-dashboard">
         <h1>Bienvenue dans votre classe de {{ classroom.name }}</h1>
-        <h2>Professeur : </h2>
-        <div class="add-user-button">
+        <h2>Professeur : {{ classroom.user.username }}</h2>
+        <div class="add-candidature-button">
             <a class="btn btn-success" 
                 href="{{ path('add_user', {'classroomId': classroom.id}) }}">
                 Ajouter un élève
@@ -21,9 +21,7 @@
             {% endfor %}
         {% endfor %}
 
-        {# <img src="/img/table.png" alt="table"></img> #}
-
-        <div class="row justify-content-center">
+        {# <div class="row justify-content-center">
             <table class="table table-hover col-md-10 col-lg-8">
             <thead>
                 <tr class="table-secondary">
@@ -51,7 +49,7 @@
                 {% endfor %}
                 </tbody>
             </table>
-        </div>
+        </div> #}
     </div>
 
 {% endblock %}

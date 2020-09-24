@@ -46,33 +46,35 @@ li {
     margin-bottom: 40px;
 }
 
-.admin-dashboard .add-school-button {
+.admin-dashboard .add-school-button,
+.teacher-dashboard .add-candidature-button {
     text-align: center;
     margin-bottom: 75px;
 }
 
-.admin-dashboard .add-school-button a {
+.admin-dashboard .add-school-button a,
+.teacher-dashboard .add-candidature-button a {
     color: white;
     font-size: 1.2em;
 }
 
-.school-table {
+.schools-table {
     display: flex;
     background-color: rgba(255, 255, 255, 0.5);
     margin-bottom: 20px;
     position: relative;
 }
 
-.school-table:hover {
+.schools-table:hover {
     background-color: rgba(255, 255, 255, 0.3);
 }
 
-.school-table p,
-.school-table a {
+.schools-table p,
+.schools-table a {
     font-size: 1.2em;
 }
 
-.school-table p {
+.schools-table p {
     padding: 15px 15px 15px 25px;
     margin-bottom: 0;
 }
@@ -217,18 +219,18 @@ li {
 
 /* Teacher-page */
 
-.teacher-page h1 {
+.teacher-dashboard h1 {
     font-size: 3em;
     color: rgb(255, 253, 148);
     margin: 45px 0 20px 0;
 }
 
-.teacher-page h2 {
+.teacher-dashboard h2 {
     color: white;
-    margin: 0 0 30px 0;
+    margin: 0 0 45px 0;
 }
 
-.teacher-page table {
+.teacher-dashboard table {
     border-collapse: collapse;
     /* Les bordures du tableau seront collées (plus joli) */
 }
@@ -239,32 +241,32 @@ li {
     background-color: darkslategrey !important;
 } */
 
-.teacher-page td,
-.teacher-page th {
+.teacher-dashboard td,
+.teacher-dashboard th {
     padding: 10px;
 }
 
-.teacher-page .delete-user-button {
+.teacher-dashboard .delete-user-button {
     font-size: 0.9em;
     padding: 0 5px 0 5px;
 }
 
-.teacher-page .add-teacher-button {
+.teacher-dashboard .add-teacher-button {
     text-align: center;
     margin-bottom: 40px;
 }
 
-.teacher-page .add-teacher-button .btn-success {
+.teacher-dashboard .add-teacher-button .btn-success {
     color: rgb(50, 52, 57);
     background-color: rgb(255, 253, 148);
     border: rgb(255, 253, 148);
 }
 
-.teacher-page .add-teacher-button a {
+.teacher-dashboard .add-teacher-button a {
     font-size: 1.2em;
 }
 
-.teacher-page img {
+.teacher-dashboard img {
     position: absolute;
     right: 40px;
     bottom: 40px;

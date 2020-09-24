@@ -22,14 +22,13 @@ class TeacherController extends AbstractController
 
         $classroom = $this->getUser()->getClassroom();
 
-        $users = $this->getUser()->getClassroom()->getUsers();
-        foreach($users as $user) {
-            $user->getUsername();
-        }
+        // $users = $this->getUser()->getClassroom()->getUsers();
+        // foreach($users as $user) {
+        //     $user->getUsername();
+        // }
 
         return $this->render('teacher/dashboard.html.twig', [
-            'classroom' => $classroom,
-            'users' => $users
+            'classroom' => $classroom
         ]);
     }
 
