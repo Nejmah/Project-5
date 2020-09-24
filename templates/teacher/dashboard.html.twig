@@ -5,11 +5,25 @@
     <div class="teacher-dashboard">
         <h1>Bienvenue dans votre classe de {{ classroom.name }}</h1>
         <h2>Professeur : {{ classroom.user.username }}</h2>
-        <div class="add-candidature-button">
-            <a class="btn btn-success" 
-                href="{{ path('add_user', {'classroomId': classroom.id}) }}">
-                Ajouter un élève
-            </a>
+        <div class="teacher-buttons">
+            <p>
+                <a class="btn btn-success"
+                    href="">
+                    demandes de candidatures
+                </a>
+            </p>
+            <p>
+                <a class="btn btn-success"
+                    href="{{ path('add_user', {'classroomId': classroom.id}) }}">
+                    Ajouter une candidature
+                </a>
+            </p>
+            <p>
+                <a class="btn btn-success"
+                    href="">
+                    Changer son mot de passe
+                </a>
+            </p>
         </div>
 
         {# flashbags #}

@@ -46,14 +46,12 @@ li {
     margin-bottom: 40px;
 }
 
-.admin-dashboard .add-school-button,
-.teacher-dashboard .add-candidature-button {
+.admin-dashboard .add-school-button {
     text-align: center;
     margin-bottom: 75px;
 }
 
-.admin-dashboard .add-school-button a,
-.teacher-dashboard .add-candidature-button a {
+.admin-dashboard .add-school-button a {
     color: white;
     font-size: 1.2em;
 }
@@ -222,18 +220,45 @@ li {
 .teacher-dashboard h1 {
     font-size: 3em;
     color: rgb(255, 253, 148);
-    margin: 45px 0 20px 0;
+    margin: 45px 0 40px 0;
 }
 
 .teacher-dashboard h2 {
     color: white;
-    margin: 0 0 45px 0;
+    margin: 0 0 60px 0;
 }
 
-.teacher-dashboard table {
-    border-collapse: collapse;
-    /* Les bordures du tableau seront collées (plus joli) */
+.teacher-dashboard .teacher-buttons a {
+    color: white;
+    font-size: 1.2em;
+    width: 40%;
+    margin-bottom: 20px;
 }
+
+.teacher-dashboard .teacher-buttons {
+    text-align: center;
+}
+
+.teacher-dashboard .btn-success {
+    background-color: rgba(255, 255, 255, 0.5);
+    border: rgba(255, 255, 255, 0.5);
+    /* Animation */
+    transition: transform .2s;
+}
+
+.teacher-dashboard .btn-success:hover {
+    color: rgb(50, 52, 57);
+    font-weight: bold;
+    transform: scale(1.1);
+}
+
+.teacher-dashboard a {
+    padding: 15px;
+}
+
+/* .teacher-dashboard table {
+    border-collapse: collapse;
+} */
 
 /* .teacher-page .table-secondary,
 .teacher-page .table-secondary>th,
@@ -241,34 +266,34 @@ li {
     background-color: darkslategrey !important;
 } */
 
-.teacher-dashboard td,
+/* .teacher-dashboard td,
 .teacher-dashboard th {
     padding: 10px;
-}
+} */
 
-.teacher-dashboard .delete-user-button {
+/* .teacher-dashboard .delete-user-button {
     font-size: 0.9em;
     padding: 0 5px 0 5px;
-}
+} */
 
-.teacher-dashboard .add-teacher-button {
+/* .teacher-dashboard .add-teacher-button {
     text-align: center;
     margin-bottom: 40px;
-}
+} */
 
-.teacher-dashboard .add-teacher-button .btn-success {
+/* .teacher-dashboard .add-teacher-button .btn-success {
     color: rgb(50, 52, 57);
     background-color: rgb(255, 253, 148);
     border: rgb(255, 253, 148);
-}
+} */
 
-.teacher-dashboard .add-teacher-button a {
+/* .teacher-dashboard .add-teacher-button a {
     font-size: 1.2em;
-}
+} */
 
-.teacher-dashboard img {
+/* .teacher-dashboard img {
     position: absolute;
     right: 40px;
     bottom: 40px;
     width: 20%;
-}
+} */

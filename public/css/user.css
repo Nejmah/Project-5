@@ -1,3 +1,7 @@
+body {
+    padding-top: 91px;
+}
+
 /* Login-page */
 
 
@@ -57,11 +61,15 @@
     margin-bottom: 40px;
 }
 
-.home-page .image,
-.schools-page .image {
+.about-page .end {
+    color: rgb(105, 214, 243);
+    font-size: 1.5em;
+}
+
+.home-page img {
     position: absolute;
-    right: 80px;
-    bottom: 40px;
+    right: 50px;
+    bottom: 30px;
 }
 
 /* About-page */
@@ -111,9 +119,21 @@
     justify-content: flex-start;
 }
 
+.schools-page .candidat-img {
+    position: absolute;
+    right: 60px;
+    bottom: 40px;
+}
+
 .schools-page .school-img {
     width: 22%;
     margin: 35px 0 10px 0;
+}
+
+.about-page img {
+    position: absolute;
+    right: 70px;
+    bottom: 90px;
 }
 
 /* .schools-page .classrooms {
@@ -173,7 +193,6 @@
 }
 
 .flip-card-back {
-    background-color: rgb(217, 205, 179);
-    /* background-color: rgb(237, 182, 197); */
+    background-color: rgb(246, 223, 183);
     transform: rotateY(180deg);
 }
