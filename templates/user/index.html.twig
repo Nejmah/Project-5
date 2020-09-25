@@ -4,14 +4,43 @@
 
 <div class="index-page">
     <h1>Qui sont les candidats ?</h1>
-    {# <h1>La liste des candidats</h1> #}
 
-    {{ candidatures|length}}
+    <p class="instruction">Pour le savoir, choisis d'abord ton école et ta classe :</p>
 
-    {% for candidature in candidatures %}
+    <div class="candidat-img">
+        <img src="/img/candidat.png" alt="candidat"></img>
+    </div>
+        
+    <div class="schools">
+        {% for school in schools %}
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img class="school-img" src="/img/school.png" alt"school"></img>
+                        <p>École <br> {{ school.name }}</p>
+                    </div>
+                    <div class="flip-card-back">
+                        {% for classroom in school.classroomsSorted %}
+                            <div class="classrooms">
+                                <p>
+                                    <a href="{{ path('app_candidatures_list', {'classroomId': classroom.id}) }}">Classe de {{ classroom.name }}</a>
+                                </p>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+
+
+    {# {% for candidature in candidatures %}
         <p>{{ candidature.firstname }}</p>
         <img></img>
-    {% endfor %}
+    {% endfor %} #}
 </div>
 
 {% endblock %}

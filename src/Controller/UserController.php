@@ -44,33 +44,39 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/candidatures", name="app_candidatures")
+     * @Route("/candidatures", name="app_candidatures_index")
      */
     public function index()
-    {
-        $repo = $this->getDoctrine()->getRepository(Candidature::class);
-        $candidatures = $repo->findBy([], ['id' => 'DESC']);
-
-        return $this->render('user/index.html.twig', [
-            'candidatures' => $candidatures
-        ]);
-    }
-
-    /**
-     * @Route("/create/candidature", name="app_create_candidature")
-     */
-    public function schoolIndex()
     {
         $repo = $this->getDoctrine()->getRepository(School::class);
         $schools = $repo->findBy([], ['id' => 'DESC']);
 
-        return $this->render('user/schools.html.twig', [
+        return $this->render('user/index.html.twig', [
             'schools' => $schools
         ]);
     }
 
     /**
-     * @Route("/create/candidature/{classroomId}", name="app_form_candidature")
+     * @Route("/candidatures/list/{classroomId}", name="app_candidatures_list")
+     */
+    public function list($classroomId)
+    {
+        $repo = $this->getDoctrine()->getRepository(Classroom::class);
+        $classroom = $repo->find($classroomId);
+
+        $repo = $this->getDoctrine()->getRepository(Candidature::class);
+        $candidatures = $repo->findBy([
+            'classroom' => $classroom
+        ]);
+
+        return $this->render('user/candidatures.html.twig', [
+            'candidatures' => $candidatures,
+            'classroom' => $classroom
+        ]);
+    }
+
+    /**
+     * @Route("/candidature/create/{classroomId}", name="app_create_candidature")
      */
     public function create($classroomId, Request $request, EntityManagerInterface $manager)
     {

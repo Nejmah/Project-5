@@ -99,50 +99,44 @@ body {
     width: 20%;
 }
 
-/* Index-page */
-
-.index-page h1 {
-    color: rgb(176, 140, 240);
-}
-
 /* Candidatures */
 
-.schools-page h1,
+.index-page h1,
 .create-page h1 {
     color: rgb(237, 182, 197);
     margin-bottom: 30px;
 }
 
-.schools-page .instruction {
+.index-page .instruction {
     font-size: 1.5em;
     margin-bottom: 30px;
 }
 
-.schools-page p {
+.index-page p {
     font-size: 1.5em;
 }
 
-.schools-page .schools {
+.index-page .schools {
     display: flex;
     justify-content: flex-start;
 }
 
-.schools-page .candidat-img {
+.index-page .candidat-img {
     position: absolute;
     right: 60px;
     bottom: 40px;
 }
 
-.schools-page .school-img {
+.index-page .school-img {
     width: 22%;
     margin: 35px 0 10px 0;
 }
 
-.schools-page a {
+.index-page a {
     color: rgb(118, 107, 86);
 }
 
-.schools-page a:hover {
+.index-page a:hover {
     text-decoration: none;
     font-weight: bold;
     color: rgb(149, 57, 124);
@@ -197,6 +191,10 @@ body {
 #candidature_lastname,
 #candidature_content {
     font-size: 0.9em;
+}
+
+.candidatures-page h1 {
+    color: rgb(176, 140, 240);
 }
 
 .create-page h3 {

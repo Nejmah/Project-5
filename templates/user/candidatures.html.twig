@@ -1,0 +1,20 @@
+{% extends '/user/base.html.twig' %}
+
+{% block body %}
+
+<div class="candidatures-page">
+    <h1>La liste des candidats</h1>
+
+    {% for candidature in candidatures %}
+        <p>{{ candidature.firstname }}</p>
+        <img></img>
+    {% endfor %}
+
+    <a class="btn btn-success" 
+        href="{{ path('app_create_candidature', {'classroomId': classroom.id}) }}">
+        Déposer une candidature
+    </a>
+
+</div>
+
+{% endblock %}
