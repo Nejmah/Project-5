@@ -3,5 +3,29 @@
 {% block body %}
 <div class="create-page">
     <h1>Je dépose ma candidature</h1>
+
+    <h3>Complète le formulaire : </h3>
+
+    {{ form_start(formCandidature) }}
+
+        <div class="name">
+            {{ form_row(formCandidature.firstname, {'label': 'Ton prénom :', 
+            'attr': {'placeholder': 'Ex : Aurélie'}}) }}
+
+            {{ form_row(formCandidature.lastname, {'label': 'Ton nom :', 
+            'attr': {'placeholder': 'Ex : Lagniez'}}) }}
+        </div>
+
+        {{ form_row(formCandidature.image, {'label': 'Ta photo :',
+        'attr': {'placeholder': 'Choisis un fichier .jpg ou .png'}}) }}
+
+        {{ form_row(formCandidature.content, {'label': 'Ton programme :', 
+        'attr': {'placeholder': 'Écris les principaux objectifs de ton programme.'}}) }}
+
+        <div class="submit-button">
+            <button type="submit" class="btn btn-success">J'enregistre ma candidature !</button>
+        </div>
+
+    {{ form_end(formCandidature) }}
 </div>
 {% endblock %}

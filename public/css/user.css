@@ -48,6 +48,26 @@ body {
     font-size: 1.5em;
 }
 
+.flash-add-candidature {
+    text-align: center;
+    color: rgb(255, 253, 148);
+    font-size: 1.8em;
+    font-weight: bold;
+    margin-top: 60px;
+}
+
+.home-page img {
+    position: absolute;
+    right: 50px;
+    bottom: 30px;
+}
+
+/* About-page */
+
+.about-page h1 {
+    color: rgb(105, 214, 243);
+}
+
 .about-page span {
     font-weight: bold;
     color: rgb(255, 253, 148);
@@ -64,18 +84,6 @@ body {
 .about-page .end {
     color: rgb(105, 214, 243);
     font-size: 1.5em;
-}
-
-.home-page img {
-    position: absolute;
-    right: 50px;
-    bottom: 30px;
-}
-
-/* About-page */
-
-.about-page h1 {
-    color: rgb(105, 214, 243);
 }
 
 /* Calendar-page */
@@ -97,10 +105,10 @@ body {
     color: rgb(176, 140, 240);
 }
 
-/* Schools-page */
+/* Candidatures */
 
 .schools-page h1,
-.create-page {
+.create-page h1 {
     color: rgb(237, 182, 197);
     margin-bottom: 30px;
 }
@@ -129,16 +137,6 @@ body {
     width: 22%;
     margin: 35px 0 10px 0;
 }
-
-.about-page img {
-    position: absolute;
-    right: 70px;
-    bottom: 90px;
-}
-
-/* .schools-page .classrooms {
-    margin: auto;
-} */
 
 .schools-page a {
     color: rgb(118, 107, 86);
@@ -186,8 +184,6 @@ body {
 
 .flip-card-front {
     background-color: rgba(255, 255, 255, 0.5);
-    /* color: black; */
-    /* color: #18bc9c; */
     color: rgb(149, 57, 124);
     font-weight: bold;
 }
@@ -195,4 +191,39 @@ body {
 .flip-card-back {
     background-color: rgb(246, 223, 183);
     transform: rotateY(180deg);
+}
+
+#candidature_firstname,
+#candidature_lastname,
+#candidature_content {
+    font-size: 0.9em;
+}
+
+.create-page h3 {
+    /* text-align: center; */
+    font-weight: 1.5em;
+    margin-bottom: 40px;
+}
+
+.create-page .name {
+    display: flex;
+    justify-content: space-between;
+}
+
+.create-page .name .form-group {
+    width: 48%;
+}
+
+.create-page .name .form-group:not(:last-child) {
+    /* margin-right: 20px; */
+}
+
+.create-page .submit-button {
+    text-align: center;
+}
+
+.create-page .btn-success {
+    font-size: 0.9em;
+    margin-top: 15px;
+    margin-bottom: 30px;
 }

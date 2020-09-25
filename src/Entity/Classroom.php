@@ -40,6 +40,16 @@ class Classroom
      */
     private $user;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Candidature::class, mappedBy="classroom", orphanRemoval=true)
+     */
+    private $candidatures;
+
+    public function __construct()
+    {
+        $this->candidatures = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -94,6 +104,37 @@ class Classroom
         $newClassroom = null === $user ? null : $this;
         if ($user->getClassroom() !== $newClassroom) {
             $user->setClassroom($newClassroom);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Candidature[]
+     */
+    public function getCandidatures(): Collection
+    {
+        return $this->candidatures;
+    }
+
+    public function addCandidature(Candidature $candidature): self
+    {
+        if (!$this->candidatures->contains($candidature)) {
+            $this->candidatures[] = $candidature;
+            $candidature->setClassroom($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCandidature(Candidature $candidature): self
+    {
+        if ($this->candidatures->contains($candidature)) {
+            $this->candidatures->removeElement($candidature);
+            // set the owning side to null (unless already changed)
+            if ($candidature->getClassroom() === $this) {
+                $candidature->setClassroom(null);
+            }
         }
 
         return $this;
