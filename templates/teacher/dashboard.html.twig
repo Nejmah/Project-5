@@ -9,7 +9,11 @@
             <p>
                 <a class="btn btn-success"
                     href="">
-                    demandes de candidatures
+                    {% if classroom.candidatures|length > 1 %}
+                        {{ classroom.candidatures|length}} demandes de candidature
+                    {% else %}
+                        {{ classroom.candidatures|length}} demande de candidature
+                    {% endif %}
                 </a>
             </p>
             <p>

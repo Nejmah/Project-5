@@ -4,6 +4,13 @@
 
 <div class="index-page">
     <h1>La liste des candidats</h1>
+
+    {{ candidatures|length}}
+
+    {% for candidature in candidatures %}
+        <p>{{ candidature.firstname }}</p>
+        <img></img>
+    {% endfor %}
 </div>
 
 {% endblock %}

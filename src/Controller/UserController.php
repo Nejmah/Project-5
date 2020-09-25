@@ -48,7 +48,12 @@ class UserController extends AbstractController
      */
     public function index()
     {
-        return $this->render('user/index.html.twig');
+        $repo = $this->getDoctrine()->getRepository(Candidature::class);
+        $candidatures = $repo->findBy([], ['id' => 'DESC']);
+
+        return $this->render('user/index.html.twig', [
+            'candidatures' => $candidatures
+        ]);
     }
 
     /**
