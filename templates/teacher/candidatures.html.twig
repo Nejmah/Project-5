@@ -1,0 +1,60 @@
+{% extends '/teacher/base.html.twig' %}
+
+{% block body %}
+
+    <div class="teacher-candidatures">
+        <h1>Liste des candidatures de votre classe</h1>
+        <h2>Professeur : {{ classroom.user.username }}</h2>
+        
+        {% for candidature in candidatures %}
+            <div class="candidatures-table">
+                <p>{{ candidature.firstname}} {{ candidature.lastname }}</p>
+                <div class="candidature-buttons">
+                    <a class="eye-link" href="">
+                        <img class="eye-img" src="/img/eye.png" alt="eye">
+                    </a>
+                    {# <a class="btn btn-success show-candidature-button" 
+                        href="">
+                        Voir
+                    </a> #}
+                    {% if candidature.isValid == false %}
+                    <a class="btn btn-secondary validate-candidature-button" 
+                        href="{{ path('app_validate_candidature', {'id': candidature.id}) }}">
+                        Valider
+                    </a>
+                    {% endif %}
+                    <button type="button" class="btn btn-secondary delete-candidature-button" 
+                        data-toggle="modal" data-target="#candidatureDeleteModal" 
+                        data-delete-url="{{ path('app_delete_candidature', {'id': candidature.id}) }}"
+                        data-delete-name="{{ candidature.firstname }} {{ candidature.lastname }}">
+                        Supprimer
+                    </button>
+                </div>
+
+            </div>
+        {% endfor %}
+    </div>
+
+<!-- Modal -->
+<div class="modal fade" id="candidatureDeleteModal" tabindex="-1" role="dialog" aria-labelledby="candidatureDeleteModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Attention</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Souhaitez-vous supprimer la candidature de <span id="candidature-name"></span> ?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                {# <button type="button" class="btn btn-success">Confirmer</button> #}
+                <a class="btn btn-success" id="delete-confirm" href="">Confirmer</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -5,10 +5,20 @@
     <div class="teacher-dashboard">
         <h1>Bienvenue dans votre classe de {{ classroom.name }}</h1>
         <h2>Professeur : {{ classroom.user.username }}</h2>
+
+        {# flashbags #}
+        {% for label, messages in app.flashes(['validate-candidature', 'delete-candidature']) %}
+            {% for message in messages %}
+                <div class="flash-message flash-{{ label }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+
         <div class="teacher-buttons">
             <p>
                 <a class="btn btn-success"
-                    href="">
+                    href="{{ path('app_teacher_candidatures') }}">
                     {% if classroom.candidatures|length > 1 %}
                         {{ classroom.candidatures|length}} demandes de candidature
                     {% else %}
@@ -18,7 +28,7 @@
             </p>
             <p>
                 <a class="btn btn-success"
-                    href="{{ path('add_user', {'classroomId': classroom.id}) }}">
+                    href="">
                     Ajouter une candidature
                 </a>
             </p>
@@ -29,45 +39,6 @@
                 </a>
             </p>
         </div>
-
-        {# flashbags #}
-        {# {% for label, messages in app.flashes(['add-user', 'delete-user']) %}
-            {% for message in messages %}
-                <div class="flash-message flash-{{ label }}">
-                    {{ message }}
-                </div>
-            {% endfor %}
-        {% endfor %} #}
-
-        {# <div class="row justify-content-center">
-            <table class="table table-hover col-md-10 col-lg-8">
-            <thead>
-                <tr class="table-secondary">
-                    <th class="text-center">N°</th>
-                    <th>Élève</th>
-                    <th></th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for user in users %}
-                <tr class="table-secondary">
-                    <td class="text-center">
-                        {{ loop.index }}
-                    </td>
-                    <td>
-                        {{ user.username }}
-                    </td>
-                    <td class="text-center">
-                        <a class="btn btn-success delete-user-button"
-                            href="{{ path('delete_user', {'id': user.id}) }}">
-                            Supprimer
-                        </a>
-                    </td>
-                </tr>
-                {% endfor %}
-                </tbody>
-            </table>
-        </div> #}
     </div>
 
 {% endblock %}

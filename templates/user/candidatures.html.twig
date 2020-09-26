@@ -10,10 +10,12 @@
         <img></img>
     {% endfor %}
 
+    <div class="add-candidature-button">
     <a class="btn btn-success" 
         href="{{ path('app_create_candidature', {'classroomId': classroom.id}) }}">
         Déposer une candidature
     </a>
+    </div>
 
 </div>
 

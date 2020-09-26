@@ -32,7 +32,7 @@ body {
 
 .login-button {
     position: absolute;
-    right: 20px;
+    right: 40px;
 }
 
 /* Home-page */
@@ -197,6 +197,12 @@ body {
     color: rgb(176, 140, 240);
 }
 
+.candidatures-page .add-candidature-button {
+    position: absolute;
+    top: 140px;
+    right: 40px;
+}
+
 .create-page h3 {
     /* text-align: center; */
     font-weight: 1.5em;
@@ -220,6 +226,7 @@ body {
     text-align: center;
 }
 
+.candidatures-page .btn-success,
 .create-page .btn-success {
     font-size: 0.9em;
     margin-top: 15px;

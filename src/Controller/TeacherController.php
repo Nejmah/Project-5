@@ -3,13 +3,11 @@
 namespace App\Controller;
 
 use App\Entity\User;
-use App\Form\UserType;
 use App\Entity\Classroom;
+use App\Entity\Candidature;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class TeacherController extends AbstractController
 {
@@ -19,7 +17,6 @@ class TeacherController extends AbstractController
     public function dashboard()
     {
         $repo = $this->getDoctrine()->getRepository(User::class);
-
         $classroom = $this->getUser()->getClassroom();
 
         // $users = $this->getUser()->getClassroom()->getUsers();
@@ -33,56 +30,60 @@ class TeacherController extends AbstractController
     }
 
     /**
-     * @Route("/teacher/new/user/{classroomId}", name="add_user")
+     * @Route("/teacher/candidatures", name="app_teacher_candidatures")
      */
-    public function createUser($classroomId, Request $request, EntityManagerInterface $manager, UserPasswordEncoderInterface $passwordEncoder)
+    public function candidatures()
     {
-        $user = new User();
+        $repo = $this->getDoctrine()->getRepository(User::class);
+        $classroom = $this->getUser()->getClassroom();
+        $candidatures = $this->getUser()->getClassroom()->getCandidatures();
 
-        $repo = $this->getDoctrine()->getRepository(Classroom::class);
-        $classroom = $repo->find($classroomId);
-
-        $form = $this->createForm(UserType::class, $user);
-        $form->handleRequest($request);
-
-        if($form->isSubmitted() && $form->isValid()) {
-            $user->setClassroom($classroom);
-            $user->setPassword($passwordEncoder->encodePassword($user, 'élève'));
-            $manager->persist($user);
-            $manager->flush();
-        
-            $this->addFlash(
-                'add-user',
-                'L\'élève ' . $user->getUsername() . ' a été ajouté(e).'
-            );
-
-            // Redirection vers l'espace administration
-            return $this->redirectToRoute('app_teacher');
-        }
-
-        return $this->render('teacher/addUser.html.twig', [
-            'formUser' => $form->createView()
+        return $this->render('teacher/candidatures.html.twig', [
+            'classroom' => $classroom,
+            'candidatures' => $candidatures
         ]);
     }
 
     /**
-     * @Route("/teacher/delete/user/{id}", name="delete_user")
+     * @Route("/teacher/candidatures/validate/{id}", name="app_validate_candidature")
      */
-    public function deleteUser($id, EntityManagerInterface $manager)
+    public function validate($id, EntityManagerInterface $manager)
     {
+        $repo = $this->getDoctrine()->getRepository(Candidature::class);
+        $candidature = $repo->find($id);
 
-        $repo = $this->getDoctrine()->getRepository(User::class);
-        $user = $repo->find($id);
+        $candidatureFirstname = $candidature->getFirstname();
+        $candidatureLastname = $candidature->getLastname();
 
-        $userName = $user->getUsername();
-        $userClassroom = $user->getClassroom()->getName();
-
-        $manager->remove($user);
+        $candidature->setIsValid(true);
+        $manager->persist($candidature);
         $manager->flush();
 
         $this->addFlash(
-            'delete-user',
-            "$userName a été supprimé(e) de la classe de $userClassroom."
+            'validate-candidature',
+            "La candidature de $candidatureFirstname $candidatureLastname a été validée."
+        );
+
+        return $this->redirectToRoute('app_teacher');
+    }
+
+    /**
+     * @Route("/teacher/candidatures/delete/{id}", name="app_delete_candidature")
+     */
+    public function delete($id, EntityManagerInterface $manager)
+    {
+        $repo = $this->getDoctrine()->getRepository(Candidature::class);
+        $candidature = $repo->find($id);
+
+        $candidatureFirstname = $candidature->getFirstname();
+        $candidatureLastname = $candidature->getLastname();
+
+        $manager->remove($candidature);
+        $manager->flush();
+
+        $this->addFlash(
+            'delete-candidature',
+            "La candidature de $candidatureFirstname $candidatureLastname a été supprimé(e)."
         );
 
         return $this->redirectToRoute('app_teacher');

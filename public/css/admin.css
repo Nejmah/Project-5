@@ -56,23 +56,27 @@ li {
     font-size: 1.2em;
 }
 
-.schools-table {
+.schools-table,
+.candidatures-table {
     display: flex;
     background-color: rgba(255, 255, 255, 0.5);
     margin-bottom: 20px;
     position: relative;
 }
 
-.schools-table:hover {
+.schools-table:hover,
+.candidatures-table:hover {
     background-color: rgba(255, 255, 255, 0.3);
 }
 
 .schools-table p,
+.candidatures-table p,
 .schools-table a {
     font-size: 1.2em;
 }
 
-.schools-table p {
+.schools-table p,
+.candidatures-table p {
     padding: 15px 15px 15px 25px;
     margin-bottom: 0;
 }
@@ -95,21 +99,32 @@ li {
     list-style-type: initial;
 }
 
-.school-buttons {
+.school-buttons,
+.candidature-buttons {
     position: absolute;
     right: 20px;
-    top: 15px;
 }
 
-.school-buttons a {
+.school-buttons {
+    top: 17px;
+}
+
+.candidature-buttons {
+    top: 13px;
+}
+
+.school-buttons a,
+.candidature-buttons a {
     font-size: 1em;
 }
 
-.school-buttons a:not(:last-child) {
+.school-buttons a:not(:last-child),
+.candidature-buttons a:not(:last-child) {
     margin-right: 15px;
 }
 
-.school-buttons .add-classroom-button {
+.school-buttons .add-classroom-button,
+.candidature-buttons .validate-candidature-button {
     color: rgb(50, 52, 57);
     background-color: rgb(255, 253, 148);
     border: rgb(255, 253, 148);
@@ -117,7 +132,8 @@ li {
     transition: transform .2s;
 }
 
-.school-buttons .add-classroom-button:hover {
+.school-buttons .add-classroom-button:hover,
+.candidature-buttons .validate-candidature-button:hover {
     background-color: rgb(253, 253, 79);
     transform: scale(1.1);
 }
@@ -134,16 +150,23 @@ li {
     transform: scale(1.1);
 }
 
-.school-buttons .delete-school-button {
+.school-buttons .delete-school-button,
+.candidature-buttons .delete-candidature-button {
     background-color: rgba(50, 52, 57, 0.8);
     border: rgb(50, 52, 57);
     /* Animation */
     transition: transform .2s;
 }
 
-.school-buttons .delete-school-button:hover {
+.school-buttons .delete-school-button:hover,
+.candidature-buttons .delete-candidature-button:hover {
     background-color: rgb(50, 52, 57);
     transform: scale(1.1);
+}
+
+.delete-school-button,
+.delete-candidature-button {
+    font-size: 23px;
 }
 
 .school-name {
@@ -167,10 +190,6 @@ li {
 
 .modal {
     color: black;
-}
-
-.delete-school-button {
-    font-size: 23px;
 }
 
 .modal-title {
@@ -217,13 +236,15 @@ li {
 
 /* Teacher-page */
 
-.teacher-dashboard h1 {
+.teacher-dashboard h1,
+.teacher-candidatures h1 {
     font-size: 3em;
     color: rgb(255, 253, 148);
     margin: 45px 0 40px 0;
 }
 
-.teacher-dashboard h2 {
+.teacher-dashboard h2,
+.teacher-candidatures h2 {
     color: white;
     margin: 0 0 60px 0;
 }
@@ -256,44 +277,7 @@ li {
     padding: 15px;
 }
 
-/* .teacher-dashboard table {
-    border-collapse: collapse;
-} */
-
-/* .teacher-page .table-secondary,
-.teacher-page .table-secondary>th,
-.teacher-page .table-secondary>td {
-    background-color: darkslategrey !important;
-} */
-
-/* .teacher-dashboard td,
-.teacher-dashboard th {
-    padding: 10px;
-} */
-
-/* .teacher-dashboard .delete-user-button {
-    font-size: 0.9em;
-    padding: 0 5px 0 5px;
-} */
-
-/* .teacher-dashboard .add-teacher-button {
-    text-align: center;
+/* .teacher-candidatures h1 {
+    color: white;
     margin-bottom: 40px;
-} */
-
-/* .teacher-dashboard .add-teacher-button .btn-success {
-    color: rgb(50, 52, 57);
-    background-color: rgb(255, 253, 148);
-    border: rgb(255, 253, 148);
-} */
-
-/* .teacher-dashboard .add-teacher-button a {
-    font-size: 1.2em;
-} */
-
-/* .teacher-dashboard img {
-    position: absolute;
-    right: 40px;
-    bottom: 40px;
-    width: 20%;
 } */
