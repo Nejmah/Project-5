@@ -15,13 +15,28 @@
         <p>{{ candidature.content }}</p>
     </div>
 
-    <h2>Commentaires :</h2>
     <div class="comments">
-        <p>Super !</p>
+        <h3>Commentaires</h3>
+        {% for comment in comments %}
+            <p>Publié le , par {{ comment.author }}</p>
+            <p>{{ comment.content }}</p>
+        {% endfor %}
     </div>
 
     <div class="add-comment">
         <h3>Ajouter un commentaire</h3>
+        {{ form_start(formComment) }}
+
+            {{ form_widget(formComment.author, { 'attr': {'placeholder': 'Ton prénom'}}) }}
+
+            {{ form_widget(formComment.content, { 'attr': {'placeholder': 'Ton commentaire'}}) }}
+
+            <div class="submit-button">
+                <button type="submit" class="btn btn-success">Publier</button>
+            </div>
+
+        {{ form_end(formComment) }}
+
     </div>
 </div>
 

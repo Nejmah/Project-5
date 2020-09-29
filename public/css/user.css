@@ -286,11 +286,29 @@ body {
     padding: 20px;
 }
 
+.candidature-page .comments,
 .candidature-page .add-comment {
     margin-top: 40px;
 }
 
+.candidature-page .comments h3,
 .candidature-page .add-comment h3 {
     background-color: rgb(87, 185, 158);
     padding: 10px;
+    margin-bottom: 0;
+}
+
+#comment_author,
+#comment_content {
+    font-size: 0.9em;
+    border-radius: 0;
+}
+
+.submit-button {
+    text-align: center;
+}
+
+.candidature-page .btn-success {
+    font-size: 0.9em;
+    margin-top: 15px
 }

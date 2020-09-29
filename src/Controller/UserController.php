@@ -5,9 +5,11 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Entity\School;
 use DateTimeInterface;
-use App\Form\LoginType;
+use App\Entity\Comment;
 
+use App\Form\LoginType;
 use App\Entity\Classroom;
+use App\Form\CommentType;
 use App\Entity\Candidature;
 use App\Form\CandidatureType;
 use Doctrine\ORM\EntityManagerInterface;
@@ -142,15 +144,45 @@ class UserController extends AbstractController
     /**
      * @Route("/candidature/{id}", name="app_candidature")
      */
-    public function show($id)
+    public function show($id, Request $request, EntityManagerInterface $manager)
     {
+        $comment = new Comment();
+
         $repo = $this->getDoctrine()->getRepository(Candidature::class);
         $candidature = $repo->find($id);
         $classroom = $candidature->getClassroom();
+        $comments = $candidature->getComments();
+
+        $form = $this->createForm(CommentType::class, $comment);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()) {
+            $comment->setCandidature($candidature);
+            $date = new \DateTime();
+            $comment->setCreatedAt($date);
+
+            $manager->persist($comment);
+            $manager->flush();
+
+            // Redirection vers l'espace administration
+            return $this->redirectToRoute('app_candidature', [
+                'id' => $id
+            ]);
+        }
 
         return $this->render('user/candidature.html.twig', [
+            'formComment' => $form->createView(),
             'candidature' => $candidature,
-            'classroom' => $classroom
+            'classroom' => $classroom,
+            'comments' => $comments
         ]);
+    }
+
+    /**
+     * @Route("/comment/new/{candidatureId}", name="app_add_comment")
+     */
+    public function addComment()
+    {
+
     }
 }
