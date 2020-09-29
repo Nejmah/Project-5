@@ -1,0 +1,28 @@
+{% extends '/user/base.html.twig' %}
+
+{% block body %}
+
+<div class="candidature-page">
+    <h1>{{ candidature.firstname }} {{ candidature.lastname }}</h1>
+    <h3> Classe de {{ classroom.name }}</h3>
+
+    <div class="image">
+        <img src="{{ asset('uploads/images/' ~ candidature.imageFilename)}}">
+    </div>
+
+    <h2>Mon programme :</h2>
+    <div class="programm">
+        <p>{{ candidature.content }}</p>
+    </div>
+
+    <h2>Commentaires :</h2>
+    <div class="comments">
+        <p>Super !</p>
+    </div>
+
+    <div class="add-comment">
+        <h3>Ajouter un commentaire</h3>
+    </div>
+</div>
+
+{% endblock %}

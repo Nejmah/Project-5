@@ -277,7 +277,11 @@ li {
     padding: 15px;
 }
 
-/* .teacher-candidatures h1 {
-    color: white;
-    margin-bottom: 40px;
-} */
+.teacher-candidatures .add-candidature {
+    text-align: center;
+}
+
+.teacher-candidatures .btn-success {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}

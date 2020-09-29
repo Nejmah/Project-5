@@ -84,6 +84,8 @@ class UserController extends AbstractController
 
         $repo = $this->getDoctrine()->getRepository(Classroom::class);
         $classroom = $repo->find($classroomId);
+        
+        $user = $this->getUser();
 
         $form = $this->createForm(CandidatureType::class, $candidature);
         $form->handleRequest($request);
@@ -112,7 +114,13 @@ class UserController extends AbstractController
             $candidature->setClassroom($classroom);
             $date = new \DateTime();
             $candidature->setCreatedAt($date);
-            $candidature->setIsValid(false);
+
+            if (!empty($user) && $user->isTeacher()) {
+                $candidature->setIsValid(true);
+            }
+            else {
+                $candidature->setIsValid(false);
+            }
 
             $manager->persist($candidature);
             $manager->flush();
@@ -128,6 +136,21 @@ class UserController extends AbstractController
 
         return $this->render('user/create.html.twig', [
             'formCandidature' => $form->createView()
+        ]);
+    }
+
+    /**
+     * @Route("/candidature/{id}", name="app_candidature")
+     */
+    public function show($id)
+    {
+        $repo = $this->getDoctrine()->getRepository(Candidature::class);
+        $candidature = $repo->find($id);
+        $classroom = $candidature->getClassroom();
+
+        return $this->render('user/candidature.html.twig', [
+            'candidature' => $candidature,
+            'classroom' => $classroom
         ]);
     }
 }

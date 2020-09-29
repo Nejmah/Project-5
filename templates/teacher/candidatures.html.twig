@@ -3,14 +3,31 @@
 {% block body %}
 
     <div class="teacher-candidatures">
-        <h1>Liste des candidatures de votre classe</h1>
-        <h2>Professeur : {{ classroom.user.username }}</h2>
+        <h1>Liste des candidatures</h1>
+        <h2>Classe : {{ classroom.name }}</br>
+            Professeur : {{ classroom.user.username }}</h2>
         
+        {# flashbags #}
+        {% for label, messages in app.flashes(['validate-candidature', 'delete-candidature']) %}
+            {% for message in messages %}
+                <div class="flash-message flash-{{ label }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+
+        <div class="add-candidature">
+            <a class="btn btn-success"
+                href="{{ path('app_create_candidature', {'classroomId': classroom.id}) }}">
+                Ajouter une candidature
+            </a>
+        </div>
+
         {% for candidature in candidatures %}
             <div class="candidatures-table">
                 <p>{{ candidature.firstname}} {{ candidature.lastname }}</p>
                 <div class="candidature-buttons">
-                    <a class="eye-link" href="">
+                    <a class="eye-link" href="{{ path('app_candidature', {'id': candidature.id}) }}">
                         <img class="eye-img" src="/img/eye.png" alt="eye">
                     </a>
                     {# <a class="btn btn-success show-candidature-button" 

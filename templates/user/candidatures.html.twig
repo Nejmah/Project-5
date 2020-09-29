@@ -5,17 +5,37 @@
 <div class="candidatures-page">
     <h1>La liste des candidats</h1>
 
-    {% for candidature in candidatures %}
-        <p>{{ candidature.firstname }}</p>
-        <img></img>
-    {% endfor %}
-
-    <div class="add-candidature-button">
-    <a class="btn btn-success" 
-        href="{{ path('app_create_candidature', {'classroomId': classroom.id}) }}">
-        Déposer une candidature
-    </a>
+    <div class="add-candidature-button text-center">
+        <a class="btn btn-success" 
+            href="{{ path('app_create_candidature', {'classroomId': classroom.id}) }}">
+            Déposer une candidature
+        </a>
     </div>
+
+    {% set validatedCandidatures = false %}
+
+    <div class="thumbnails">
+        {% for candidature in candidatures %}
+            {% if candidature.isValid %}
+                <div class="candidat text-center">
+                    <p>{{ candidature.firstname }}</p>
+                    <a href="{{ path('app_candidature', {'id': candidature.id}) }}">
+                        <img class="eye-img" src="/img/eye.png" alt="eye">
+                    </a> 
+                    {% set validatedCandidatures = true %}
+                </div>
+            {% endif %}
+        {% else %}
+            <p>Patience, il n'y a pas encore de candidat dans ta classe...</p>
+        {% endfor %}
+    </div>
+
+
+        {% if validatedCandidatures == false %}
+            <p>Patience, il n'y a pas encore de candidat dans ta classe...</p>
+        {% endif %}
+
+
 
 </div>
 

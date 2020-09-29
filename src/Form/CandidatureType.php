@@ -26,7 +26,7 @@ class CandidatureType extends AbstractType
                             'image/jpeg',
                             'image/png'
                         ],
-                        'mimeTypesMessage' => 'Format du fichier innvalide',
+                        'mimeTypesMessage' => 'Format du fichier invalide',
                     ])
                 ],
             ])

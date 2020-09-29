@@ -6,15 +6,6 @@
         <h1>Bienvenue dans votre classe de {{ classroom.name }}</h1>
         <h2>Professeur : {{ classroom.user.username }}</h2>
 
-        {# flashbags #}
-        {% for label, messages in app.flashes(['validate-candidature', 'delete-candidature']) %}
-            {% for message in messages %}
-                <div class="flash-message flash-{{ label }}">
-                    {{ message }}
-                </div>
-            {% endfor %}
-        {% endfor %}
-
         <div class="teacher-buttons">
             <p>
                 <a class="btn btn-success"
@@ -29,7 +20,7 @@
             <p>
                 <a class="btn btn-success"
                     href="">
-                    Ajouter une candidature
+                    commentaires à vérifier
                 </a>
             </p>
             <p>

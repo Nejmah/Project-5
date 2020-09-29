@@ -64,7 +64,7 @@ class TeacherController extends AbstractController
             "La candidature de $candidatureFirstname $candidatureLastname a été validée."
         );
 
-        return $this->redirectToRoute('app_teacher');
+        return $this->redirectToRoute('app_teacher_candidatures');
     }
 
     /**
@@ -86,6 +86,6 @@ class TeacherController extends AbstractController
             "La candidature de $candidatureFirstname $candidatureLastname a été supprimé(e)."
         );
 
-        return $this->redirectToRoute('app_teacher');
+        return $this->redirectToRoute('app_teacher_candidatures');
     }
 }
