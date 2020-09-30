@@ -18,8 +18,20 @@
     <div class="comments">
         <h3>Commentaires</h3>
         {% for comment in comments %}
-            <p>Publié le , par {{ comment.author }}</p>
-            <p>{{ comment.content }}</p>
+            <div class="comment">
+                <p class="title">Publié le {{ comment.createdAt|date("d/m/Y")}}, par <strong>{{ comment.author }}</strong></p>
+                <div class="content">
+                    <p>{{ comment.content }}</p>
+                    <div class="delete-comment-button">
+                        {% if user.isTeacher %}
+                            <a class="btn btn-secondary delete-comment-button" 
+                                href="{{ path('app_delete_comment', {'candidatureId': candidature.id, 'commentId': comment.id}) }}">
+                                Supprimer
+                            </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
         {% endfor %}
     </div>
 

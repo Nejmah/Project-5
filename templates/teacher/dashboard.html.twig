@@ -11,18 +11,24 @@
                 <a class="btn btn-success"
                     href="{{ path('app_teacher_candidatures') }}">
                     {% if classroom.candidatures|length > 1 %}
-                        {{ classroom.candidatures|length}} demandes de candidature
+                        {{ classroom.candidatures|length }} demandes de candidature
                     {% else %}
-                        {{ classroom.candidatures|length}} demande de candidature
+                        {{ classroom.candidatures|length }} demande de candidature
                     {% endif %}
                 </a>
             </p>
             <p>
                 <a class="btn btn-success"
-                    href="">
-                    commentaires à vérifier
+                    href="{{ path('app_create_candidature', {'classroomId': classroom.id}) }}">
+                    Ajouter une candidature
                 </a>
             </p>
+            {# <p>
+                <a class="btn btn-success"
+                    href="{{ path('app_teacher_comments') }}">
+                    commentaires à vérifier
+                </a>
+            </p> #}
             <p>
                 <a class="btn btn-success"
                     href="">

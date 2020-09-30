@@ -283,6 +283,9 @@ body {
 .candidature-page .programm p,
 .candidature-page .comments p {
     color: black;
+}
+
+.candidature-page .programm p {
     padding: 20px;
 }
 
@@ -298,6 +301,40 @@ body {
     margin-bottom: 0;
 }
 
+.candidature-page .comment {
+    position: relative;
+}
+
+.candidature-page .comments .title {
+    padding: 20px 0 0 40px;
+}
+
+.candidature-page .comments .content {
+    padding: 0 40px 0 80px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.candidature-page .comments .comment:last-child .content {
+    padding-bottom: 20px;
+}
+
+.candidature-page .comment:not(:first-of-type):before {
+    content: "";
+    border-bottom: 2px solid grey;
+    position: absolute;
+    left: 40px;
+    width: calc(100% - 80px);
+}
+
+.candidature-page .delete-comment-button {
+    font-size: 0.9em;
+}
+
+.candidature-page .comment:not(:last-child) .delete-comment-button {
+    margin-bottom: 10px;
+}
+
 #comment_author,
 #comment_content {
     font-size: 0.9em;
@@ -310,5 +347,5 @@ body {
 
 .candidature-page .btn-success {
     font-size: 0.9em;
-    margin-top: 15px
+    margin-top: 30px
 }

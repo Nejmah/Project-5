@@ -57,7 +57,8 @@ li {
 }
 
 .schools-table,
-.candidatures-table {
+.candidatures-table,
+.comments-table {
     display: flex;
     background-color: rgba(255, 255, 255, 0.5);
     margin-bottom: 20px;
@@ -65,23 +66,28 @@ li {
 }
 
 .schools-table:hover,
-.candidatures-table:hover {
+.candidatures-table:hover,
+.comments-table:hover {
     background-color: rgba(255, 255, 255, 0.3);
 }
 
 .schools-table p,
 .candidatures-table p,
-.schools-table a {
+.schools-table a,
+.comments-table p,
+.comments-table a {
     font-size: 1.2em;
 }
 
 .schools-table p,
-.candidatures-table p {
+.candidatures-table p,
+.comments-table p {
     padding: 15px 15px 15px 25px;
     margin-bottom: 0;
 }
 
-.school-name a {
+.school-name a,
+.comments-table a {
     color: white;
 }
 
@@ -138,14 +144,16 @@ li {
     transform: scale(1.1);
 }
 
-.school-buttons .add-teacher-button {
+.school-buttons .add-teacher-button,
+.candidatures-table .edit-candidature-button {
     background-color: rgb(106, 108, 111) !important;
     border: rgb(106, 108, 111) !important;
     /* Animation */
     transition: transform .2s;
 }
 
-.school-buttons .add-teacher-button:hover {
+.school-buttons .add-teacher-button:hover,
+.candidatures-table .edit-candidature-button:hover {
     background-color: rgb(81, 83, 87) !important;
     transform: scale(1.1);
 }
@@ -237,14 +245,16 @@ li {
 /* Teacher-page */
 
 .teacher-dashboard h1,
-.teacher-candidatures h1 {
+.teacher-candidatures h1,
+.teacher-comments h1 {
     font-size: 3em;
     color: rgb(255, 253, 148);
     margin: 45px 0 40px 0;
 }
 
 .teacher-dashboard h2,
-.teacher-candidatures h2 {
+.teacher-candidatures h2,
+.teacher-comments h2 {
     color: white;
     margin: 0 0 60px 0;
 }
@@ -277,11 +287,50 @@ li {
     padding: 15px;
 }
 
-.teacher-candidatures .add-candidature {
+/* .teacher-candidatures .add-candidature {
     text-align: center;
-}
+} */
 
-.teacher-candidatures .btn-success {
+/* .teacher-candidatures .btn-success {
     font-size: 1.2em;
     margin-bottom: 30px;
+} */
+
+.teacher-comments .comments-table {
+    display: flex;
+}
+
+.teacher-comments .total-comments {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+}
+
+.teacher-comments .content {
+    background-color: white;
+}
+
+.teacher-comments .content p {
+    color: black;
+    margin-bottom: 10px;
+}
+
+.teacher-comments .delete-comment-button {
+    background-color: rgba(50, 52, 57, 0.8);
+    border: rgb(50, 52, 57);
+}
+
+.teacher-comments .delete-comment-button:hover {
+    background-color: rgb(50, 52, 57);
+}
+
+.delete-comment-button {
+    font-size: 0.9em;
+    width: 10%;
+    position: absolute;
+    right: 20px;
+}
+
+.teacher-comments .content .line {
+    display: flex;
 }

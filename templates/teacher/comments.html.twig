@@ -1,0 +1,49 @@
+{% extends '/teacher/base.html.twig' %}
+
+{% block body %}
+
+    <div class="teacher-comments">
+        <h1>Liste des commentaires</h1>
+        <h2>Classe : {{ classroom.name }}</br>
+            Professeur : {{ classroom.user.username }}</h2>
+        
+        {% for candidature in candidatures %}
+
+            <div class="comments-table">
+                <p>Candidature : {{ candidature.firstname }} {{ candidature.lastname }}</p>
+                <div class="total-comments">
+                    {% if candidature.comments|length > 1 %}
+                        <a data-toggle="collapse" href="#comments{{candidature.id}}" role="button"
+                            aria-expanded="false" aria-controls="collapseExample">
+                            {{ candidature.comments|length }} commentaires
+                        </a>
+                    {% else %}
+                        <a data-toggle="collapse" href="#comments{{candidature.id}}" role="button"
+                            aria-expanded="false" aria-controls="collapseExample">
+                            {{ candidature.comments|length }} commentaire
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="content collapse" id="comments{{candidature.id}}">
+                <div class="card card-body">
+                    {% if candidature.comments|length > 1 %}
+                        {% for comment in candidature.comments %}
+                            <div class="line">
+                                <p>{{ comment.content }}</p>
+                                <button type="button" class="btn btn-secondary delete-comment-button">
+                                    Supprimer
+                                </button>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <p>Il n'y a pas de commentaires pour cette candidature.</p>
+                    {% endif %}
+                </div>
+            </div>
+
+        {% endfor %}
+
+    </div>
+
+{% endblock %}

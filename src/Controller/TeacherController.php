@@ -18,6 +18,7 @@ class TeacherController extends AbstractController
     {
         $repo = $this->getDoctrine()->getRepository(User::class);
         $classroom = $this->getUser()->getClassroom();
+        $candidatures = $classroom->getCandidatures();
 
         // $users = $this->getUser()->getClassroom()->getUsers();
         // foreach($users as $user) {
@@ -25,7 +26,8 @@ class TeacherController extends AbstractController
         // }
 
         return $this->render('teacher/dashboard.html.twig', [
-            'classroom' => $classroom
+            'classroom' => $classroom,
+            'candidatures' => $candidatures
         ]);
     }
 
@@ -36,7 +38,7 @@ class TeacherController extends AbstractController
     {
         $repo = $this->getDoctrine()->getRepository(User::class);
         $classroom = $this->getUser()->getClassroom();
-        $candidatures = $this->getUser()->getClassroom()->getCandidatures();
+        $candidatures = $classroom->getCandidatures();
 
         return $this->render('teacher/candidatures.html.twig', [
             'classroom' => $classroom,
@@ -88,4 +90,19 @@ class TeacherController extends AbstractController
 
         return $this->redirectToRoute('app_teacher_candidatures');
     }
+
+    // /**
+    //  * @Route("/teacher/comments", name="app_teacher_comments")
+    //  */
+    // public function comments()
+    // {
+    //     $repo = $this->getDoctrine()->getRepository(User::class);
+    //     $classroom = $this->getUser()->getClassroom();
+    //     $candidatures = $classroom->getCandidatures();
+
+    //     return $this->render('teacher/comments.html.twig', [
+    //         'classroom' => $classroom,
+    //         'candidatures' => $candidatures
+    //     ]);
+    // }
 }

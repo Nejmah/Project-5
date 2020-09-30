@@ -148,6 +148,9 @@ class UserController extends AbstractController
     {
         $comment = new Comment();
 
+        $repo = $this->getDoctrine()->getRepository(User::class);
+        $user = $this->getUser();
+
         $repo = $this->getDoctrine()->getRepository(Candidature::class);
         $candidature = $repo->find($id);
         $classroom = $candidature->getClassroom();
@@ -174,15 +177,32 @@ class UserController extends AbstractController
             'formComment' => $form->createView(),
             'candidature' => $candidature,
             'classroom' => $classroom,
-            'comments' => $comments
+            'comments' => $comments,
+            'user' => $user
         ]);
     }
 
     /**
-     * @Route("/comment/new/{candidatureId}", name="app_add_comment")
+     * @Route("/candidature/{candidatureId}/comment/delete/{commentId}", name="app_delete_comment")
      */
-    public function addComment()
+    public function deleteComment($candidatureId, $commentId, EntityManagerInterface $manager)
     {
+        $repo = $this->getDoctrine()->getRepository(Comment::class);
+        $comment = $repo->find($commentId);
 
-    }
+        $manager->remove($comment);
+        $manager->flush();
+
+        return $this->redirectToRoute('app_candidature', [
+            'id' => $candidatureId
+        ]);
+}
+
+    // /**
+    //  * @Route("/comment/new/{candidatureId}", name="app_add_comment")
+    //  */
+    // public function addComment()
+    // {
+
+    // }
 }
