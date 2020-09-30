@@ -185,6 +185,9 @@ body {
 .flip-card-back {
     background-color: rgb(246, 223, 183);
     transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 #candidature_firstname,
