@@ -13,7 +13,13 @@
         </div>
 
         {# flashbags #}
-        {% for label, messages in app.flashes(['add-school', 'add-classroom', 'add-teacher', 'delete-school']) %}
+        {% for label, messages in app.flashes([
+            'add-school', 
+            'add-classroom', 
+            'add-teacher', 
+            'delete-school', 
+            'delete-classroom'
+        ]) %}
             {% for message in messages %}
                 <div class="flash-message flash-{{ label }}">
                     {{ message }}
@@ -54,9 +60,15 @@
                     {% endif %}
 
                     {% for classroom in school.classroomsSorted %}
-                        <ul>
-                            <li>Classe de {{ classroom.name }} / {{ classroom.user.username}}</li>
-                        </ul>
+                        <div class="classrooms">
+                            <ul>
+                                <li>Classe de {{ classroom.name }} / {{ classroom.user.username}}</li>
+                            </ul>
+                            <a class="btn btn-success delete-classroom-button" 
+                                href="{{ path('delete_classroom', {'id': classroom.id}) }}">
+                                Supprimer
+                            </a>
+                        </div>
                     {% endfor %}
                 </div>
             </div>

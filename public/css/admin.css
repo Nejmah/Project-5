@@ -181,9 +181,13 @@ li {
     width: 30%;
 }
 
-.classrooms {
+.admin-dashboard .classrooms {
     display: flex;
-    margin-left: 70px;
+    justify-content: space-between;
+}
+
+.admin-dashboard .classrooms:not(:last-child) {
+    margin-bottom: 20px;
 }
 
 .flash-message {

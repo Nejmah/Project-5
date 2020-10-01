@@ -147,4 +147,23 @@ class AdminController extends AbstractController
             'school' => $school
         ]);
     }
+
+    /**
+     * @Route("/admin/delete/classroom/{id}", name="delete_classroom")
+     */
+    public function deleteClassroom($id, EntityManagerInterface $manager)
+    {
+        $repo = $this->getDoctrine()->getRepository(Classroom::class);
+        $classroom = $repo->find($id);
+
+        $manager->remove($classroom);
+        $manager->flush();
+
+        $this->addFlash(
+            'delete-classroom',
+            'La classe de ' . $classroom->getName() . ' a été supprimée de l\'école ' . $classroom->getSchool()->getName() . '.'
+        );
+
+        return $this->redirectToRoute('app_admin');
+    }
 }
