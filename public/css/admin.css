@@ -227,7 +227,7 @@ li {
 #classroom_name,
 #classroom_year,
 #classroom_user,
-#password_password {
+#user_password_password {
     font-size: 0.9em;
 }
 
@@ -241,6 +241,16 @@ li {
 .add-user-page .btn-success {
     font-size: 0.9em;
     margin-top: 15px
+}
+
+.add-classroom-page .classroom {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.add-classroom-page .classroom .form-group {
+    width: 48%;
 }
 
 /* Teacher-page */

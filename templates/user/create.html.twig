@@ -22,9 +22,15 @@
         {{ form_row(formCandidature.content, {'label': 'Ton programme :', 
         'attr': {'placeholder': 'Écris les principaux objectifs de ton programme.'}}) }}
 
-        <div class="submit-button">
-            <button type="submit" class="btn btn-success">J'enregistre ma candidature !</button>
-        </div>
+        {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+            <div class="submit-button">
+                <button type="submit" class="btn btn-success">J'enregistre les modifications</button>
+            </div>
+        {% else %}
+            <div class="submit-button">
+                <button type="submit" class="btn btn-success">J'enregistre ma candidature !</button>
+            </div>
+        {% endif %}
 
     {{ form_end(formCandidature) }}
 </div>

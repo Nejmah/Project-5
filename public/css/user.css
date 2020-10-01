@@ -122,7 +122,8 @@ body {
 
 .index-page .schools {
     display: flex;
-    justify-content: flex-start;
+    /* justify-content: flex-start; */
+    flex-wrap: wrap;
 }
 
 .index-page .candidat-img {
@@ -155,6 +156,7 @@ body {
     border: 1px solid #f1f1f1;
     perspective: 1000px;
     margin-right: 80px;
+    margin-bottom: 80px;
 }
 
 .flip-card-inner {

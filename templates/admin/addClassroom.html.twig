@@ -12,10 +12,12 @@
 
         {{ form_start(formClassroom) }}
 
-            {{ form_row(formClassroom.name, {'label': 'Classe :'}) }}
+            <div class="classroom">
+                {{ form_row(formClassroom.name, {'label': 'Classe :'}) }}
 
-            {{ form_row(formClassroom.year, {'label': 'Année scolaire :', 
-            'attr': {'placeholder': 'Entrez l\'année en cours au mois de septembre'}}) }}
+                {{ form_row(formClassroom.year, {'label': 'Année scolaire :', 
+                'attr': {'placeholder': 'Entrez l\'année en cours au mois de septembre'}}) }}
+            </div>
 
             {{ form_row(formClassroom.user, {'label': 'Professeur :'}) }}
 

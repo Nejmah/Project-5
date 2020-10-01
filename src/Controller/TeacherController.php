@@ -4,13 +4,15 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Entity\Classroom;
-use App\Form\PasswordType;
+// use App\Form\PasswordType;
 use App\Entity\Candidature;
 use App\Form\CandidatureType;
+use App\Form\UserPasswordType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class TeacherController extends AbstractController
 {
@@ -22,11 +24,6 @@ class TeacherController extends AbstractController
         $repo = $this->getDoctrine()->getRepository(User::class);
         $classroom = $this->getUser()->getClassroom();
         $candidatures = $classroom->getCandidatures();
-
-        // $users = $this->getUser()->getClassroom()->getUsers();
-        // foreach($users as $user) {
-        //     $user->getUsername();
-        // }
 
         return $this->render('teacher/dashboard.html.twig', [
             'classroom' => $classroom,
@@ -147,15 +144,19 @@ class TeacherController extends AbstractController
     /**
      * @Route("/teacher/password", name="app_change_password")
      */
-    public function change(Request $request)
+    public function change(Request $request, EntityManagerInterface $manager, UserPasswordEncoderInterface $passwordEncoder)
     {
         $repo = $this->getDoctrine()->getRepository(User::class);
         $user = $this->getUser();
 
-        $form = $this->createForm(PasswordType::class, $user);
+        $form = $this->createForm(UserPasswordType::class);
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()) {
+            $password = $form->get('password')->getData();
+            $user->setPassword($passwordEncoder->encodePassword($user, $password));
+
+            $manager->flush();
 
             $this->addFlash(
                 'update-password',
