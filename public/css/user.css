@@ -2,9 +2,6 @@ body {
     padding-top: 91px;
 }
 
-/* Login-page */
-
-
 /* Navbar */
 
 .bg-primary {
@@ -33,6 +30,13 @@ body {
 .login-button {
     position: absolute;
     right: 40px;
+}
+
+.back-button {
+    font-size: 0.9em;
+    position: absolute;
+    right: 30px;
+    top: 21px;
 }
 
 /* Home-page */

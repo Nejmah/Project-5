@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Entity\Classroom;
+use App\Form\PasswordType;
 use App\Entity\Candidature;
 use App\Form\CandidatureType;
 use Doctrine\ORM\EntityManagerInterface;
@@ -143,6 +144,33 @@ class TeacherController extends AbstractController
         ]);
     }
     
+    /**
+     * @Route("/teacher/password", name="app_change_password")
+     */
+    public function change(Request $request)
+    {
+        $repo = $this->getDoctrine()->getRepository(User::class);
+        $user = $this->getUser();
+
+        $form = $this->createForm(PasswordType::class, $user);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()) {
+
+            $this->addFlash(
+                'update-password',
+                'Votre nouveau mot de passe a bien été enregistré.'
+            );
+
+            // Redirection vers l'espace administration
+            return $this->redirectToRoute('app_teacher');
+        }
+
+        return $this->render('teacher/password.html.twig', [
+            'formPassword' => $form->createView()
+        ]);
+    }
+
     // /**
     //  * @Route("/teacher/comments", name="app_teacher_comments")
     //  */

@@ -153,7 +153,6 @@ class UserController extends AbstractController
 
         $repo = $this->getDoctrine()->getRepository(Candidature::class);
         $candidature = $repo->find($id);
-        $classroom = $candidature->getClassroom();
         $comments = $candidature->getComments();
 
         $form = $this->createForm(CommentType::class, $comment);
@@ -176,7 +175,6 @@ class UserController extends AbstractController
         return $this->render('user/candidature.html.twig', [
             'formComment' => $form->createView(),
             'candidature' => $candidature,
-            'classroom' => $classroom,
             'comments' => $comments,
             'user' => $user
         ]);
@@ -196,13 +194,5 @@ class UserController extends AbstractController
         return $this->redirectToRoute('app_candidature', [
             'id' => $candidatureId
         ]);
-}
-
-    // /**
-    //  * @Route("/comment/new/{candidatureId}", name="app_add_comment")
-    //  */
-    // public function addComment()
-    // {
-
-    // }
+    }
 }

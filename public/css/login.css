@@ -2,12 +2,13 @@ h2 {
     text-align: center;
     color: rgb(87, 185, 158);
     font-size: 3em;
+    margin: 45px 0 40px 0;
 }
 
 .login-page {
-    margin-top: 50vh;
+    /* margin-top: 50vh; */
     /* poussé de la moitié de hauteur de viewport */
-    transform: translateY(-50%);
+    /* transform: translateY(-50%); */
     /* tiré de la moitié de sa propre hauteur */
 }
 
@@ -34,4 +35,12 @@ label {
 .btn-success {
     font-size: 0.9em;
     margin-top: 30px
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
 }

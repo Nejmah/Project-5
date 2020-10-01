@@ -4,7 +4,7 @@
 
 <div class="candidature-page">
     <h1>{{ candidature.firstname }} {{ candidature.lastname }}</h1>
-    <h3> Classe de {{ classroom.name }}</h3>
+    <h3> Classe de {{ candidature.classroom.name }}</h3>
 
     <div class="image">
         <img src="{{ asset('uploads/images/' ~ candidature.imageFilename)}}">
@@ -23,7 +23,7 @@
                 <div class="content">
                     <p>{{ comment.content }}</p>
                     <div class="delete-comment-button">
-                        {% if user.isTeacher %}
+                        {% if user is not null and user.isTeacher %}
                             <a class="btn btn-secondary delete-comment-button" 
                                 href="{{ path('app_delete_comment', {'candidatureId': candidature.id, 'commentId': comment.id}) }}">
                                 Supprimer

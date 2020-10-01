@@ -226,7 +226,8 @@ li {
 #user_username,
 #classroom_name,
 #classroom_year,
-#classroom_user {
+#classroom_user,
+#password_password {
     font-size: 0.9em;
 }
 
@@ -246,9 +247,10 @@ li {
 
 .teacher-dashboard h1,
 .teacher-candidatures h1,
-.teacher-comments h1 {
-    font-size: 3em;
+.teacher-comments h1,
+.teacher-password h1 {
     color: rgb(255, 253, 148);
+    font-size: 3em;
     margin: 45px 0 40px 0;
 }
 
@@ -333,4 +335,21 @@ li {
 
 .teacher-comments .content .line {
     display: flex;
+}
+
+/* .teacher-password h1 {
+    color: rgb(87, 185, 158);
+    font-size: 3em;
+    margin: 45px 0 40px 0;
+} */
+
+.teacher-password .btn-success {
+    font-size: 0.9em;
+    margin-top: 15px;
+}
+
+.teacher-password form {
+    width: 50%;
+    margin: auto;
+    margin-top: 30px;
 }

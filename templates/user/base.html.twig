@@ -23,9 +23,16 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ path('app_candidatures_index') }}">Candidatures</a>
                 </li>
-                <a class="login-button" href="{{ path('app_login') }}">
-                    <img src="/img/login.png" alt="login"></img>
-                </a>
+                {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                    <a class="btn btn-success back-button" href="{{ path('app_teacher') }}">
+                        Mon espace
+                    </a>
+                {% else %}
+                    <a class="login-button" href="{{ path('app_login') }}">
+                        <img src="/img/login.png" alt="login"></img>
+                    </a>
+                {% endif %}
+
             </ul>
         </div>
     </nav>
