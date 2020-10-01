@@ -7,19 +7,13 @@
 
         <div class="add-school-button">
             <a class="btn btn-success" 
-                href="{{ path('add_school') }}">
+                href="{{ path('app_admin_createschool') }}">
                 Ajouter une école
             </a>
         </div>
 
         {# flashbags #}
-        {% for label, messages in app.flashes([
-            'add-school', 
-            'add-classroom', 
-            'add-teacher', 
-            'delete-school', 
-            'delete-classroom'
-        ]) %}
+        {% for label, messages in app.flashes(['add-school', 'add-classroom', 'add-teacher', 'delete-school', 'delete-classroom']) %}
             {% for message in messages %}
                 <div class="flash-message flash-{{ label }}">
                     {{ message }}
@@ -38,16 +32,16 @@
                 </div>
                 <div class="school-buttons">
                     <a class="btn btn-success add-teacher-button" 
-                        href="{{ path('add_teacher', {'schoolId': school.id}) }}">
+                        href="{{ path('app_admin_createteacher', {'schoolId': school.id}) }}">
                         Ajouter un prof
                     </a>
                     <a class="btn btn-secondary add-classroom-button" 
-                        href="{{ path('add_classroom', {'schoolId': school.id}) }}">
+                        href="{{ path('app_admin_createclassroom', {'schoolId': school.id}) }}">
                         Ajouter une classe
                     </a>
                     <button type="button" class="btn btn-secondary delete-school-button" 
                         data-toggle="modal" data-target="#schoolDeleteModal" 
-                        data-delete-url="{{ path('delete_school', {'id': school.id}) }}"
+                        data-delete-url="{{ path('app_admin_deleteschool', {'id': school.id}) }}"
                         data-delete-name="{{ school.name }}">
                         Supprimer l'école
                     </button>
@@ -65,7 +59,7 @@
                                 <li>Classe de {{ classroom.name }} / {{ classroom.user.username}}</li>
                             </ul>
                             <a class="btn btn-success delete-classroom-button" 
-                                href="{{ path('delete_classroom', {'id': classroom.id}) }}">
+                                href="{{ path('app_admin_deleteclassroom', {'id': classroom.id}) }}">
                                 Supprimer
                             </a>
                         </div>

@@ -6,7 +6,7 @@
 
 {% block navigation %}
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
-        <a class="navbar-brand" href="{{ path('app_home') }}">Déléguéo</a>
+        <a class="navbar-brand" href="{{ path('app_user_home') }}">Déléguéo</a>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -15,20 +15,20 @@
         <div class="collapse navbar-collapse" id="navbarColor01">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ path('app_about') }}">Rôle du délégué</a>
+                    <a class="nav-link" href="{{ path('app_user_about') }}">Rôle du délégué</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ path('app_calendar') }}">Calendrier des élections</a>
+                    <a class="nav-link" href="{{ path('app_user_calendar') }}">Calendrier des élections</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ path('app_candidatures_index') }}">Candidatures</a>
+                    <a class="nav-link" href="{{ path('app_candidature_dashboard') }}">Candidatures</a>
                 </li>
                 {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-                    <a class="btn btn-success back-button" href="{{ path('app_teacher') }}">
+                    <a class="btn btn-success back-button" href="{{ path('app_teacher_dashboard') }}">
                         Mon espace
                     </a>
                 {% else %}
-                    <a class="login-button" href="{{ path('app_login') }}">
+                    <a class="login-button" href="{{ path('app_security_login') }}">
                         <img src="/img/login.png" alt="login"></img>
                     </a>
                 {% endif %}

@@ -23,7 +23,7 @@
                         {% for classroom in school.classroomsSorted %}
                             <div class="classrooms">
                                 <p>
-                                    <a href="{{ path('app_candidatures_list', {'classroomId': classroom.id}) }}">Classe de {{ classroom.name }}</a>
+                                    <a href="{{ path('app_candidature_index', {'classroomId': classroom.id}) }}">Classe de {{ classroom.name }}</a>
                                 </p>
                             </div>
                         {% endfor %}

@@ -27,7 +27,7 @@
             <div class="candidatures-table">
                 <p>{{ candidature.firstname}} {{ candidature.lastname }}</p>
                 <div class="candidature-buttons">
-                    <a class="eye-link" href="{{ path('app_candidature', {'id': candidature.id}) }}">
+                    <a class="eye-link" href="{{ path('app_candidature_show', {'id': candidature.id}) }}">
                         <img class="eye-img" src="/img/eye.png" alt="eye">
                     </a>
                     {# <a class="btn btn-success show-candidature-button" 
@@ -35,18 +35,18 @@
                         Voir
                     </a> #}
                     <a class="btn btn-success edit-candidature-button" 
-                        href="{{ path('app_edit_candidature', {'id': candidature.id}) }}">
+                        href="{{ path('app_candidature_edit', {'id': candidature.id}) }}">
                         Modifier
                     </a>
                     {% if candidature.isValid == false %}
                         <a class="btn btn-secondary validate-candidature-button" 
-                            href="{{ path('app_validate_candidature', {'id': candidature.id}) }}">
+                            href="{{ path('app_candidature_validate', {'id': candidature.id}) }}">
                             Valider
                         </a>
                     {% endif %}
                     <button type="button" class="btn btn-secondary delete-candidature-button" 
                         data-toggle="modal" data-target="#candidatureDeleteModal" 
-                        data-delete-url="{{ path('app_delete_candidature', {'id': candidature.id}) }}"
+                        data-delete-url="{{ path('app_candidature_delete', {'id': candidature.id}) }}"
                         data-delete-name="{{ candidature.firstname }} {{ candidature.lastname }}">
                         Supprimer
                     </button>

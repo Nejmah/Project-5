@@ -10,6 +10,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 
 class ClassroomType extends AbstractType
 {
@@ -36,7 +37,9 @@ class ClassroomType extends AbstractType
                 'choice_label' => 'username',
                 'placeholder' => 'Choisissez un professeur'
             ])
-            ->add('year')
+            ->add('year', IntegerType::class, array(
+                'attr' => array('min' => 2020, 'max' => 2021)
+        ))
         ;
     }
 

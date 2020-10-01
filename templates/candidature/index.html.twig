@@ -7,7 +7,7 @@
 
     <div class="add-candidature-button text-center">
         <a class="btn btn-success" 
-            href="{{ path('app_create_candidature', {'classroomId': classroom.id}) }}">
+            href="{{ path('app_candidature_create', {'classroomId': classroom.id}) }}">
             Déposer une candidature
         </a>
     </div>
@@ -19,7 +19,7 @@
             {% if candidature.isValid %}
                 <div class="candidat text-center">
                     <p>{{ candidature.firstname }}</p>
-                    <a href="{{ path('app_candidature', {'id': candidature.id}) }}">
+                    <a href="{{ path('app_candidature_show', {'id': candidature.id}) }}">
                         <img class="eye-img" src="/img/eye.png" alt="eye">
                     </a> 
                     {% set validatedCandidatures = true %}

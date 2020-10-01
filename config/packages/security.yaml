@@ -27,7 +27,7 @@ security:
                 authenticators:
                     - App\Security\LoginFormAuthenticator
             logout:
-                target: app_home
+                target: app_user_home
                 # where to redirect after logout
                 # target: app_any_route
 

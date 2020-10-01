@@ -36,7 +36,7 @@ class Classroom
     private $school;
 
     /**
-     * @ORM\OneToOne(targetEntity=User::class, mappedBy="classroom", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=User::class, mappedBy="classroom", orphanRemoval=true)
      */
     private $user;
 

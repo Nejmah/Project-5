@@ -4,12 +4,12 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Entity\School;
-use App\Form\UserType;
-use App\Form\SchoolType;
 use App\Entity\Classroom;
 
 use App\Form\TeacherType;
+use App\Form\SchoolType;
 use App\Form\ClassroomType;
+
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -19,7 +19,7 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 class AdminController extends AbstractController
 {
     /**
-     * @Route("/admin", name="app_admin")
+     * @Route("/admin")
      */
     public function dashboard()
     {
@@ -32,7 +32,7 @@ class AdminController extends AbstractController
     }
 
     /**
-     * @Route("/admin/new/school", name="add_school")
+     * @Route("/admin/new/school")
      */
     public function createSchool(Request $request, EntityManagerInterface $manager)
     {
@@ -51,7 +51,7 @@ class AdminController extends AbstractController
             );
 
             // Redirection vers l'espace administration
-            return $this->redirectToRoute('app_admin');
+            return $this->redirectToRoute('app_admin_dashboard');
         }
 
         return $this->render('admin/addSchool.html.twig', [
@@ -60,7 +60,7 @@ class AdminController extends AbstractController
     }
 
     /**
-     * @Route("/admin/delete/school/{id}", name="delete_school")
+     * @Route("/admin/delete/school/{id}")
      */
     public function deleteSchool($id, EntityManagerInterface $manager)
     {
@@ -75,11 +75,11 @@ class AdminController extends AbstractController
             'L\'école ' . $school->getName() . ' a été supprimée.'
         );
 
-        return $this->redirectToRoute('app_admin');
+        return $this->redirectToRoute('app_admin_dashboard');
     }
 
     /**
-     * @Route("/admin/new/teacher/{schoolId}", name="add_teacher")
+     * @Route("/admin/new/teacher/{schoolId}")
      */
     public function createTeacher($schoolId, Request $request, EntityManagerInterface $manager, UserPasswordEncoderInterface $passwordEncoder)
     {
@@ -105,7 +105,7 @@ class AdminController extends AbstractController
             );
 
             // Redirection vers l'espace administration
-            return $this->redirectToRoute('app_admin');
+            return $this->redirectToRoute('app_admin_dashboard');
         }
 
         return $this->render('admin/addTeacher.html.twig', [
@@ -115,7 +115,7 @@ class AdminController extends AbstractController
     }
 
     /**
-     * @Route("/admin/new/classroom/{schoolId}", name="add_classroom")
+     * @Route("/admin/new/classroom/{schoolId}")
      */
     public function createClassroom($schoolId, Request $request, EntityManagerInterface $manager)
     {
@@ -139,7 +139,7 @@ class AdminController extends AbstractController
             );
 
             // Redirection vers l'espace administration
-            return $this->redirectToRoute('app_admin');
+            return $this->redirectToRoute('app_admin_dashboard');
         }
 
         return $this->render('admin/addClassroom.html.twig', [
@@ -149,7 +149,7 @@ class AdminController extends AbstractController
     }
 
     /**
-     * @Route("/admin/delete/classroom/{id}", name="delete_classroom")
+     * @Route("/admin/delete/classroom/{id}")
      */
     public function deleteClassroom($id, EntityManagerInterface $manager)
     {
@@ -164,6 +164,6 @@ class AdminController extends AbstractController
             'La classe de ' . $classroom->getName() . ' a été supprimée de l\'école ' . $classroom->getSchool()->getName() . '.'
         );
 
-        return $this->redirectToRoute('app_admin');
+        return $this->redirectToRoute('app_admin_dashboard');
     }
 }
