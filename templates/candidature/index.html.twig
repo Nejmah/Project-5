@@ -12,8 +12,6 @@
         </a>
     </div>
 
-    {% set validatedCandidatures = false %}
-
     <div class="thumbnails">
         {% for candidature in candidatures %}
             {% if candidature.isValid %}
@@ -22,21 +20,14 @@
                     <a href="{{ path('app_candidature_show', {'id': candidature.id}) }}">
                         <img class="eye-img" src="/img/eye.png" alt="eye">
                     </a> 
-                    {% set validatedCandidatures = true %}
                 </div>
+            {% elseif not candidature.isValid %}
+                <p>Patience, il n'y a pas encore de candidat dans ta classe...</p>
             {% endif %}
-        {% else %}
-            <p>Patience, il n'y a pas encore de candidat dans ta classe...</p>
+            {% else %}
+                <p>Patience, il n'y a pas encore de candidat dans ta classe...</p>
         {% endfor %}
     </div>
-
-
-        {% if validatedCandidatures == false %}
-            <p>Patience, il n'y a pas encore de candidat dans ta classe...</p>
-        {% endif %}
-
-
-
 </div>
 
 {% endblock %}

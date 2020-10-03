@@ -11,6 +11,7 @@ use App\Form\CommentType;
 use App\Entity\Candidature;
 use App\Form\CandidatureType;
 
+use App\Service\UploadService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -92,7 +93,7 @@ class CandidatureController extends AbstractController
     /**
      * @Route("/candidature/create/{classroomId}")
      */
-    public function create($classroomId, Request $request, EntityManagerInterface $manager)
+    public function create($classroomId, Request $request, EntityManagerInterface $manager, UploadService $uploadService)
     {
         $candidature = new Candidature();
 
@@ -105,26 +106,10 @@ class CandidatureController extends AbstractController
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()) {
-            /** @var UploadedFile $imageFile */
             $imageFile = $form->get('image')->getData();
+            $newFilename = $uploadService->uploadImage($imageFile);
 
-            if ($imageFile) {
-                $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
-                $safeFilename = transliterator_transliterate('Any-Latin; Latin-ASCII; [^A-Za-z0-9_] remove; Lower()', $originalFilename);
-                $newFilename = $safeFilename.'-'.uniqid().'.'.$imageFile->guessExtension();
-
-                try {
-                    $imageFile->move(
-                        $this->getParameter('images_directory'),
-                        $newFilename
-                    );
-                } catch (FileException $e) {
-                    // ... handle exception if something happens during file upload
-                }
-
-                $candidature->setImageFilename($newFilename);
-            }
-
+            $candidature->setImageFilename($newFilename);
             $candidature->setClassroom($classroom);
             $date = new \DateTime();
             $candidature->setCreatedAt($date);
@@ -180,7 +165,7 @@ class CandidatureController extends AbstractController
         /**
      * @Route("candidature/edit/{id}")
      */
-    public function edit($id, Request $request, EntityManagerInterface $manager)
+    public function edit($id, Request $request, EntityManagerInterface $manager, UploadService $uploadService)
     {
         $repo = $this->getDoctrine()->getRepository(Candidature::class);
         $candidature = $repo->find($id);
@@ -189,26 +174,10 @@ class CandidatureController extends AbstractController
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()) {
-            /** @var UploadedFile $imageFile */
             $imageFile = $form->get('image')->getData();
+            $newFilename = $uploadService->uploadImage($imageFile);
 
-            if ($imageFile) {
-                $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
-                $safeFilename = transliterator_transliterate('Any-Latin; Latin-ASCII; [^A-Za-z0-9_] remove; Lower()', $originalFilename);
-                $newFilename = $safeFilename.'-'.uniqid().'.'.$imageFile->guessExtension();
-
-                try {
-                    $imageFile->move(
-                        $this->getParameter('images_directory'),
-                        $newFilename
-                    );
-                } catch (FileException $e) {
-                    // ... handle exception if something happens during file upload
-                }
-
-                $candidature->setImageFilename($newFilename);
-            }
-
+            $candidature->setImageFilename($newFilename);
             $candidature->setIsValid(true);
 
             $manager->flush();
@@ -238,6 +207,7 @@ class CandidatureController extends AbstractController
         $candidatureFirstname = $candidature->getFirstname();
         $candidatureLastname = $candidature->getLastname();
 
+        unlink($this->getParameter('images_directory') . '/' . $candidature->getImageFileName());
         $manager->remove($candidature);
         $manager->flush();
 
