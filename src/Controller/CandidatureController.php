@@ -59,13 +59,15 @@ class CandidatureController extends AbstractController
     {
         $comment = new Comment();
 
-        $repo = $this->getDoctrine()->getRepository(User::class);
         $user = $this->getUser();
 
         $repo = $this->getDoctrine()->getRepository(Candidature::class);
         $candidature = $repo->find($id);
-        $comments = $candidature->getCommentsOrdered();
+
         $total = $candidature->getCommentsCount();
+        
+        $repo = $this->getDoctrine()->getRepository(Comment::class);
+        $comments = $repo->findByCandidature($candidature);
 
         $form = $this->createForm(CommentType::class, $comment);
         $form->handleRequest($request);
@@ -227,6 +229,8 @@ class CandidatureController extends AbstractController
      */
     public function loadComments($id, Request $request)
     {
+        $user = $this->getUser();
+        
         $page = $request->query->get('page');
         if (empty($page) || $page < 1) {
             $page = 1;
@@ -234,18 +238,14 @@ class CandidatureController extends AbstractController
 
         $repo = $this->getDoctrine()->getRepository(Candidature::class);
         $candidature = $repo->find($id);
-        $total = $candidature->getCommentsCount();
 
-        $comments = $candidature->getCommentsOrdered($page);
-        $result = [];
-        foreach ($comments as $comment) {
-            $result[] = $comment->toArray();
-        }
+        $repo = $this->getDoctrine()->getRepository(Comment::class);
+        $comments = $repo->findByCandidature($candidature, $page);
 
-        $response = new JsonResponse([
-            'total' => $total,
-            'comments' => $result
+        return $this->render('candidature/comments.html.twig', [
+            'candidature' => $candidature,
+            'user' => $user,
+            'comments' => $comments
         ]);
-        return $response;
     }
 }

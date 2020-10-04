@@ -1,0 +1,16 @@
+{% for comment in comments %}
+    <div class="comment">
+        <p class="title">Publié le {{ comment.createdAt|date("d/m/Y")}}, par <strong>{{ comment.author }}</strong></p>
+        <div class="content">
+            <p>{{ comment.content }}</p>
+            <div class="delete-comment-button">
+                {% if user is not null and user.isTeacher %}
+                    <a class="btn btn-secondary delete-comment-button" 
+                        href="{{ path('app_teacher_deletecomment', {'candidatureId': candidature.id, 'commentId': comment.id}) }}">
+                        Supprimer
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endfor %}

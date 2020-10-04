@@ -15,34 +15,19 @@
         <p>{{ candidature.content }}</p>
     </div>
 
-    <div class="comments">
+    <div class="comments" data-total={{ total }}>
         <h3>Commentaires</h3>
-        {% for comment in comments %}
-            <div class="comment">
-                <p class="title">Publié le {{ comment.createdAt|date("d/m/Y")}}, par <strong>{{ comment.author }}</strong></p>
-                <div class="content">
-                    <p>{{ comment.content }}</p>
-                    <div class="delete-comment-button">
-                        {% if user is not null and user.isTeacher %}
-                            <a class="btn btn-secondary delete-comment-button" 
-                                href="{{ path('app_teacher_deletecomment', {'candidatureId': candidature.id, 'commentId': comment.id}) }}">
-                                Supprimer
-                            </a>
-                        {% endif %}
-                    </div>
-                </div>
-            </div>
-        {% endfor %}
+        {% set vars = {'comments': comments, 'candidature': candidature, 'user': user } %}
+        {% include 'candidature/comments.html.twig' with vars %}
     </div>
 
     {% if total > 10 %}
-    <div>
-        <button class="btn btn-success" id="read-more" data-url="{{ path('app_candidature_loadcomments', {'id': candidature.id}) }}">
-            Voir les commentaires précédents
-        </button>
-    </div>
+        <div class="read-more-button">
+            <button class="btn btn-success" id="read-more" data-url="{{ path('app_candidature_loadcomments', {'id': candidature.id}) }}">
+                Voir les commentaires précédents
+            </button>
+        </div>
     {% endif %}
-
 
     <div class="add-comment">
         <h3>Ajouter un commentaire</h3>

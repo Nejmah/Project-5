@@ -19,6 +19,21 @@ class CommentRepository extends ServiceEntityRepository
         parent::__construct($registry, Comment::class);
     }
 
+    public function findByCandidature($candidature, $page = 1)
+    {
+        $firstResult = $page * 10 - 10;
+
+        return $this->createQueryBuilder('comment')
+            ->andWhere('comment.candidature = :val')
+            ->setParameter('val', $candidature)
+            ->orderBy('comment.createdAt', 'DESC')
+            ->setFirstResult($firstResult)
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
     // /**
     //  * @return Comment[] Returns an array of Comment objects
     //  */

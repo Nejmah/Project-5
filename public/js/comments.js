@@ -1,6 +1,7 @@
 $(function () {
     let pageNum = 1;
     let requestUrl = $('#read-more').data('url');
+    let commentsTotal = $('.comments').data('total');
 
     // Code pour charger les commentaires précédents
     $('#read-more').on('click', function () {
@@ -14,17 +15,15 @@ $(function () {
                     page: pageNum
                 },
             })
-            .done(function (data) {
-                console.log("Response data:", data);
+            .done(function (result) {
                 $('#read-more').attr('disabled', false);
+                $('.comments').append(result);
 
-                if (data.comments) {
-                    data.comments.forEach(function (comment) {}
 
-                    );
+                // Cacher le bouton quand tous les commentaires sont affichés
+                if (pageNum * 10 >= commentsTotal) {
+                    $('#read-more').detach();
                 }
-
-                // TODO cacher le bouton quand tous les commentaires sont affichés
             });
     });
 });

@@ -167,17 +167,6 @@ class Candidature
         return $this->comments->count();
     }
 
-    public function getCommentsOrdered($page = 1)
-    {
-        $iterator = $this->comments->getIterator();
-        $iterator->uasort(function ($a, $b) {
-            return ($a->getCreatedAt() < $b->getCreatedAt());
-        });
-
-        $result = new ArrayCollection(iterator_to_array($iterator));
-        return $result;
-    }
-
     public function addComment(Comment $comment): self
     {
         if (!$this->comments->contains($comment)) {
