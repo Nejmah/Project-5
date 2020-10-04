@@ -2,13 +2,15 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\User;
+use App\Entity\School;
+use App\Entity\Comment;
+
+use App\Entity\Classroom;
+use App\Entity\Candidature;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-
-use App\Entity\User;
-use App\Entity\School;
-use App\Entity\Classroom;
 
 class AppFixtures extends Fixture
 {
@@ -34,7 +36,6 @@ class AppFixtures extends Fixture
         ));
 
         $manager->persist($user);
-        $manager->flush();
 
         $schoolNames = [
             "Jules Ferry",
@@ -62,63 +63,52 @@ class AppFixtures extends Fixture
                    ->setEmail($schoolEmails[$i]);
 
             $manager->persist($school);
+        }
 
-            // //Crée entre 2 et 4 profs
-            // for($j = 0; $j < mt_rand(2, 4); $j++) {
-            //     $user = new User();
+        // Crée 1 prof
+        $teacher = new User();
+        $teacher->setUsername('Nicolas Moinet');
+        $teacher->setRoles(array("ROLE_TEACHER"));
+        $teacher->setPassword($this->passwordEncoder->encodePassword(
+            $teacher,
+            'prof'
+        ));
 
-            //     $user->setRoles(array("ROLE_TEACHER"));
-            //     $user->setUsername($faker->name);
-            //     $user->setPassword($this->passwordEncoder->encodePassword(
-            //         $user,
-            //         'prof'
-            //     ));
+        $manager->persist($teacher);
 
-            //     $manager->persist($user);
-            // }
+        // Crée 1 classe
+        $classroom = new Classroom();
+        $classroom->setName('CM2');
+        $classroom->setUser($teacher);
+        $classroom->setYear(2020);
+        $classroom->setSchool($school);
+
+        $manager->persist($classroom);
+
+        // Crée 1 candidature
+        $candidature = new Candidature();
+        $candidature->setClassroom($classroom);
+        $candidature->setFirstname('Marcel');
+        $candidature->setLastname('Proust');
+        $candidature->setImageFilename('proust-5f76d8c168da8.jpeg');
+        $candidature->setContent('Test');
+
+        $date = new \DateTime();
+        $candidature->setCreatedAt($date);
+        $candidature->setIsValid(true);
+
+        $manager->persist($candidature);
+
+        // Crée 24 commentaires
+        for($i = 0; $i < 24; $i++) {
+            $comment = new Comment();
+            $comment->setCandidature($candidature);
+            $comment->setAuthor($faker->firstName);
+            $comment->setContent($faker->sentence);
+            $comment->setCreatedAt($faker->dateTimeBetween('-1 month'));
+
+            $manager->persist($comment);
         }
         $manager->flush();
     }
 }
-
-
-            // // Crée 2 classes
-            // for($j = 0; $j < 2; $j++) {
-            //     $classroom = new Classroom();
-
-            //     if ($j == 0) {
-            //         $classroom->setName('CM1');
-            //     }
-            //     elseif ($j == 1) {
-            //         $classroom->setName('CM2');
-            //     }
-            //     $classroom->setYear(2020);
-            //     $classroom->setSchool($school);
-                        
-            //     $manager->persist($classroom);
-
-            //     $user = new User();
-
-            //     $user->setRoles(array("ROLE_TEACHER"));
-            //     $user->setUsername($faker->name);
-            //     $user->setPassword($this->passwordEncoder->encodePassword(
-            //         $user,
-            //         'prof'
-            //     ));
-            //     $user->setClassroom($classroom);
-
-            //     $manager->persist($user);
-
-            //     // Crée 1 prof par classe
-            //         for($k = 0; $k < 1; $k++) {
-            //         $user = new User();
-            //         $user->setUsername($faker->name);
-            //         $user->setPassword($this->passwordEncoder->encodePassword(
-            //             $user,
-            //             'élève'
-            //         ));
-            //         $user->setClassroom($classroom);
-
-            //         $manager->persist($user);    
-            //         }
-            //     }

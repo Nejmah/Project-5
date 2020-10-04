@@ -35,6 +35,15 @@
         {% endfor %}
     </div>
 
+    {% if total > 10 %}
+    <div>
+        <button class="btn btn-success" id="read-more" data-url="{{ path('app_candidature_loadcomments', {'id': candidature.id}) }}">
+            Voir les commentaires précédents
+        </button>
+    </div>
+    {% endif %}
+
+
     <div class="add-comment">
         <h3>Ajouter un commentaire</h3>
         {{ form_start(formComment) }}
@@ -52,4 +61,9 @@
     </div>
 </div>
 
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="/js/comments.js"></script>
 {% endblock %}

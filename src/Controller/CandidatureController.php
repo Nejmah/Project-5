@@ -15,6 +15,7 @@ use App\Service\UploadService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class CandidatureController extends AbstractController
@@ -63,7 +64,8 @@ class CandidatureController extends AbstractController
 
         $repo = $this->getDoctrine()->getRepository(Candidature::class);
         $candidature = $repo->find($id);
-        $comments = $candidature->getComments();
+        $comments = $candidature->getCommentsOrdered();
+        $total = $candidature->getCommentsCount();
 
         $form = $this->createForm(CommentType::class, $comment);
         $form->handleRequest($request);
@@ -86,7 +88,8 @@ class CandidatureController extends AbstractController
             'formComment' => $form->createView(),
             'candidature' => $candidature,
             'comments' => $comments,
-            'user' => $user
+            'user' => $user,
+            'total' => $total
         ]);
     }
 
@@ -217,5 +220,32 @@ class CandidatureController extends AbstractController
         );
 
         return $this->redirectToRoute('app_teacher_candidatures');
+    }
+
+    /**
+     * @Route("candidature/{id}/comments")
+     */
+    public function loadComments($id, Request $request)
+    {
+        $page = $request->query->get('page');
+        if (empty($page) || $page < 1) {
+            $page = 1;
+        }
+
+        $repo = $this->getDoctrine()->getRepository(Candidature::class);
+        $candidature = $repo->find($id);
+        $total = $candidature->getCommentsCount();
+
+        $comments = $candidature->getCommentsOrdered($page);
+        $result = [];
+        foreach ($comments as $comment) {
+            $result[] = $comment->toArray();
+        }
+
+        $response = new JsonResponse([
+            'total' => $total,
+            'comments' => $result
+        ]);
+        return $response;
     }
 }

@@ -90,4 +90,15 @@ class Comment
 
         return $this;
     }
+
+    public function toArray() {
+        $date = $this->getCreatedAt();
+
+        return [
+            "id" => $this->getId(),
+            "author" => $this->getAuthor(),
+            "content" => $this->getContent(),
+            "date" => $date->format("d/m/Y"),
+        ];
+    }
 }
