@@ -5,7 +5,8 @@
         font-size: 3.5em;
     }
 
-    .home-page img {
+    .home-page img,
+    .calendar-page img {
         display: none;
     }
 
@@ -21,7 +22,8 @@
 
     .home-page .presentation,
     .about-page .presentation,
-    .about-page .end {
+    .about-page .end,
+    .calendar-page .dates {
         font-size: 1.3em;
     }
 
