@@ -45,12 +45,16 @@ body {
     display: block;
 }
 
-.site-footer,
+footer,
 .page-wrap:after {
     height: 40px;
 }
 
-.site-footer {
+footer {
     /* background-color: rgb(50, 52, 57); */
     background-color: transparent;
+}
+
+footer p {
+    margin-bottom: 0;
 }

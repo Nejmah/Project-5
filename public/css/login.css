@@ -2,18 +2,17 @@ h2 {
     text-align: center;
     color: rgb(87, 185, 158);
     font-size: 3em;
-    margin: 45px 0 40px 0;
+    padding: 45px 0 40px 0;
 }
 
 .login-form {
     width: 50%;
     margin: auto;
-    margin-top: 75px;
+    padding-top: 30px;
 }
 
-label {
-    /* font-size: 1.5em; */
-    margin-top: 20px;
+.login-page label {
+    padding-top: 20px;
 }
 
 #inputUsername,
