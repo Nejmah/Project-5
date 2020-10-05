@@ -1,0 +1,23 @@
+@media (max-width: 991px) {
+    h1 {
+        font-size: 3.5em;
+    }
+
+    .home-page img {
+        display: none;
+    }
+
+}
+
+/* _____ Smartphone _____ */
+
+@media (max-width: 767px) {
+    h1 {
+        font-size: 2em;
+    }
+
+    .home-page .presentation {
+        font-size: 1.3em;
+    }
+
+}

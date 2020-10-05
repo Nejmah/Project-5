@@ -24,11 +24,17 @@
                     <a class="nav-link" href="{{ path('app_candidature_dashboard') }}">Candidatures</a>
                 </li>
                 {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-                    <a class="btn btn-success back-button" href="{{ path('app_teacher_dashboard') }}">
+                    <li class="nav-item">
+                        <a class="nav-link " href="{{ path('app_teacher_dashboard') }}">Mon espace</a>
+                    </li>
+                    <a class="btn btn-success back-button d-none d-lg-block" href="{{ path('app_teacher_dashboard') }}">
                         Mon espace
                     </a>
                 {% else %}
-                    <a class="login-button" href="{{ path('app_security_login') }}">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_security_login') }}">Connexion</a>
+                    </li>
+                    <a class="login-button d-none d-lg-block" href="{{ path('app_security_login') }}">
                         <img src="/img/login.png" alt="login"></img>
                     </a>
                 {% endif %}
