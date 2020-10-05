@@ -1,3 +1,9 @@
+@media (max-width: 1150px) {
+    .candidat-img img {
+        height: 250px;
+    }
+}
+
 /* _____ Tablettes _____ */
 
 @media (max-width: 991px) {
