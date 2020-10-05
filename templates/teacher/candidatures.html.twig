@@ -16,13 +16,6 @@
             {% endfor %}
         {% endfor %}
 
-        {# <div class="add-candidature">
-            <a class="btn btn-success"
-                href="{{ path('app_create_candidature', {'classroomId': classroom.id}) }}">
-                Ajouter une candidature
-            </a>
-        </div> #}
-
         {% for candidature in candidatures %}
             <div class="candidatures-table">
                 <p>{{ candidature.firstname}} {{ candidature.lastname }}</p>
@@ -30,10 +23,6 @@
                     <a class="eye-link" href="{{ path('app_candidature_show', {'id': candidature.id}) }}">
                         <img class="eye-img" src="/img/eye.png" alt="eye">
                     </a>
-                    {# <a class="btn btn-success show-candidature-button" 
-                        href="">
-                        Voir
-                    </a> #}
                     <a class="btn btn-success edit-candidature-button" 
                         href="{{ path('app_candidature_edit', {'id': candidature.id}) }}">
                         Modifier
@@ -71,7 +60,6 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-                {# <button type="button" class="btn btn-success">Confirmer</button> #}
                 <a class="btn btn-success" id="delete-confirm" href="">Confirmer</a>
             </div>
         </div>

@@ -265,7 +265,7 @@ li {
 .teacher-password h1 {
     color: rgb(255, 253, 148);
     font-size: 3em;
-    margin: 45px 0 40px 0;
+    padding: 45px 0 40px 0;
 }
 
 .teacher-dashboard h2,
