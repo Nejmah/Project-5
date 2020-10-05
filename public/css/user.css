@@ -283,6 +283,14 @@ body {
     margin: 30px 0 30px 0;
 }
 
+.candidature-page .image img {
+    width: 100%;
+}
+
+.candidature-page .content p {
+    padding-right: 20px;
+}
+
 .candidature-page .programm,
 .candidature-page .comments {
     background-color: white;
