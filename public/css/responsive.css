@@ -6,7 +6,8 @@
     }
 
     .home-page img,
-    .calendar-page img {
+    .calendar-page img,
+    .candidat-img {
         display: none;
     }
 
