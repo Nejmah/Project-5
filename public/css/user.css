@@ -208,14 +208,7 @@ body {
     color: rgb(176, 140, 240);
 }
 
-/* .candidatures-page .add-candidature-button {
-    position: absolute;
-    top: 140px;
-    right: 40px;
-} */
-
 .create-page h3 {
-    /* text-align: center; */
     font-weight: 1.5em;
     margin-bottom: 40px;
 }
@@ -229,10 +222,6 @@ body {
     width: 48%;
 }
 
-.create-page .name .form-group:not(:last-child) {
-    /* margin-right: 20px; */
-}
-
 .create-page .submit-button {
     text-align: center;
 }
@@ -241,21 +230,29 @@ body {
 .create-page .btn-success {
     font-size: 1.2em;
     margin-top: 15px;
+}
+
+.candidatures-page .btn-success {
+    margin-bottom: 50px;
+}
+
+.create-page .btn-success {
     margin-bottom: 30px;
 }
 
 .candidatures-page .thumbnails {
     display: flex;
     flex-wrap: wrap;
-    /* margin-top: 30px; */
     font-size: 1.2em;
 }
 
 .candidatures-page .candidat {
     background-color: rgba(255, 255, 255, 0.5);
     padding: 55px 40px;
-    width: 20%;
-    margin: 27px;
+    height: 240px;
+    width: 240px;
+    margin: 0 auto;
+    margin-bottom: 80px;
 }
 
 .candidatures-page .candidat:hover {

@@ -12,21 +12,25 @@
         </a>
     </div>
 
-    <div class="thumbnails">
-        {% for candidature in candidatures %}
-            {% if candidature.isValid %}
-                <div class="candidat text-center">
-                    <p>{{ candidature.firstname }}</p>
-                    <a href="{{ path('app_candidature_show', {'id': candidature.id}) }}">
-                        <img class="eye-img" src="/img/eye.png" alt="eye">
-                    </a> 
-                </div>
-            {% elseif not candidature.isValid %}
-                <p>Patience, il n'y a pas encore de candidat dans ta classe...</p>
-            {% endif %}
-            {% else %}
-                <p>Patience, il n'y a pas encore de candidat dans ta classe...</p>
-        {% endfor %}
+    <div class="row">
+        <div class="thumbnails">
+            {% for candidature in candidatures %}
+                {% if candidature.isValid %}
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="candidat text-center">
+                            <p>{{ candidature.firstname }}</p>
+                            <a href="{{ path('app_candidature_show', {'id': candidature.id}) }}">
+                                <img class="eye-img" src="/img/eye.png" alt="eye">
+                            </a> 
+                        </div>
+                    </div>
+                {% elseif not candidature.isValid %}
+                    <p>Patience, il n'y a pas encore de candidat dans ta classe...</p>
+                {% endif %}
+                {% else %}
+                    <p>Patience, il n'y a pas encore de candidat dans ta classe...</p>
+            {% endfor %}
+        </div>
     </div>
 </div>
 
