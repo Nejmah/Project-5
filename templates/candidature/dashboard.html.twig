@@ -10,39 +10,34 @@
     <div class="candidat-img">
         <img src="/img/candidat.png" alt="candidat"></img>
     </div>
-        
-    <div class="schools row">
-        {% for school in schools %}
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="flip-card">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <img class="school-img" src="/img/school.png" alt"school"></img>
-                            <p>École <br> {{ school.name }}</p>
-                        </div>
-                        <div class="flip-card-back">
-                            {% for classroom in school.classroomsSorted %}
-                                <div class="classrooms">
-                                    <p>
-                                        <a href="{{ path('app_candidature_index', {'classroomId': classroom.id}) }}">Classe de {{ classroom.name }}</a>
-                                    </p>
+
+    <div class="row">
+        <div class="col-12 col-lg-10">
+            <div class="schools row">
+                {% for school in schools %}
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="flip-card">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <img class="school-img" src="/img/school.png" alt"school"></img>
+                                    <p>École <br> {{ school.name }}</p>
                                 </div>
-                            {% endfor %}
+                                <div class="flip-card-back">
+                                    {% for classroom in school.classroomsSorted %}
+                                        <div class="classrooms">
+                                            <p>
+                                                <a href="{{ path('app_candidature_index', {'classroomId': classroom.id}) }}">Classe de {{ classroom.name }}</a>
+                                            </p>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
+                {% endfor %}
             </div>
-        {% endfor %}
+        </div>
     </div>
-</div>
-
-
-
-
-    {# {% for candidature in candidatures %}
-        <p>{{ candidature.firstname }}</p>
-        <img></img>
-    {% endfor %} #}
 </div>
 
 {% endblock %}

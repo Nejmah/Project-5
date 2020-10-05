@@ -123,7 +123,6 @@ body {
 
 .index-page .schools {
     display: flex;
-    /* justify-content: flex-start; */
     flex-wrap: wrap;
 }
 
