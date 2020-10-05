@@ -36,7 +36,14 @@
 
     .candidatures-page .btn-success {
         margin-top: 30px;
+    }
 
+    .create-page .name {
+        flex-direction: column;
+    }
+
+    .create-page .name .form-group {
+        width: 100%;
     }
 
 }
