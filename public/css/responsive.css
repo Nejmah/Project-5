@@ -1,3 +1,5 @@
+/* _____ Tablettes _____ */
+
 @media (max-width: 991px) {
     h1 {
         font-size: 3.5em;
@@ -7,16 +9,19 @@
         display: none;
     }
 
+
 }
 
-/* _____ Smartphone _____ */
+/* _____ Smartphones _____ */
 
 @media (max-width: 767px) {
     h1 {
         font-size: 2em;
     }
 
-    .home-page .presentation {
+    .home-page .presentation,
+    .about-page .presentation,
+    .about-page .end {
         font-size: 1.3em;
     }
 

@@ -88,6 +88,7 @@ body {
 .about-page .end {
     color: rgb(105, 214, 243);
     font-size: 1.5em;
+    margin-bottom: 40px;
 }
 
 /* Calendar-page */
