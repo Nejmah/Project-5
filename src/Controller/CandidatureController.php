@@ -197,7 +197,8 @@ class CandidatureController extends AbstractController
         }
 
         return $this->render('candidature/create.html.twig', [
-            'formCandidature' => $form->createView()
+            'formCandidature' => $form->createView(),
+            'editPage' => true
         ]);
     }
 
