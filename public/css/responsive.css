@@ -5,9 +5,14 @@
         text-align: center;
     }
 
+    .teacher-candidatures .candidature-buttons {
+        text-align: center;
+    }
+
     .candidature-buttons {
         top: 0;
         padding-bottom: 20px;
+        padding-left: 0;
     }
 
     .admin-dashboard .school-buttons {
@@ -174,13 +179,22 @@
         padding-top: 0;
     }
 
+    .teacher-candidatures .candidature-buttons {
+        padding-left: 15px;
+    }
+
+    .candidature-buttons button {
+        margin-right: 0;
+    }
+
     .admin-dashboard .school-buttons a,
     .teacher-candidatures .candidature-buttons a {
         margin-right: 0;
     }
 
     .admin-dashboard .school-buttons a:not(:last-child),
-    .teacher-candidatures .candidature-buttons a:not(:last-child) {
+    .teacher-candidatures .candidature-buttons a:not(:last-child),
+    .teacher-candidatures button {
         margin-bottom: 10px;
     }
 

@@ -18,8 +18,8 @@
 
         {% for candidature in candidatures %}
             <div class="row candidatures-table">
-                <p class="col-xl-8 col-12">{{ candidature.firstname}} {{ candidature.lastname }}</p>
-                <div class="col-xl-4 col-12 candidature-buttons text-center">
+                <p class="col-xl-7 col-12">{{ candidature.firstname}} {{ candidature.lastname }}</p>
+                <div class="col-xl-5 col-12 candidature-buttons">
                     <a class="eye-link" href="{{ path('app_candidature_show', {'id': candidature.id}) }}">
                         <img class="eye-img" src="/img/eye.png" alt="eye">
                     </a>
@@ -27,18 +27,19 @@
                         href="{{ path('app_candidature_edit', {'id': candidature.id}) }}">
                         Modifier
                     </a>
-                    {% if candidature.isValid == false %}
-                        <a class="btn btn-secondary validate-candidature-button" 
-                            href="{{ path('app_candidature_validate', {'id': candidature.id}) }}">
-                            Valider
-                        </a>
-                    {% endif %}
                     <button type="button" class="btn btn-secondary delete-candidature-button" 
                         data-toggle="modal" data-target="#candidatureDeleteModal" 
                         data-delete-url="{{ path('app_candidature_delete', {'id': candidature.id}) }}"
                         data-delete-name="{{ candidature.firstname }} {{ candidature.lastname }}">
                         Supprimer
                     </button>
+                    {% if candidature.isValid == false %}
+                        <a class="btn btn-secondary validate-candidature-button" 
+                            href="{{ path('app_candidature_validate', {'id': candidature.id}) }}">
+                            Valider
+                        </a>
+                    {% endif %}
+
                 </div>
 
             </div>
