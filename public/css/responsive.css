@@ -53,7 +53,6 @@
     .add-classroom-page .classroom .form-group {
         width: initial;
     }
-
 }
 
 /* _____ Smartphones _____ */
@@ -98,6 +97,24 @@
         margin-left: 10px;
     }
 
+    .admin-dashboard li {
+        flex-direction: column;
+    }
+
+    .admin-dashboard li p {
+        text-align: center;
+        padding-bottom: 10px;
+    }
+
+    .admin-dashboard .card p {
+        text-align: center;
+    }
+
+    .admin-dashboard li a {
+        width: 100px;
+        margin: auto;
+    }
+
     .admin-dashboard .school-buttons {
         display: flex;
         flex-direction: column;
@@ -120,5 +137,4 @@
         margin-right: 10px;
         margin-left: 10px;
     }
-
 }
