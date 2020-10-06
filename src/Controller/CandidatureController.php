@@ -180,9 +180,11 @@ class CandidatureController extends AbstractController
 
         if($form->isSubmitted() && $form->isValid()) {
             $imageFile = $form->get('image')->getData();
-            $newFilename = $uploadService->uploadImage($imageFile);
+            if (!empty($imageFile)) {
+                $newFilename = $uploadService->uploadImage($imageFile);
+                $candidature->setImageFilename($newFilename);
+            }
 
-            $candidature->setImageFilename($newFilename);
             $candidature->setIsValid(true);
 
             $manager->flush();

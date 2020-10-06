@@ -16,8 +16,20 @@
                 'attr': {'placeholder': 'Ex : Lagniez'}}) }}
             </div>
 
-            {{ form_row(formCandidature.image, {'label': 'Ta photo :',
-            'attr': {'placeholder': 'Choisis un fichier .jpg ou .png'}}) }}
+            {% set attr = { 'placeholder': 'Choisis un fichier .jpg ou .png' } %}
+
+            {% if editPage is not defined %}
+                {% set attr = {
+                    'placeholder': 'Choisis un fichier .jpg ou .png',
+                    'required':'required'
+                    } %}
+            {% endif %}
+
+            {{ form_row(formCandidature.image, {
+                'label': 'Ta photo :',
+                'attr': attr
+            }) }}
+
 
             {{ form_row(formCandidature.content, {'label': 'Ton programme :', 
             'attr': {'placeholder': 'Écris les principaux objectifs de ton programme.'}}) }}
