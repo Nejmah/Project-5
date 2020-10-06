@@ -1,6 +1,13 @@
 @media (max-width: 1199px) {
-    .admin-dashboard .school-name {
+
+    .admin-dashboard .school-name,
+    .candidatures-table p {
         text-align: center;
+    }
+
+    .candidature-buttons {
+        top: 0;
+        padding-bottom: 20px;
     }
 
     .admin-dashboard .school-buttons {
@@ -19,6 +26,15 @@
 @media (max-width: 991px) {
     h1 {
         font-size: 3.5em;
+    }
+
+    .teacher-dashboard h2 {
+        margin: 0;
+        padding-bottom: 20px;
+    }
+
+    .teacher-dashboard .teacher-buttons a {
+        width: 60%;
     }
 
     .login-page h2 {
@@ -62,8 +78,29 @@
 /* _____ Smartphones _____ */
 
 @media (max-width: 767px) {
-    h1 {
+
+    h1,
+    .teacher-dashboard h1,
+    .teacher-candidatures h1,
+    .teacher-password h1 {
         font-size: 2em;
+    }
+
+    .teacher-candidatures h2 {
+        font-size: 1.5em;
+    }
+
+    .teacher-password h3 {
+        margin-top: 0;
+    }
+
+    .teacher-password form {
+        width: 100%;
+    }
+
+    .teacher-dashboard .teacher-buttons a {
+        width: 100%;
+        margin-bottom: 10px;
     }
 
     .login-page h2 {
@@ -105,7 +142,8 @@
         margin-right: 10px;
     }
 
-    .admin-dashboard .schools-table {
+    .admin-dashboard .schools-table,
+    .teacher-candidatures .candidatures-table {
         margin-right: 10px;
         margin-left: 10px;
     }
@@ -128,17 +166,20 @@
         margin: auto;
     }
 
-    .admin-dashboard .school-buttons {
+    .admin-dashboard .school-buttons,
+    .teacher-candidatures .candidature-buttons {
         display: flex;
         flex-direction: column;
         padding-top: 0;
     }
 
-    .admin-dashboard .school-buttons a {
+    .admin-dashboard .school-buttons a,
+    .teacher-candidatures .candidature-buttons a {
         margin-right: 0;
     }
 
-    .admin-dashboard .school-buttons a:not(:last-child) {
+    .admin-dashboard .school-buttons a:not(:last-child),
+    .teacher-candidatures .candidature-buttons a:not(:last-child) {
         margin-bottom: 10px;
     }
 

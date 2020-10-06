@@ -6,6 +6,12 @@
         <h1>Bienvenue dans votre classe de {{ classroom.name }}</h1>
         <h2>Professeur : {{ classroom.user.username }}</h2>
 
+        <div class="logout-link text-center">
+            <a class="d-block d-lg-none" href="{{ path('app_security_logout') }}">
+                Déconnexion
+            </a>
+        </div>
+
         {# flashbags #}
         {% for label, messages in app.flashes(['update-password']) %}
             {% for message in messages %}

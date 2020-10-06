@@ -17,9 +17,9 @@
         {% endfor %}
 
         {% for candidature in candidatures %}
-            <div class="candidatures-table">
-                <p>{{ candidature.firstname}} {{ candidature.lastname }}</p>
-                <div class="candidature-buttons">
+            <div class="row candidatures-table">
+                <p class="col-xl-8 col-12">{{ candidature.firstname}} {{ candidature.lastname }}</p>
+                <div class="col-xl-4 col-12 candidature-buttons text-center">
                     <a class="eye-link" href="{{ path('app_candidature_show', {'id': candidature.id}) }}">
                         <img class="eye-img" src="/img/eye.png" alt="eye">
                     </a>
