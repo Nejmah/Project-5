@@ -107,12 +107,12 @@ li {
 
 .school-buttons,
 .candidature-buttons {
-    position: absolute;
-    right: 20px;
+    /* position: absolute;
+    right: 0; */
 }
 
 .school-buttons {
-    top: 17px;
+    padding-top: 17px;
 }
 
 .candidature-buttons {
@@ -177,17 +177,21 @@ li {
     font-size: 23px;
 }
 
-.school-name {
-    width: 30%;
+.admin-dashboard .classrooms:not(:last-child) {
+    margin-bottom: 20px;
 }
 
-.admin-dashboard .classrooms {
+.admin-dashboard ul {
+    padding: 0;
+}
+
+.admin-dashboard li {
     display: flex;
     justify-content: space-between;
 }
 
-.admin-dashboard .classrooms:not(:last-child) {
-    margin-bottom: 20px;
+.admin-dashboard li:not(:last-child) {
+    margin-bottom: 10px;
 }
 
 .flash-message {

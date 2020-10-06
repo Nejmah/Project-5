@@ -90,7 +90,7 @@ class AppFixtures extends Fixture
         $candidature->setClassroom($classroom);
         $candidature->setFirstname('Marcel');
         $candidature->setLastname('Proust');
-        $candidature->setImageFilename('proust-5f76d8c168da8.jpeg');
+        $candidature->setImageFilename('proust-5f7afb8da15be.jpeg');
         $candidature->setContent($faker->paragraph);
 
         $date = new \DateTime();

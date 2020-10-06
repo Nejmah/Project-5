@@ -1,3 +1,13 @@
+@media (max-width: 1199px) {
+    .admin-dashboard .school-name {
+        text-align: center;
+    }
+
+    .admin-dashboard .school-buttons {
+        padding-bottom: 25px;
+    }
+}
+
 @media (max-width: 1150px) {
     .candidat-img img {
         height: 250px;
@@ -17,6 +27,32 @@
         display: none;
     }
 
+    .admin-dashboard .add-school-button {
+        margin-bottom: 20px;
+    }
+
+    .admin-dashboard .logout-link {
+        margin-bottom: 10px;
+    }
+
+    .add-teacher-page img,
+    .add-classroom-page img {
+        display: none;
+    }
+
+    .add-teacher-page h2,
+    .add-classroom-page h2 {
+        margin: 0;
+        margin-top: 30px;
+    }
+
+    .add-classroom-page .classroom {
+        display: initial;
+    }
+
+    .add-classroom-page .classroom .form-group {
+        width: initial;
+    }
 
 }
 
@@ -44,6 +80,45 @@
 
     .create-page .name .form-group {
         width: 100%;
+    }
+
+    .admin-dashboard h1,
+    .add-teacher-page h1,
+    .add-classroom-page h1 {
+        padding-top: 20px;
+    }
+
+    .admin-dashboard .logout-link {
+        font-size: 0.9em;
+        margin-right: 10px;
+    }
+
+    .admin-dashboard .schools-table {
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+
+    .admin-dashboard .school-buttons {
+        display: flex;
+        flex-direction: column;
+        padding-top: 0;
+    }
+
+    .admin-dashboard .school-buttons a {
+        margin-right: 0;
+    }
+
+    .admin-dashboard .school-buttons a:not(:last-child) {
+        margin-bottom: 10px;
+    }
+
+    .admin-dashboard .classrooms li a {
+        position: initial;
+    }
+
+    .admin-dashboard .card {
+        margin-right: 10px;
+        margin-left: 10px;
     }
 
 }

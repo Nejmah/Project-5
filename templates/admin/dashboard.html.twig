@@ -6,8 +6,7 @@
         <h1>Espace Administration</h1>
 
         <div class="add-school-button">
-            <a class="btn btn-success" 
-                href="{{ path('app_admin_createschool') }}">
+            <a class="btn btn-success" href="{{ path('app_admin_createschool') }}">
                 Ajouter une école
             </a>
         </div>
@@ -21,16 +20,22 @@
             {% endfor %}
         {% endfor %}
 
+        <div class="logout-link text-right">
+            <a class="d-block d-lg-none" href="{{ path('app_security_logout') }}">
+                Déconnexion
+            </a>
+        </div>
+
         {% for school in schools %}
-            <div class="schools-table">
-                <div class="school-name">
+            <div class="row schools-table">
+                <div class="col-xl-6 col-12 school-name">
                     <p>
                         <a data-toggle="collapse" href="#school{{school.id}}" role="button" aria-expanded="false" aria-controls="collapseExample">
                             École {{ school.name }}
                         </a>
                     </p>
                 </div>
-                <div class="school-buttons">
+                <div class="col-xl-6 col-12 school-buttons text-center">
                     <a class="btn btn-success add-teacher-button" 
                         href="{{ path('app_admin_createteacher', {'schoolId': school.id}) }}">
                         Ajouter un prof
@@ -53,17 +58,19 @@
                         <p>Il n'y a pas de classes dans cette école.</p>
                     {% endif %}
 
-                    {% for classroom in school.classroomsSorted %}
-                        <div class="classrooms">
-                            <ul>
-                                <li>Classe de {{ classroom.name }} / {{ classroom.user.username}}</li>
-                            </ul>
-                            <a class="btn btn-success delete-classroom-button" 
-                                href="{{ path('app_admin_deleteclassroom', {'id': classroom.id}) }}">
-                                Supprimer
-                            </a>
-                        </div>
-                    {% endfor %}
+                    <div class="classrooms">
+                        <ul>
+                            {% for classroom in school.classroomsSorted %}
+                                <li>
+                                    <p>Classe de {{ classroom.name }} / {{ classroom.user.username}}</p>
+                                    <a class="btn btn-success delete-classroom-button" 
+                                        href="{{ path('app_admin_deleteclassroom', {'id': classroom.id}) }}">
+                                        Supprimer
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
                 </div>
             </div>
         {% endfor %}
