@@ -23,7 +23,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ path('app_candidature_dashboard') }}">Candidatures</a>
                 </li>
-                {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                {% if app.user.isTeacher %}
                     <li class="nav-item d-block d-lg-none">
                         <a class="nav-link" href="{{ path('app_teacher_dashboard') }}">Mon espace</a>
                     </li>
@@ -34,7 +34,7 @@
                 {% endif %}
             </ul>
 
-            {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+            {% if app.user.isTeacher %}
                 <a class="btn btn-success back-button d-none d-lg-block" href="{{ path('app_teacher_dashboard') }}">
                     Mon espace
                 </a>
