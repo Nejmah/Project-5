@@ -42,6 +42,16 @@ li {
     top: 50px;
 }
 
+.links {
+    display: flex;
+    justify-content: space-between;
+}
+
+.site-link {
+    padding-left: 15px;
+    margin-bottom: 10px;
+}
+
 .admin-dashboard h1 {
     margin-bottom: 40px;
 }

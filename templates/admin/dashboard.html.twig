@@ -20,12 +20,20 @@
             {% endfor %}
         {% endfor %}
 
-        <div class="logout-link text-right">
-            <a class="d-block d-lg-none" href="{{ path('app_security_logout') }}">
-                Déconnexion
-            </a>
-        </div>
+        <div class="links">
+            <div class="site-link">
+                <a href="{{ path('app_user_home') }}">
+                    Visiter le site
+                </a>
+            </div>
 
+            <div class="logout-link text-right">
+                <a class="d-block d-lg-none" href="{{ path('app_security_logout') }}">
+                    Déconnexion
+                </a>
+            </div>
+        </div>
+        
         {% for school in schools %}
             <div class="row schools-table">
                 <div class="col-xl-6 col-12 school-name">

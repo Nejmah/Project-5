@@ -34,6 +34,10 @@
         font-size: 3.5em;
     }
 
+    .admin-dashboard .site-link {
+        padding-left: 0;
+    }
+
     .teacher-dashboard h2 {
         margin: 0;
         padding-bottom: 20px;
@@ -90,6 +94,18 @@
     .teacher-candidatures h1,
     .teacher-password h1 {
         font-size: 2em;
+    }
+
+    .admin-dashboard .links {
+        font-size: 0.9em;
+    }
+
+    .admin-dashboard .site-link {
+        margin-left: 15px;
+    }
+
+    .admin-dashboard .logout-link {
+        padding-top: 3px;
     }
 
     .teacher-candidatures h2 {
