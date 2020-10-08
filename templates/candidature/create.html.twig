@@ -6,6 +6,15 @@
 
         <h3>Complète le formulaire : </h3>
 
+        {# flashbags #}
+        {% for label, messages in app.flashes(['upload-error']) %}
+            {% for message in messages %}
+                <div class="flash-message flash-{{ label }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+
         {{ form_start(formCandidature) }}
 
             <div class="name">

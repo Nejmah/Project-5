@@ -29,6 +29,10 @@ class UploadService {
                 );
             } catch (FileException $e) {
                 // ... handle exception if something happens during file upload
+                $this->addFlash(
+                    'upload-error',
+                    'Une erreur est survenue lors du téléchargement du fichier.'
+                );        
             }
 
             return $newFilename;
